@@ -12,7 +12,6 @@ export default function Home() {
     <Stack sx={{ py: 5 }}>
       <Stack
         sx={{
-          height:"50vh",
           display: "flex",
           flexDirection: "row",
           flexWrap:"wrap",

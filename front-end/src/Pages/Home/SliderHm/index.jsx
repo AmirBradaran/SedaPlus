@@ -17,22 +17,23 @@ export default function SliderHm() {
         spaceBetween={20}
         slidesPerView={1}
         style={{
-          width: '50%',
+          width: '900px',
           height: '40vh',
           border: '1px solid black',
           borderRadius: 10,
-          border:"none"
+          border:"none",
+          boxShadow:"1px 1px 10px 2px black"
         }}
       >
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
-        <SwiperSlide>Slide 5</SwiperSlide>
-        <SwiperSlide>Slide 6</SwiperSlide>
-        <SwiperSlide>Slide 7</SwiperSlide>
-        <SwiperSlide>Slide 8</SwiperSlide>
-        <SwiperSlide>Slide 9</SwiperSlide>
+        <SwiperSlide><img src="./Jd.jpg" alt="" style={{ backgroundRepeat:"no-repeat" , backgroundSize:"contain" }} /></SwiperSlide>
+        <SwiperSlide><img src="./Jg.jpg" alt="" style={{ backgroundRepeat:"no-repeat" , backgroundSize:"contain" }} /></SwiperSlide>
+        <SwiperSlide><img src="./Sl.jpg" alt="" style={{ backgroundRepeat:"no-repeat" , backgroundSize:"contain" }} /></SwiperSlide>
+        <SwiperSlide><img src="./S.jpg" alt="" style={{ backgroundRepeat:"no-repeat" , backgroundSize:"contain" }} /></SwiperSlide>
+        <SwiperSlide><img src="./Sb.png" alt="" style={{ backgroundRepeat:"no-repeat" , backgroundSize:"contain" }} /></SwiperSlide>
+        <SwiperSlide><img src="./sj.jpg" alt="" style={{ backgroundRepeat:"no-repeat" , backgroundSize:"contain" }} /></SwiperSlide>
+        <SwiperSlide><img src="./Sja.jpg" alt="" style={{ backgroundRepeat:"no-repeat" , backgroundSize:"contain" }} /></SwiperSlide>
+        <SwiperSlide><img src="./Space.png" alt="" style={{ backgroundRepeat:"no-repeat" , backgroundSize:"contain" }} /></SwiperSlide>
+        <SwiperSlide><img src="./Sl.jpg" alt="" style={{ backgroundRepeat:"no-repeat" , backgroundSize:"contain" }} /></SwiperSlide>
       </Swiper>
     </>
   );

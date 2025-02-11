@@ -35,6 +35,18 @@ const ProductList = () => {
       model: "كوضى ايل مدل",
       price: "۴,۰۰۰,۰۰۰ تومان",
     },
+    {
+      img: "/images/product5.jpg",
+      title: "هندزفری",
+      model: "كوضى ايل مدل",
+      price: "۴,۰۰۰,۰۰۰ تومان",
+    },
+    {
+      img: "/images/product5.jpg",
+      title: "هندزفری",
+      model: "كوضى ايل مدل",
+      price: "۴,۰۰۰,۰۰۰ تومان",
+    },
   ];
 
   return (
@@ -42,7 +54,7 @@ const ProductList = () => {
       sx={{
         padding: theme.spacing(2),
         direction: "rtl",
-        width: "90%",
+        width: "95%",
         margin: theme.spacing(4, "auto"),
         background:
           "linear-gradient(to right, var(--forth-color), var(--six-color))",
@@ -52,11 +64,10 @@ const ProductList = () => {
         overflow: "hidden",
         display: "flex",
         alignItems: "center",
-        flexDirection: "row", // Title & Cards in Row
+        flexDirection: "row",
         justifyContent: "space-between",
       }}
     >
-      {/* Title Section */}
       <Box
         sx={{
           position: "relative",
@@ -66,7 +77,7 @@ const ProductList = () => {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          minWidth: "250px", // Fix width for title
+          minWidth: "5%",
           padding: theme.spacing(3),
           background: "rgba(255,255,255,0.1)",
           borderRadius: 2,
@@ -85,8 +96,6 @@ const ProductList = () => {
           پیشنهادات ویژه
         </Typography>
       </Box>
-
-      {/* Product Cards Section */}
       <Grid
         container
         spacing={2}
@@ -116,7 +125,7 @@ const ProductList = () => {
             }}
           >
             <Link
-              to="#" // Add a real link here
+              to="#"
               style={{ textDecoration: "none", display: "block" }}
             >
               <Card
@@ -155,7 +164,7 @@ const ProductList = () => {
                     style={{
                       width: "100%",
                       height: "100%",
-                      objectFit: "contain", // Prevents image cropping
+                      objectFit: "contain",
                     }}
                   />
                 </Box>

@@ -5,7 +5,7 @@ import { ChevronLeft, ChevronRight } from "@mui/icons-material";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 
 const products = [
   { title: "هدفون", price: "1,700,000" },
@@ -18,39 +18,42 @@ const products = [
   { title: "هدفون", price: "9,000,000" },
   { title: "هدفون", price: "9,000,000" },
   { title: "هدفون", price: "9,000,000" },
-  { title: "هدفون", price: "9,000,000" },
-  { title: "هدفون", price: "9,000,000" },
 ];
 
 const BestSells = () => {
   const theme = useTheme();
   const prevRef = useRef(null);
   const nextRef = useRef(null);
+  const [swiperInstance, setSwiperInstance] = useState(null);
+
+  useEffect(() => {
+    if (swiperInstance && prevRef.current && nextRef.current) {
+      swiperInstance.params.navigation.prevEl = prevRef.current;
+      swiperInstance.params.navigation.nextEl = nextRef.current;
+      swiperInstance.navigation.init();
+      swiperInstance.navigation.update();
+    }
+  }, [swiperInstance]);
 
   return (
     <Box sx={{ direction: "rtl", padding: 4, position: "relative" }}>
       <Typography
-    variant="h4"
-    fontWeight="bold"
-    sx={{
-      color: "var(--primary-color)",
-      borderBottom: "3px solid var(--first-color)",
-      paddingBottom: "5px",
-      display: "inline-block",
-      
-    }}
-  >
-    تازه ترین ها
-  </Typography>
+        variant="h4"
+        fontWeight="bold"
+        sx={{
+          color: "var(--primary-color)",
+          borderBottom: "3px solid var(--first-color)",
+          paddingBottom: "5px",
+          display: "inline-block",
+        }}
+      >
+        تازه ترین ها
+      </Typography>
       <Swiper
-        style={{padding:"1% 0"}}
+        style={{ padding: "1% 0" }}
         modules={[Navigation, Pagination]}
         spaceBetween={5}
         slidesPerView={7}
-        navigation={{
-          prevEl: prevRef.current,
-          nextEl: nextRef.current,
-        }}
         pagination={{ clickable: true }}
         breakpoints={{
           200: { slidesPerView: 1 },
@@ -59,12 +62,7 @@ const BestSells = () => {
           900: { slidesPerView: 4 },
           1200: { slidesPerView: 7 },
         }}
-        onInit={(swiper) => {
-          swiper.params.navigation.prevEl = prevRef.current;
-          swiper.params.navigation.nextEl = nextRef.current;
-          swiper.navigation.init();
-          swiper.navigation.update();
-        }}
+        onSwiper={setSwiperInstance} // Capture the swiper instance
       >
         {products.map((product, index) => (
           <SwiperSlide key={index}>
@@ -80,7 +78,7 @@ const BestSells = () => {
                 justifyContent: "space-between",
                 alignItems: "center",
                 backgroundColor: theme.palette.background.paper,
-                boxShadow:"5px 4px 5px 0px gray"
+                boxShadow: "5px 4px 5px 0px gray",
               }}
             >
               <img src="" alt="" style={{ height: "120px", width: "100%" }} />
