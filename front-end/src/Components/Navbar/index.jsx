@@ -48,10 +48,11 @@ const Navbar = () => {
 
   const navItems = useMemo(
     () => [
-      { label: "دسته بندی ها", type: "menu" },
+      { label: "درباره ما", path: "/about-us" },
       { label: "ورود", path: "/auth" },
       { label: "مجله ها", path: "/magazines" },
-      { label: "درباره ما", path: "/about-us" },
+      { label: "خانه", path: "/" },
+      { label: "دسته بندی ها", type: "menu" },
     ],
     []
   );
@@ -246,7 +247,7 @@ const Navbar = () => {
       </Box>
 
       <Menu
-        anchorEl={menuAnchor}
+       w anchorEl={menuAnchor}
         open={Boolean(menuAnchor)}
         onClose={handleMenuClose}
         MenuListProps={{
