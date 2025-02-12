@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import {
   Box,
   Typography,
@@ -10,16 +11,21 @@ import {
   CardMedia,
   CardContent,
   IconButton,
+  TextField,
+  Collapse,
+  InputAdornment,
 } from "@mui/material";
 import {
   FavoriteBorder,
   ShoppingCart,
   CompareArrows,
+  Menu as MenuIcon,
+  Search as SearchIcon,
 } from "@mui/icons-material";
 import { purple } from "@mui/material/colors";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 
+// Sample product data (same as provided)
 const products = [
   {
     id: 1,
@@ -134,88 +140,130 @@ const products = [
     title: "مانیتور گیمینگ سامسونگ Odyssey G5",
     price: 7000000,
     available: true,
-  },
-];
+  }];
 
 const ProductListWithFilters = () => {
   const [priceRange, setPriceRange] = useState([500000, 5000000]);
   const [availability, setAvailability] = useState("all");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filterOpen, setFilterOpen] = useState(false);
 
   const handlePriceChange = (event, newValue) => setPriceRange(newValue);
-  const handleAvailabilityChange = (event) =>
-    setAvailability(event.target.value);
+  const handleAvailabilityChange = (event) => setAvailability(event.target.value);
+  const handleSearchChange = (event) => setSearchQuery(event.target.value);
+  const toggleFilter = () => setFilterOpen(!filterOpen);
 
   const filteredProducts = products.filter((product) => {
+    const matchesSearch = product.title.toLowerCase().includes(searchQuery.toLowerCase());
     return (
       product.price >= priceRange[0] &&
       product.price <= priceRange[1] &&
       (availability === "all" ||
         (availability === "available" && product.available) ||
-        (availability === "specialSale" && !product.available))
+        (availability === "specialSale" && !product.available)) &&
+      matchesSearch
     );
   });
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: { xs: "column", md: "row" },
-        gap: 3,
-        p: 3,
-        direction: "rtl",
-      }}
-    >
-      {/* Filters Section */}
-      <Box
+    <Box sx={{ p: 3, display: "flex", flexDirection: "column", direction: "rtl" }}>
+      {/* Search Bar under the Navbar */}
+      <TextField
+        label="جستجو محصول"
+        variant="outlined"
+        fullWidth
+        value={searchQuery}
+        onChange={handleSearchChange}
         sx={{
+          mb: 3,
+          maxWidth: 500,
+          margin: "auto",
           backgroundColor: "white",
-          borderRadius: 3,
-          p: 4,
-          boxShadow: 3,
-          width: { xs: "100%", sm: 350 },
-          display: "flex",
-          flexDirection: "column",
-          gap: 4,
+          borderRadius: "30px",
+          boxShadow: 2,
+          "& .MuiOutlinedInput-root": {
+            padding: "12px 16px",
+            borderRadius: "30px",
+            "& fieldset": {
+              borderColor: purple[500],
+            },
+            "&:hover fieldset": {
+              borderColor: purple[700],
+            },
+            "&.Mui-focused fieldset": {
+              borderColor: purple[800],
+            },
+          },
+          "& .MuiInputLabel-root": {
+            color: purple[500],
+          },
+          "& .MuiInputAdornment-root .MuiSvgIcon-root": {
+            color: purple[500],
+          },
         }}
-      >
-        <Typography variant="h6" fontWeight="bold" sx={{ color: purple[600] }}>
-          فیلتر بر اساس قیمت:
-        </Typography>
-        <Slider
-          value={priceRange}
-          onChange={handlePriceChange}
-          min={500000}
-          max={5000000}
-          sx={{ color: purple[500] }}
-        />
-        <Typography variant="body1">
-          {priceRange[1].toLocaleString()} تومان —{" "}
-          {priceRange[0].toLocaleString()} تومان
-        </Typography>
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <SearchIcon sx={{ color: purple[500] }} />
+            </InputAdornment>
+          ),
+        }}
+      />
 
-        <Typography variant="h6" fontWeight="bold" sx={{ color: purple[600] }}>
-          وضعیت موجودی
-        </Typography>
-        <FormControl>
-          <RadioGroup
-            name="availability"
-            value={availability}
-            onChange={handleAvailabilityChange}
-          >
-            <FormControlLabel value="all" control={<Radio />} label="همه" />
-            <FormControlLabel
-              value="available"
-              control={<Radio />}
-              label="موجود"
-            />
-            <FormControlLabel
-              value="specialSale"
-              control={<Radio />}
-              label="فروش ویژه"
-            />
-          </RadioGroup>
-        </FormControl>
-      </Box>
+      {/* Filter Toggle Button */}
+      <IconButton
+        sx={{ alignSelf: "flex-start", mb: 2 }}
+        onClick={toggleFilter}
+        color="primary"
+      >
+        <MenuIcon />
+      </IconButton>
+
+      {/* Collapsible Filters Section */}
+      <Collapse in={filterOpen}>
+        <Box
+          sx={{
+            backgroundColor: "white",
+            borderRadius: 3,
+            p: 4,
+            boxShadow: 3,
+            width: { xs: "100%", sm: 350 },
+            display: "flex",
+            flexDirection: "column",
+            gap: 4,
+          }}
+        >
+          <Typography variant="h6" fontWeight="bold" sx={{ color: purple[600] }}>
+            فیلتر بر اساس قیمت:
+          </Typography>
+          <Slider
+            value={priceRange}
+            onChange={handlePriceChange}
+            min={500000}
+            max={5000000}
+            sx={{ color: purple[500] }}
+          />
+          <Typography variant="body1">
+            {priceRange[1].toLocaleString()} تومان —{" "}
+            {priceRange[0].toLocaleString()} تومان
+          </Typography>
+
+          <Typography variant="h6" fontWeight="bold" sx={{ color: purple[600] }}>
+            وضعیت موجودی
+          </Typography>
+          <FormControl>
+            <RadioGroup
+              name="availability"
+              value={availability}
+              onChange={handleAvailabilityChange}
+            >
+              <FormControlLabel value="all" control={<Radio />} label="همه" />
+              <FormControlLabel value="available" control={<Radio />} label="موجود" />
+              <FormControlLabel value="specialSale" control={<Radio />} label="فروش ویژه" />
+            </RadioGroup>
+          </FormControl>
+        </Box>
+      </Collapse>
 
       {/* Product List Section */}
       <Box
@@ -225,11 +273,11 @@ const ProductListWithFilters = () => {
             xs: "repeat(1, 1fr)",
             sm: "repeat(2, 1fr)",
             md: "repeat(3, 1fr)",
-            lg: "repeat(6, 1fr)",
+            lg: "repeat(4, 1fr)",
           },
           gap: 3,
-          justifyItems: "center",
-          width: "100%",
+          width: { 600: "100%", 900: "calc(100% - 350px)" , lg:"70%" },
+          margin:"0 auto"
         }}
       >
         {filteredProducts.length > 0 ? (
@@ -286,53 +334,26 @@ const ProductListWithFilters = () => {
                   >
                     {product.title}
                   </Typography>
-                  <Typography
-                    variant="h6"
-                    fontWeight="bold"
-                    color="black"
-                    sx={{ mt: 1 }}
-                  >
+                  <Typography variant="h6" fontWeight="bold" color="black" sx={{ mt: 1 }}>
                     {product.price.toLocaleString()} تومان
                   </Typography>
                 </CardContent>
               </Link>
-              <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "center",
-                  gap: 1,
-                  pb: 2,
-                }}
-              >
-                <IconButton
-                  component={Link}
-                  to={`/favorites/${product.id}`}
-                  sx={{ color: "red" }}
-                >
+              <Box sx={{ display: "flex", justifyContent: "center", gap: 1, pb: 2 }}>
+                <IconButton component={Link} to={`/favorites/${product.id}`} sx={{ color: "red" }}>
                   <FavoriteBorder />
                 </IconButton>
-                <IconButton
-                  component={Link}
-                  to={`/compare/${product.id}`}
-                  sx={{ color: "blue" }}
-                >
+                <IconButton component={Link} to={`/compare/${product.id}`} sx={{ color: "blue" }}>
                   <CompareArrows />
                 </IconButton>
-                <IconButton
-                  component={Link}
-                  to={`/cart/${product.id}`}
-                  sx={{ color: "purple" }}
-                >
+                <IconButton component={Link} to={`/cart/${product.id}`} sx={{ color: "purple" }}>
                   <ShoppingCart />
                 </IconButton>
               </Box>
             </Card>
           ))
         ) : (
-          <Typography
-            variant="h6"
-            sx={{ textAlign: "center", width: "100%", mt: 3 }}
-          >
+          <Typography variant="h6" sx={{ textAlign: "center", width: "100%", mt: 3 }}>
             محصولی یافت نشد
           </Typography>
         )}
