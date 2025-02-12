@@ -24,8 +24,6 @@ import {
 } from "@mui/icons-material";
 import { purple } from "@mui/material/colors";
 import { Link } from "react-router-dom";
-
-// Sample product data (same as provided)
 const products = [
   {
     id: 1,
@@ -140,10 +138,18 @@ const products = [
     title: "مانیتور گیمینگ سامسونگ Odyssey G5",
     price: 7000000,
     available: true,
-  }];
+  },
+  {
+    id: 17,
+    image: "/B.jpeg",
+    title: "مانیتور گیمینگ سامسونگ Odyssey G5",
+    price: 8000000,
+    available: true,
+  }
+];
 
 const ProductListWithFilters = () => {
-  const [priceRange, setPriceRange] = useState([500000, 5000000]);
+  const [priceRange, setPriceRange] = useState([500000, 10000000]);
   const [availability, setAvailability] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [filterOpen, setFilterOpen] = useState(false);

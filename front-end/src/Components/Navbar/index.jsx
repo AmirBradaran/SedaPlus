@@ -231,7 +231,10 @@ const Navbar = () => {
         </Box>
 
         <StyledLink to="/" sx={{ mx: 2 }}>
-          <DarkMode sx={{ fontSize: 48, color: "common.white" }} />
+          <img src="/DigiSeda.png" alt="" style={{borderRadius: "50%",
+        width: "70px",
+        height: "70px",
+        objectFit: "cover",}} />
         </StyledLink>
         <Box
           sx={{
@@ -273,21 +276,6 @@ const Navbar = () => {
             <Typography variant="body1">{category}</Typography>
           </MenuItem>
         ))}
-
-        {/* Add Search MenuItem */}
-        <MenuItem
-          onClick={handleMenuClose}
-          sx={{
-            "&:hover": { bgcolor: "white", color: "black" },
-            py: 1.5,
-            display: "flex",
-            alignItems: "center",
-            gap: 1,
-          }}
-        >
-          <Search sx={{ fontSize: 24, color: "common.white" }} />
-          <Typography variant="body1">Search</Typography>
-        </MenuItem>
       </Menu>
     </Box>
   );
