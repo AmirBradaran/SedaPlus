@@ -44,7 +44,7 @@ const Navbar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const cartLength = useSelector((state) => state.cart?.items?.length) || 0;
-  const { token } = useSelector((state) => state.auth) || {};
+  const { token } = useSelector((state) => state.auth);
 
   const navItems = useMemo(
     () => [
@@ -202,7 +202,7 @@ const Navbar = () => {
             gap: 0,
             alignItems: "center",
             position: "absolute",
-            left: "20px",
+            left: "1%",
           }}
         >
           <StyledLink to="/cart" aria-label="shopping cart">
@@ -239,7 +239,7 @@ const Navbar = () => {
             alignItems: "center",
             gap: 2,
             position: "absolute",
-            right: "5%",
+            right: "1%",
           }}
         >
           {isMobile ? renderMobileNav() : renderDesktopNav()}
@@ -247,6 +247,7 @@ const Navbar = () => {
         </Box>
       </Box>
 
+      {/* Menu with categories and Search */}
       <Menu
         anchorEl={menuAnchor}
         open={Boolean(menuAnchor)}
@@ -265,7 +266,6 @@ const Navbar = () => {
             key={category}
             onClick={handleMenuClose}
             sx={{
-              background: "",
               "&:hover": { bgcolor: "white", color: "black" },
               py: 1.5,
             }}
@@ -273,9 +273,24 @@ const Navbar = () => {
             <Typography variant="body1">{category}</Typography>
           </MenuItem>
         ))}
+
+        {/* Add Search MenuItem */}
+        <MenuItem
+          onClick={handleMenuClose}
+          sx={{
+            "&:hover": { bgcolor: "white", color: "black" },
+            py: 1.5,
+            display: "flex",
+            alignItems: "center",
+            gap: 1,
+          }}
+        >
+          <Search sx={{ fontSize: 24, color: "common.white" }} />
+          <Typography variant="body1">Search</Typography>
+        </MenuItem>
       </Menu>
     </Box>
   );
-}; 
+};
 
 export default React.memo(Navbar);
