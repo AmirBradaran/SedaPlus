@@ -48,11 +48,11 @@ const Navbar = () => {
 
   const navItems = useMemo(
     () => [
+      { label: "دسته بندی ها", type: "menu" },
       { label: "درباره ما", path: "/about-us" },
       { label: "ورود", path: "/auth" },
       { label: "مجله ها", path: "/magazines" },
       { label: "خانه", path: "/" },
-      { label: "دسته بندی ها", type: "menu" },
     ],
     []
   );
@@ -218,6 +218,16 @@ const Navbar = () => {
               <FavoriteBorder sx={{ fontSize: 32, color: "common.white" }} />
             </IconButton>
           </StyledLink>
+          <Link to={"/products/:categoryId/:category"}>
+            <IconButton
+              aria-label="search"
+              sx={{
+                color: "common.white"
+              }}
+            >
+              <Search sx={{ fontSize: 32 }} />
+            </IconButton>
+          </Link>
         </Box>
 
         <StyledLink to="/" sx={{ mx: 2 }}>
@@ -233,21 +243,12 @@ const Navbar = () => {
           }}
         >
           {isMobile ? renderMobileNav() : renderDesktopNav()}
-          <Link to={"/products/:categoryId/:category"}>
-            <IconButton
-              aria-label="search"
-              sx={{
-                color: "common.white"
-              }}
-            >
-              <Search sx={{ fontSize: 32 }} />
-            </IconButton>
-          </Link>
+          
         </Box>
       </Box>
 
       <Menu
-       w anchorEl={menuAnchor}
+        anchorEl={menuAnchor}
         open={Boolean(menuAnchor)}
         onClose={handleMenuClose}
         MenuListProps={{
@@ -275,6 +276,6 @@ const Navbar = () => {
       </Menu>
     </Box>
   );
-};
+}; 
 
 export default React.memo(Navbar);
