@@ -1,23 +1,27 @@
 import { Box, Typography, useTheme, IconButton } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
-import { ChevronLeft, ChevronRight } from "@mui/icons-material";
+import { ChevronLeft, ChevronRight, FavoriteBorder, Star } from "@mui/icons-material";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { useRef, useEffect, useState } from "react";
 
 const products = [
-  { title: "هدفون", price: "1,700,000" },
-  { title: "هدفون", price: "2,000,000" },
-  { title: "هدفون", price: "1,000,000" },
-  { title: "هدفون", price: "3,000,000" },
-  { title: "هدفون", price: "2,000,000" },
-  { title: "هدفون", price: "9,000,000" },
-  { title: "هدفون", price: "9,000,000" },
-  { title: "هدفون", price: "9,000,000" },
-  { title: "هدفون", price: "9,000,000" },
-  { title: "هدفون", price: "9,000,000" },
+  { img:"" , title: "هدفون", price: "1,700,000", rating: 4 },
+  { img:"" , title: "هدفون", price: "2,000,000", rating: 5 },
+  { img:"" , title: "هدفون", price: "1,000,000", rating: 3 },
+  { img:"" , title: "هدفون", price: "3,000,000", rating: 4 },
+  { img:"" , title: "هدفون", price: "2,000,000", rating: 2 },
+  { img:"" , title: "هدفون", price: "9,000,000", rating: 5 },
+  { img:"" , title: "هدفون", price: "2,000,000", rating: 2 },
+  { img:"" , title: "هدفون", price: "9,000,000", rating: 5 },
+  { img:"" , title: "هدفون", price: "2,000,000", rating: 2 },
+  { img:"" , title: "هدفون", price: "9,000,000", rating: 5 },
+  { img:"" , title: "هدفون", price: "2,000,000", rating: 2 },
+  { img:"" , title: "هدفون", price: "9,000,000", rating: 5 },
+  { img:"" , title: "هدفون", price: "2,000,000", rating: 2 },
+  { img:"" , title: "هدفون", price: "9,000,000", rating: 5 },
 ];
 
 const BestSells = () => {
@@ -62,7 +66,7 @@ const BestSells = () => {
           900: { slidesPerView: 4 },
           1200: { slidesPerView: 7 },
         }}
-        onSwiper={setSwiperInstance} // Capture the swiper instance
+        onSwiper={setSwiperInstance}
       >
         {products.map((product, index) => (
           <SwiperSlide key={index}>
@@ -79,8 +83,14 @@ const BestSells = () => {
                 alignItems: "center",
                 backgroundColor: theme.palette.background.paper,
                 boxShadow: "5px 4px 5px 0px gray",
+                position: "relative",
               }}
             >
+              <IconButton
+                sx={{ position: "absolute", top: 5, right: 5, color: "red" }}
+              >
+                <FavoriteBorder />
+              </IconButton>
               <img src="" alt="" style={{ height: "120px", width: "100%" }} />
               <Typography variant="h6" gutterBottom>
                 {product.title}
@@ -88,11 +98,18 @@ const BestSells = () => {
               <Typography variant="body2" color="text.secondary">
                 {product.price}
               </Typography>
+              <Box sx={{ display: "flex", justifyContent: "center" }}>
+                {[...Array(5)].map((_, i) => (
+                  <Star
+                    key={i}
+                    sx={{ color: i < product.rating ? "gold" : "gray" }}
+                  />
+                ))}
+              </Box>
             </Box>
           </SwiperSlide>
         ))}
       </Swiper>
-
       <IconButton
         ref={prevRef}
         sx={{
@@ -109,7 +126,6 @@ const BestSells = () => {
       >
         <ChevronRight fontSize="large" />
       </IconButton>
-
       <IconButton
         ref={nextRef}
         sx={{
