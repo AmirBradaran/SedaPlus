@@ -58,6 +58,7 @@ const Footer = () => {
               { text: "درباره ما", to: "/about-us" },
               { text: "مجله ها", to: "/magazines" },
               { text: "ورود", to: "/auth" },
+              { text: "خانه", to: "/" },
             ].map((link) => (
               <ListItem key={link.to} disableGutters>
                 <Link
