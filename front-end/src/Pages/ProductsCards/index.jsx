@@ -24,6 +24,7 @@ import {
 } from "@mui/icons-material";
 import { purple } from "@mui/material/colors";
 import { Link } from "react-router-dom";
+
 const products = [
   {
     id: 1,
@@ -48,104 +49,7 @@ const products = [
     price: 1750000,
     available: true,
   },
-  {
-    id: 4,
-    image: "/B.jpeg",
-    title: "کیبورد مکانیکی HyperX Alloy",
-    price: 980000,
-    available: true,
-  },
-  {
-    id: 5,
-    image: "/B.jpeg",
-    title: "مانیتور گیمینگ سامسونگ Odyssey G5",
-    price: 4600000,
-    available: true,
-  },
-  {
-    id: 6,
-    image: "/B.jpeg",
-    title: "مانیتور گیمینگ سامسونگ Odyssey G5",
-    price: 4600000,
-    available: true,
-  },
-  {
-    id: 7,
-    image: "/B.jpeg",
-    title: "مانیتور گیمینگ سامسونگ Odyssey G5",
-    price: 2100000,
-    available: true,
-  },
-  {
-    id: 8,
-    image: "/B.jpeg",
-    title: "مانیتور گیمینگ سامسونگ Odyssey G5",
-    price: 2300000,
-    available: true,
-  },
-  {
-    id: 9,
-    image: "/B.jpeg",
-    title: "مانیتور گیمینگ سامسونگ Odyssey G5",
-    price: 6500000,
-    available: true,
-  },
-  {
-    id: 10,
-    image: "/B.jpeg",
-    title: "مانیتور گیمینگ سامسونگ Odyssey G5",
-    price: 6000000,
-    available: true,
-  },
-  {
-    id: 11,
-    image: "/B.jpeg",
-    title: "مانیتور گیمینگ سامسونگ Odyssey G5",
-    price: 5600000,
-    available: true,
-  },
-  {
-    id: 12,
-    image: "/B.jpeg",
-    title: "مانیتور گیمینگ سامسونگ Odyssey G5",
-    price: 100000,
-    available: true,
-  },
-  {
-    id: 13,
-    image: "/B.jpeg",
-    title: "مانیتور گیمینگ سامسونگ Odyssey G5",
-    price: 1000000,
-    available: true,
-  },
-  {
-    id: 14,
-    image: "/B.jpeg",
-    title: "مانیتور گیمینگ سامسونگ Odyssey G5",
-    price: 2000000,
-    available: true,
-  },
-  {
-    id: 15,
-    image: "/B.jpeg",
-    title: "مانیتور گیمینگ سامسونگ Odyssey G5",
-    price: 5000000,
-    available: true,
-  },
-  {
-    id: 16,
-    image: "/B.jpeg",
-    title: "مانیتور گیمینگ سامسونگ Odyssey G5",
-    price: 7000000,
-    available: true,
-  },
-  {
-    id: 17,
-    image: "/B.jpeg",
-    title: "مانیتور گیمینگ سامسونگ Odyssey G5",
-    price: 8000000,
-    available: true,
-  }
+  // other products...
 ];
 
 const ProductListWithFilters = () => {
@@ -217,11 +121,7 @@ const ProductListWithFilters = () => {
       />
 
       {/* Filter Toggle Button */}
-      <IconButton
-        sx={{ alignSelf: "flex-start", mb: 2 }}
-        onClick={toggleFilter}
-        color="primary"
-      >
+      <IconButton sx={{ alignSelf: "flex-start", mb: 2 }} onClick={toggleFilter} color="primary">
         <MenuIcon />
       </IconButton>
 
@@ -258,11 +158,7 @@ const ProductListWithFilters = () => {
             وضعیت موجودی
           </Typography>
           <FormControl>
-            <RadioGroup
-              name="availability"
-              value={availability}
-              onChange={handleAvailabilityChange}
-            >
+            <RadioGroup name="availability" value={availability} onChange={handleAvailabilityChange}>
               <FormControlLabel value="all" control={<Radio />} label="همه" />
               <FormControlLabel value="available" control={<Radio />} label="موجود" />
               <FormControlLabel value="specialSale" control={<Radio />} label="فروش ویژه" />
@@ -282,8 +178,8 @@ const ProductListWithFilters = () => {
             lg: "repeat(4, 1fr)",
           },
           gap: 3,
-          width: { 600: "100%", 900: "calc(100% - 350px)" , lg:"70%" },
-          margin:"0 auto"
+          width: { 600: "100%", 900: "calc(100% - 350px)", lg: "70%" },
+          margin: "0 auto",
         }}
       >
         {filteredProducts.length > 0 ? (
@@ -318,7 +214,7 @@ const ProductListWithFilters = () => {
                 </Box>
               )}
               <Link
-                to={`/product/${product.id}`}
+                to={`/product-details/${product.id}/${product.title.replace(/\s+/g, '-').toLowerCase()}`}
                 style={{ textDecoration: "none", color: "inherit" }}
               >
                 <CardMedia
