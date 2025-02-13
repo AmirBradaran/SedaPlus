@@ -90,7 +90,7 @@ const Navbar = () => {
             sx={{
               color: "common.white",
               fontSize: "1.1rem",
-              fontWeight: 1100,
+              fontWeight: 700,
               "&:hover": { color: "secondary.main" },
             }}
           >
@@ -98,7 +98,9 @@ const Navbar = () => {
           </Button>
         ) : (
           <StyledLink key={item.label} to={item.path}>
-            <Typography variant="subtitle1">{item.label}</Typography>
+            <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
+              {item.label}
+            </Typography>
           </StyledLink>
         )
       )}
@@ -144,7 +146,9 @@ const Navbar = () => {
             {navItems.map((item) => (
               <ListItem key={item.label} sx={{ py: 1.5 }}>
                 <StyledLink to={item.path} sx={{ width: "100%" }}>
-                  <Typography variant="h6">{item.label}</Typography>
+                  <Typography variant="h6" sx={{ fontWeight: 700 }}>
+                    {item.label}
+                  </Typography>
                 </StyledLink>
               </ListItem>
             ))}
@@ -153,12 +157,14 @@ const Navbar = () => {
           <Divider sx={{ borderColor: "rgba(255,255,255,0.2)" }} />
 
           <List>
-            <Typography variant="h6" sx={{ px: 2, py: 1.5 }}>
+            <Typography variant="h6" sx={{ px: 2, py: 1.5, fontWeight: 700 }}>
               دسته بندی ها
             </Typography>
             {categories.map((category) => (
               <ListItem key={category} sx={{ py: 1 }}>
-                <Typography variant="body1">{category}</Typography>
+                <Typography variant="body1" sx={{ fontWeight: 700 }}>
+                  {category}
+                </Typography>
               </ListItem>
             ))}
           </List>
@@ -253,8 +259,6 @@ const Navbar = () => {
           {isMobile ? renderMobileNav() : renderDesktopNav()}
         </Box>
       </Box>
-
-      {/* Menu with categories and Search */}
       <Menu
         anchorEl={menuAnchor}
         open={Boolean(menuAnchor)}
@@ -277,7 +281,9 @@ const Navbar = () => {
               py: 1.5,
             }}
           >
-            <Typography variant="body1">{category}</Typography>
+            <Typography variant="body1" sx={{ fontWeight: 700 }}>
+              {category}
+            </Typography>
           </MenuItem>
         ))}
       </Menu>
