@@ -22,7 +22,6 @@ import {
   Search,
   Menu as MenuIcon,
   Close,
-  Translate,
 } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -213,7 +212,7 @@ const Navbar = () => {
             </IconButton>
           </StyledLink>
 
-          <StyledLink to="/wishlist" aria-label="wishlist">
+          <StyledLink to="/favorites" aria-label="favorite">
             <IconButton sx={{ p: 1 }}>
               <FavoriteBorder sx={{ fontSize: 32, color: "common.white" }} />
             </IconButton>
@@ -222,7 +221,7 @@ const Navbar = () => {
             <IconButton
               aria-label="search"
               sx={{
-                color: "common.white"
+                color: "common.white",
               }}
             >
               <Search sx={{ fontSize: 32 }} />
@@ -231,10 +230,16 @@ const Navbar = () => {
         </Box>
 
         <StyledLink to="/" sx={{ mx: 2 }}>
-          <img src="/DigiSeda.png" alt="" style={{borderRadius: "50%",
-        width: "70px",
-        height: "70px",
-        objectFit: "cover",}} />
+          <img
+            src="/DigiSeda.png"
+            alt=""
+            style={{
+              borderRadius: "50%",
+              width: "70px",
+              height: "70px",
+              objectFit: "cover",
+            }}
+          />
         </StyledLink>
         <Box
           sx={{
@@ -246,7 +251,6 @@ const Navbar = () => {
           }}
         >
           {isMobile ? renderMobileNav() : renderDesktopNav()}
-          
         </Box>
       </Box>
 
