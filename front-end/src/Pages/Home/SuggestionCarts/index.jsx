@@ -6,43 +6,43 @@ const ProductList = () => {
   const theme = useTheme();
   const products = [
     {
-      img: "/images/product1.jpg",
+      img: "/B.jpeg",
       title: "هدفون",
       model: "MACHINES XIII HERD",
       price: "۱,۷۰۰,۰۰۰ تومان",
     },
     {
-      img: "/images/product2.jpg",
+      img: "/B.jpeg",
       title: "هدست",
       model: "معدلي كيميك كوهرستر",
       price: "۲,۵۰۰,۰۰۰ تومان",
     },
     {
-      img: "/images/product3.jpg",
+      img: "/B.jpeg",
       title: "شارژر آیپد",
       model: "GAINING Radoon BX 2800",
       price: "۳,۲۰۰,۰۰۰ تومان",
     },
     {
-      img: "/images/product4.jpg",
+      img: "/B.jpeg",
       title: "هندزفری",
       model: "كوضى ايل مدل",
       price: "۴,۰۰۰,۰۰۰ تومان",
     },
     {
-      img: "/images/product5.jpg",
+      img: "/B.jpeg",
       title: "هندزفری",
       model: "كوضى ايل مدل",
       price: "۴,۰۰۰,۰۰۰ تومان",
     },
     {
-      img: "/images/product5.jpg",
+      img: "/B.jpeg",
       title: "هندزفری",
       model: "كوضى ايل مدل",
       price: "۴,۰۰۰,۰۰۰ تومان",
     },
     {
-      img: "/images/product5.jpg",
+      img: "/B.jpeg",
       title: "هندزفری",
       model: "كوضى ايل مدل",
       price: "۴,۰۰۰,۰۰۰ تومان",
