@@ -81,7 +81,7 @@ const Navbar = () => {
   };
 
   const renderDesktopNav = () => (
-    <Box sx={{ display: "flex", gap: 4, alignItems: "center" }}>
+    <Box sx={{ display: "flex", gap: 2, alignItems: "center" }}>
       {navItems.map((item) =>
         item.type === "menu" ? (
           <Button
@@ -179,8 +179,8 @@ const Navbar = () => {
       sx={{
         position: "relative",
         top: 0,
-        translate: "12.5% 0",
-        width: "80%",
+        translate: "6% 0",
+        width: "90%",
         zIndex: 1200,
         background:
           "linear-gradient(135deg, var(--forth-color), var(--third-color))",
