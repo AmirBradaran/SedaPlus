@@ -1,223 +1,207 @@
-import React, { useState } from 'react';
-import { 
-  Grid, 
-  Typography, 
-  Button, 
-  Chip, 
-  Divider, 
-  Rating, 
-  Accordion, 
-  AccordionSummary, 
-  AccordionDetails, 
-  IconButton, 
-  Box, 
-  useTheme 
-} from '@mui/material';
+import React, { useState } from "react";
+import { useParams, useLocation } from "react-router-dom";
 import {
-  FavoriteBorder,
-  Share,
-  ExpandMore,
-  AddShoppingCart,
-  Remove,
-  Add
-} from '@mui/icons-material';
-import { Carousel } from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+  Box,
+  Button,
+  Container,
+  Divider,
+  Grid,
+  IconButton,
+  Rating,
+  ToggleButton,
+  ToggleButtonGroup,
+  Typography,
+  useTheme,
+  Fade,
+  Grow,
+  Zoom,
+} from "@mui/material";
+import { AddShoppingCart, FavoriteBorder, Share } from "@mui/icons-material";
+
+const products = [
+  {
+    id: 1,
+    name: "هدفون z150",
+    price: "1.700.000",
+    rating: 4.5,
+    description: "کفش دویدن با عملکرد بالا و رویه مشبک تنفس‌پذیر و بالشتک پاسخگو.",
+    features: [
+      "رویه بافتنی قابل تنفس",
+      "فناوری میانی پاسخگو",
+      "زیره لاستیکی بادوام",
+      "طراحی سبک وزن",
+    ],
+    images: ["/B.jpeg", "/B.jpeg", "/B.jpeg", "/B.jpeg"],
+    sizes: ["قرمز", "آبی", "زرد", "مشکی", "سفید"],
+    sizeColors: {
+      "قرمز": "#D32F2F",
+      "آبی": "#1976D2",
+      "زرد": "#FBC02D",
+      "مشکی": "#000000",
+      "سفید": "#FFFFFF",
+    },
+  },
+];
 
 const ProductDetail = () => {
-  const [selectedSize, setSelectedSize] = useState('');
-  const [quantity, setQuantity] = useState(1);
-  const [expanded, setExpanded] = useState('panel1');
   const theme = useTheme();
+  const { id } = useParams();
+  const location = useLocation();
+  const product = location.state?.product || products.find((p) => p.id === parseInt(id, 10));
+  const [selectedSize, setSelectedSize] = useState("");
+  const [mainImage, setMainImage] = useState(0);
 
-  const sizes = ['S', 'M', 'L', 'XL'];
-  const features = ['100% Cotton', 'Machine Wash', 'Premium Quality', 'Organic Material'];
-  const reviews = [
-    { user: 'John D.', rating: 4, comment: 'Great product, very comfortable!', date: '2024-03-15' },
-    { user: 'Sarah M.', rating: 5, comment: 'Absolutely love this shirt!', date: '2024-03-10' }
-  ];
+  if (!product) {
+    return <Typography variant="h6">محصول یافت نشد</Typography>;
+  }
 
-  const carouselSettings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: false
-  };
-
-  const handleAccordion = (panel) => (event, newExpanded) => {
-    setExpanded(newExpanded ? panel : false);
+  const handleSizeChange = (event, newSize) => {
+    setSelectedSize(newSize);
   };
 
   return (
-    <Box sx={{ p: 4, background: theme.palette.background.default }}>
-      <Grid container spacing={4}>
-        {/* Product Images */}
-        <Grid item xs={12} md={6}>
-          <Box sx={{ borderRadius: 2, overflow: 'hidden', boxShadow: 3 }}>
-            <Carousel {...carouselSettings}>
-              {[1, 2, 3, 4].map((item) => (
-                <Box key={item}>
-                  <img 
-                    src={`https://picsum.photos/600/800?random=${item}`} 
-                    alt={`Product view ${item}`}
-                    style={{ width: '100%', height: '600px', objectFit: 'cover' }}
-                  />
-                </Box>
-              ))}
-            </Carousel>
-          </Box>
-        </Grid>
+    <Container maxWidth="lg" sx={{ py: 4, direction: "rtl" }}>
+      <Fade in timeout={500}>
+        <Grid container spacing={4}>
+          <Grid item xs={12} md={6}>
+            <Box sx={{ position: "relative" }}>
+              <Grow in timeout={800}>
+                <Box
+                  component="img"
+                  src={product.images[mainImage]}
+                  alt={product.name}
+                  sx={{
+                    width: "100%",
+                    height: "auto",
+                    borderRadius: 2,
+                    mb: 2,
+                    boxShadow: 3,
+                    transition: "transform 0.3s ease-in-out",
+                    "&:hover": {
+                      transform: "scale(1.02)",
+                    },
+                  }}
+                />
+              </Grow>
+              <Box sx={{ display: "flex", gap: 2, overflowX: "auto", py: 2 }}>
+                {product.images.map((img, index) => (
+                  <Zoom in timeout={(index + 1) * 300} key={index}>
+                    <Box
+                      onClick={() => setMainImage(index)}
+                      sx={{
+                        cursor: "pointer",
+                        border:
+                          mainImage === index
+                            ? `2px solid ${theme.palette.primary.main}`
+                            : "1px solid #e0e0e0",
+                        borderRadius: 1,
+                        overflow: "hidden",
+                        flexShrink: 0,
+                        transition: "border-color 0.3s ease-in-out",
+                        "&:hover": {
+                          borderColor: theme.palette.primary.main,
+                        },
+                      }}
+                    >
+                      <img
+                        src={img}
+                        alt={`تصویر ${index + 1}`}
+                        style={{
+                          width: "100px",
+                          height: "100px",
+                          objectFit: "cover",
+                        }}
+                      />
+                    </Box>
+                  </Zoom>
+                ))}
+              </Box>
+            </Box>
+          </Grid>
 
-        {/* Product Details */}
-        <Grid item xs={12} md={6}>
-          <Typography variant="h3" gutterBottom sx={{ fontWeight: 700 }}>
-            Premium Cotton T-Shirt
-          </Typography>
-
-          <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-            <Rating value={4.5} precision={0.5} readOnly />
-            <Typography variant="body2" sx={{ ml: 1, color: 'text.secondary' }}>
-              (128 reviews)
+          <Grid item xs={12} md={6}>
+            <Typography variant="h3" component="h1" gutterBottom sx={{ fontWeight: 700 }}>
+              {product.name}
             </Typography>
-          </Box>
 
-          <Typography variant="h4" sx={{ mb: 3, color: 'primary.main' }}>
-            $49.99
-          </Typography>
-
-          <Divider sx={{ my: 3 }} />
-
-          <Typography variant="h6" gutterBottom>
-            Select Size
-          </Typography>
-          <Box sx={{ mb: 3, display: 'flex', gap: 1 }}>
-            {sizes.map((size) => (
-              <Chip
-                key={size}
-                label={size}
-                variant={selectedSize === size ? 'filled' : 'outlined'}
-                onClick={() => setSelectedSize(size)}
-                sx={{
-                  px: 3,
-                  py: 1,
-                  fontSize: '1rem',
-                  borderColor: selectedSize === size ? 'primary.main' : ''
-                }}
-              />
-            ))}
-          </Box>
-
-          <Typography variant="h6" gutterBottom>
-            Quantity
-          </Typography>
-          <Box sx={{ display: 'flex', alignItems: 'center', mb: 4, gap: 2 }}>
-            <IconButton 
-              onClick={() => setQuantity(Math.max(1, quantity - 1))}
-              sx={{ border: `1px solid ${theme.palette.divider}` }}
-            >
-              <Remove />
-            </IconButton>
-            <Typography variant="h6">{quantity}</Typography>
-            <IconButton 
-              onClick={() => setQuantity(quantity + 1)}
-              sx={{ border: `1px solid ${theme.palette.divider}` }}
-            >
-              <Add />
-            </IconButton>
-          </Box>
-
-          <Box sx={{ display: 'flex', gap: 2, mb: 4 }}>
-            <Button
-              variant="contained"
-              size="large"
-              startIcon={<AddShoppingCart />}
-              sx={{ px: 4, py: 1.5, flexGrow: 1 }}
-            >
-              Add to Cart
-            </Button>
-            <IconButton sx={{ border: `1px solid ${theme.palette.divider}` }}>
-              <FavoriteBorder />
-            </IconButton>
-            <IconButton sx={{ border: `1px solid ${theme.palette.divider}` }}>
-              <Share />
-            </IconButton>
-          </Box>
-
-          <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap', mb: 4 }}>
-            {features.map((feature) => (
-              <Chip
-                key={feature}
-                label={feature}
-                variant="outlined"
-                sx={{ borderRadius: 1 }}
-              />
-            ))}
-          </Box>
-
-          {/* Accordion Sections */}
-          <Accordion 
-            expanded={expanded === 'panel1'}
-            onChange={handleAccordion('panel1')}
-          >
-            <AccordionSummary expandIcon={<ExpandMore />}>
-              <Typography variant="h6">Product Description</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Typography>
-                Premium quality cotton t-shirt with reinforced stitching. 
-                Available in multiple sizes and colors. Perfect for everyday wear 
-                or athletic activities.
+            <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
+              <Rating value={product.rating} precision={0.5} readOnly />
+              <Typography variant="body2" sx={{ ml: 1, color: "text.secondary" }}>
+                (۱۲۸ نظر)
               </Typography>
-            </AccordionDetails>
-          </Accordion>
+            </Box>
 
-          <Accordion 
-            expanded={expanded === 'panel2'}
-            onChange={handleAccordion('panel2')}
-          >
-            <AccordionSummary expandIcon={<ExpandMore />}>
-              <Typography variant="h6">Specifications</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Grid container spacing={2}>
-                <Grid item xs={6}>
-                  <Typography><strong>Material:</strong> 100% Organic Cotton</Typography>
-                  <Typography><strong>Weight:</strong> 180 GSM</Typography>
-                </Grid>
-                <Grid item xs={6}>
-                  <Typography><strong>Care:</strong> Machine Wash Cold</Typography>
-                  <Typography><strong>Origin:</strong> Made in USA</Typography>
-                </Grid>
-              </Grid>
-            </AccordionDetails>
-          </Accordion>
+            <Typography variant="h4" sx={{ mb: 3, color: "primary.main", fontWeight: 600 }}>
+              {product.price}تومان
+            </Typography>
 
-          <Accordion 
-            expanded={expanded === 'panel3'}
-            onChange={handleAccordion('panel3')}
-          >
-            <AccordionSummary expandIcon={<ExpandMore />}>
-              <Typography variant="h6">Reviews ({reviews.length})</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              {reviews.map((review, index) => (
-                <Box key={index} sx={{ mb: 2, p: 2, border: `1px solid ${theme.palette.divider}`, borderRadius: 1 }}>
-                  <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 1 }}>
-                    <Typography variant="subtitle1">{review.user}</Typography>
-                    <Typography variant="body2" color="text.secondary">{review.date}</Typography>
-                  </Box>
-                  <Rating value={review.rating} readOnly />
-                  <Typography variant="body1" sx={{ mt: 1 }}>{review.comment}</Typography>
-                </Box>
+            <Divider sx={{ my: 3 }} />
+
+            <Typography variant="body1" paragraph sx={{ mb: 3, lineHeight: 1.8 }}>
+              {product.description}
+            </Typography>
+
+            <Box component="ul" sx={{ pr: 3, mb: 4 }}>
+              {product.features.map((feature, index) => (
+                <li key={index}>
+                  <Typography variant="body1" color="text.secondary" sx={{ lineHeight: 1.8 }}>
+                    {feature}
+                  </Typography>
+                </li>
               ))}
-            </AccordionDetails>
-          </Accordion>
+            </Box>
+
+            <Typography variant="h6" gutterBottom sx={{ fontWeight: 600 }}>
+              انتخاب رنگ
+            </Typography>
+            <ToggleButtonGroup
+              value={selectedSize}
+              exclusive
+              onChange={handleSizeChange}
+              sx={{ mb: 3 }}
+            >
+              {product.sizes.map((size) => (
+                <ToggleButton
+                  key={size}
+                  value={size}
+                  sx={{
+                    width: 100,
+                    backgroundColor: "white",
+                    color: product.sizeColors[size] ? "#000" : "inherit",
+                    "&:hover": {
+                      backgroundColor: product.sizeColors[size] || "inherit",
+                    },
+                    "&.Mui-selected": {
+                      backgroundColor: product.sizeColors[size] || theme.palette.primary.main,
+                      color: theme.palette.primary.contrastText,
+                    },
+                  }}
+                >
+                  {size}
+                </ToggleButton>
+              ))}
+            </ToggleButtonGroup>
+
+            <Box sx={{ display: "flex", gap: 2, mb: 4 }}>
+              <Button
+                variant="contained"
+                size="large"
+                startIcon={<AddShoppingCart />}
+                sx={{ flexGrow: 1, py: 1.5, fontWeight: 600, boxShadow: 3 }}
+              >
+                افزودن به سبد خرید
+              </Button>
+              <IconButton color="primary" sx={{ border: "1px solid", boxShadow: 3 }}>
+                <FavoriteBorder />
+              </IconButton>
+              <IconButton color="primary" sx={{ border: "1px solid", boxShadow: 3 }}>
+                <Share />
+              </IconButton>
+            </Box>
+          </Grid>
         </Grid>
-      </Grid>
-    </Box>
+      </Fade>
+    </Container>
   );
 };
 
