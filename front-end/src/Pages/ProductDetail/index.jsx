@@ -120,7 +120,7 @@ const ProductDetail = () => {
           </Grid>
 
           <Grid item xs={12} md={6}>
-            <Typography variant="h3" component="h1" gutterBottom sx={{ fontWeight: 700 }}>
+            <Typography variant="h4" component="h1" gutterBottom sx={{ fontWeight: 700 }}>
               {product.name}
             </Typography>
 
@@ -131,8 +131,8 @@ const ProductDetail = () => {
               </Typography>
             </Box>
 
-            <Typography variant="h4" sx={{ mb: 3, color: "primary.main", fontWeight: 600 }}>
-              {product.price}تومان
+            <Typography variant="h5" sx={{ mb: 3, color: "primary.main", fontWeight: 600 }}>
+              {product.price} تومان
             </Typography>
 
             <Divider sx={{ my: 3 }} />
@@ -174,7 +174,7 @@ const ProductDetail = () => {
                     "&.Mui-selected": {
                       backgroundColor: product.sizeColors[size] || theme.palette.primary.main,
                       color: theme.palette.primary.contrastText,
-                    },
+                    }
                   }}
                 >
                   {size}
@@ -182,21 +182,29 @@ const ProductDetail = () => {
               ))}
             </ToggleButtonGroup>
 
-            <Box sx={{ display: "flex", gap: 2, mb: 4 }}>
+            <Box sx={{ display: "flex", gap: 2, mb: 4, flexDirection: { xs: "column", sm: "row" } }}>
               <Button
                 variant="contained"
                 size="large"
                 startIcon={<AddShoppingCart />}
-                sx={{ flexGrow: 1, py: 1.5, fontWeight: 600, boxShadow: 3 }}
+                sx={{
+                  flexGrow: 1,
+                  py: 1.5,
+                  fontWeight: 600,
+                  boxShadow: 3,
+                  mb: { xs: 2, sm: 0 },
+                }}
               >
                 افزودن به سبد خرید
               </Button>
-              <IconButton color="primary" sx={{ border: "1px solid", boxShadow: 3 }}>
-                <FavoriteBorder />
-              </IconButton>
-              <IconButton color="primary" sx={{ border: "1px solid", boxShadow: 3 }}>
-                <Share />
-              </IconButton>
+              <Box sx={{ display: "flex", gap: 2, mt: { xs: 2, sm: 0 } }}>
+                <IconButton color="primary" sx={{ border: "1px solid", boxShadow: 3 }}>
+                  <FavoriteBorder />
+                </IconButton>
+                <IconButton color="primary" sx={{ border: "1px solid", boxShadow: 3 }}>
+                  <Share />
+                </IconButton>
+              </Box>
             </Box>
           </Grid>
         </Grid>
