@@ -24,12 +24,14 @@ const Footer = () => {
   return (
     <Box
       sx={{
-        background:
-          "linear-gradient(to top, var(--forth-color), var(--white-color))",
+        background:"var(--second-color)" ,
+          // "linear-gradient(to top, var(--second-color) 30%, var(--third-color) 100%)",
         color: "white",
         padding: 6,
         marginTop: "auto",
         direction: "rtl",
+        borderTopRightRadius:"20%",
+        borderTopLeftRadius:"20%",
       }}
     >
       <Grid container spacing={4}>
@@ -37,11 +39,11 @@ const Footer = () => {
           <Typography
             variant="h4"
             gutterBottom
-            sx={{ fontWeight: "bold", color: "var(--first-color)" }}
+            sx={{ fontWeight: "bold", color: "var(--third-color)" }}
           >
             صدا پلاس
           </Typography>
-          <Typography variant="title" sx={{ color: "var(--first-color)" }}>
+          <Typography variant="title" sx={{ color: "var(--third-color)" }}>
             هدفون‌هایتان، دنیای شما را تغییر می‌دهند
           </Typography>
         </Grid>
@@ -49,7 +51,7 @@ const Footer = () => {
           <Typography
             variant="h6"
             gutterBottom
-            sx={{ fontWeight: "bold", color: "var(--first-color)" }}
+            sx={{ fontWeight: "bold", color: "var(--third-color)" }}
           >
             دسترسی سریع
           </Typography>
@@ -65,11 +67,13 @@ const Footer = () => {
                   component={RouterLink}
                   to={link.to}
                   sx={{
-                    color: "var(--first-color)",
+                    color: "var(--third-color)",
                     textDecoration: "none",
                     "&:hover": {
-                      textDecoration: "underline",
+                      textDecoration: "none",
+                      color:"var(--forth-color)"
                     },
+                    fontWeight:"bold"
                   }}
                 >
                   {link.text}
@@ -82,7 +86,7 @@ const Footer = () => {
           <Typography
             variant="h6"
             gutterBottom
-            sx={{ fontWeight: "bold", color: "var(--first-color)" }}
+            sx={{ fontWeight: "bold", color: "var(--third-color)" }}
           >
             برنامه هایی که درون آن هستیم
           </Typography>
@@ -120,7 +124,7 @@ const Footer = () => {
         </Grid>
       </Grid>
 
-      <Divider sx={{ my: 4, backgroundColor: "var(--first-color)" }} />
+      <Divider sx={{ my: 4, backgroundColor: "var(--third-color)" }} />
       <Link to={"/"} style={{ display: "flex", justifyContent: "center" }}>
         <DarkModeIcon
           sx={{
