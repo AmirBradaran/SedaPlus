@@ -19,9 +19,9 @@ export default function SuggestionSlider() {
         }}
       >
         <img
-          src="1"
+          src="/DigiSeda.png"
           style={{
-            borderRadius: 2,
+            borderRadius: 10,
             width: "100%",
             height: "100%",
             padding: "0px",
