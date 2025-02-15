@@ -17,7 +17,7 @@ const NumberedCategories = () => {
     <Box sx={{ padding: 0 }}>
       <Grid container spacing={3} justifyContent="center">
         {categories.map((category, index) => (
-          <Grid item xs={6} sm={4} md={2} lg={1} key={index}>
+          <Grid item xs={6} sm={5} md={2} lg={1} key={index}>
             <Paper
               elevation={3}
               sx={{
