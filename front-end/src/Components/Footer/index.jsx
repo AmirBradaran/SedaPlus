@@ -43,7 +43,7 @@ const Footer = () => {
           >
             صدا پلاس
           </Typography>
-          <Typography variant="title" sx={{ color: "var(--third-color)" }}>
+          <Typography sx={{ color: "var(--third-color)" , fontSize:"1.25rem" }}>
             هدفون‌هایتان، دنیای شما را تغییر می‌دهند
           </Typography>
         </Grid>
@@ -126,12 +126,7 @@ const Footer = () => {
 
       <Divider sx={{ my: 4, backgroundColor: "var(--third-color)" }} />
       <Link to={"/"} style={{ display: "flex", justifyContent: "center" }}>
-        <DarkModeIcon
-          sx={{
-            color: "white",
-            fontSize: "50px",
-          }}
-        />
+        <img src="DigiSeda.png" alt="" style={{borderRadius:"100%" , width:100}} />
       </Link>
     </Box>
   );
