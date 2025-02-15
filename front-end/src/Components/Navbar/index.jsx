@@ -112,7 +112,7 @@ const Navbar = () => {
       <IconButton
         onClick={toggleDrawer(true)}
         aria-label="open navigation menu"
-        sx={{ color: "common.white", position: "absolute", right: "45px" }}
+        sx={{ color: "common.white", position: "absolute", right: "0px" }}
       >
         <MenuIcon fontSize="large" />
       </IconButton>
@@ -195,7 +195,7 @@ const Navbar = () => {
         sx={{
           maxWidth: 1280,
           margin: "0 auto",
-          px: { xs: 2, md: 4 },
+          px: { xs: 0, md: 4 },
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
@@ -244,7 +244,7 @@ const Navbar = () => {
           </Link>
         </Box>
 
-        <StyledLink to="/" sx={{ mx: 2 }}>
+        <StyledLink to="/">
           <img
             src="/DigiSeda.png"
             alt=""
@@ -253,6 +253,7 @@ const Navbar = () => {
               width: "70px",
               height: "70px",
               objectFit: "cover",
+              translate:" "
             }}
           />
         </StyledLink>
