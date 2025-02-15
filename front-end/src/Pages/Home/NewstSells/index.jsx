@@ -2,7 +2,7 @@ import { Box, Typography, useTheme, IconButton, useMediaQuery, Card, CardContent
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import { ChevronLeft, ChevronRight, FavoriteBorder, Star } from "@mui/icons-material";
-import { Link } from "react-router-dom"; // For linking the cards
+import { Link } from "react-router-dom";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -53,16 +53,15 @@ const BestSells = () => {
       </Typography>
       <Swiper
         style={{ padding: "1% 0" }}
-        modules={[Navigation, Pagination]}
+        modules={[Navigation]}
         spaceBetween={15}
         slidesPerView={isMobile ? 2 : 4}
-        pagination={{ clickable: true }}
         breakpoints={{
-          100: { slidesPerView: 1 },
-          470: { slidesPerView: 2 },
-          717: { slidesPerView: 3 },
-          936: { slidesPerView: 4 },
-          1345: { slidesPerView: 6 },
+          100: { slidesPerView: 1.5 },
+          470: { slidesPerView: 2.5 },
+          717: { slidesPerView: 3.5 },
+          936: { slidesPerView: 4.5 },
+          1345: { slidesPerView: 6.5 },
         }}
         onSwiper={setSwiperInstance}
       >
@@ -80,7 +79,7 @@ const BestSells = () => {
                   flexDirection: "column",
                   justifyContent: "space-between",
                   alignItems: "center",
-                  backgroundColor: theme.palette.background.paper,
+                  background:"linear-gradient (135deg , var(--second-color) , var(--third-color))",
                   boxShadow: "2px 4px 10px rgba(0, 0, 0, 0.2)",
                   position: "relative",
                   overflow: "hidden",
