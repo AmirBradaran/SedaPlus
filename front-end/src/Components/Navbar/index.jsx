@@ -185,7 +185,7 @@ const Navbar = () => {
         height:"150px",
         zIndex: 1200,
         background:
-          "linear-gradient(to bottom , var(--second-color) 65% , var(--third-color) 100%)",
+          "linear-gradient(to bottom , var(--second-color) 65% , white)",
         py: 2,
         borderBottomRightRadius: "50%",
         borderBottomLeftRadius: "50%",
