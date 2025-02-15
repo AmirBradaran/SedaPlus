@@ -53,16 +53,15 @@ const BestSells = () => {
       </Typography>
       <Swiper
         style={{ padding: "1% 0" }}
-        modules={[Navigation, Pagination]}
+        modules={[Navigation]}
         spaceBetween={15}
         slidesPerView={isMobile ? 2 : 4}
-        pagination={{ clickable: true }}
         breakpoints={{
-          100: { slidesPerView: 1 },
-          470: { slidesPerView: 2 },
-          717: { slidesPerView: 3 },
-          936: { slidesPerView: 4 },
-          1345: { slidesPerView: 6 },
+          100: { slidesPerView: 1.5 },
+          470: { slidesPerView: 2.5 },
+          717: { slidesPerView: 3.5 },
+          936: { slidesPerView: 4.5 },
+          1345: { slidesPerView: 6.5 },
         }}
         onSwiper={setSwiperInstance}
       >
