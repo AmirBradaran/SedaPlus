@@ -139,17 +139,17 @@ const ProductList = () => {
           پیشنهادات ویژه
         </Typography>
       </Box>
-
-      {/* Swiper Wrapper for Cards */}
       <Swiper
         modules={[Pagination]}
         slidesPerView={4.5}
         spaceBetween={"2%"}
         pagination={{ clickable: true }}
         breakpoints={{
-          320: { slidesPerView: 1 },
-          768: { slidesPerView: 2 },
-          1024: { slidesPerView: 5 },
+          200: { slidesPerView: 1 },
+          600: { slidesPerView: 1.5 },
+          1020: { slidesPerView: 2.5 },
+          1350: { slidesPerView: 3.5 },
+          1600: { slidesPerView: 4.5 },
         }}
         style={{ width: "85%", padding: "1% 0" }}
       >
@@ -164,7 +164,6 @@ const ProductList = () => {
                 background: "transparent",
               }}
             >
-              {/* لینک به صفحه ProductDetail */}
               <Link to={`/product-detail/${product.id}`} style={{ textDecoration: "none", display: "block", background: "transparent" }}>
                 <Card
                   sx={{
