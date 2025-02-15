@@ -25,13 +25,13 @@ const Footer = () => {
     <Box
       sx={{
         background:"var(--second-color)" ,
-          // "linear-gradient(to top, var(--second-color) 30%, var(--third-color) 100%)",
         color: "white",
         padding: 6,
         marginTop: "auto",
         direction: "rtl",
         borderTopRightRadius:"20%",
         borderTopLeftRadius:"20%",
+        zIndex:1005
       }}
     >
       <Grid container spacing={4}>
