@@ -91,7 +91,7 @@ const Navbar = () => {
               color: "common.white",
               fontSize: "1.1rem",
               fontWeight: 700,
-              "&:hover": { color: "secondary.main" },
+              "&:hover": { color: "var(--fifth-color)" },
             }}
           >
             {item.label}
@@ -126,7 +126,7 @@ const Navbar = () => {
           "& .MuiDrawer-paper": {
             width: 280,
             background:
-              "linear-gradient(135deg, var(--forth-color), var(--third-color))",
+              "linear-gradient(135deg, var(--second-color), var(--third-color))",
             color: "common.white",
           },
         }}
@@ -178,16 +178,17 @@ const Navbar = () => {
       component="nav"
       sx={{
         position: "relative",
+        border: "none",
         top: 0,
         translate: "6% 0",
         width: "90%",
+        height:"150px",
         zIndex: 1200,
         background:
-          "linear-gradient(135deg, var(--forth-color), var(--third-color))",
-        boxShadow: 3,
+          "linear-gradient(to bottom , var(--second-color) 65% , var(--third-color) 100%)",
         py: 2,
-        borderBottomRightRadius: 10,
-        borderBottomLeftRadius: 10,
+        borderBottomRightRadius: "50%",
+        borderBottomLeftRadius: "50%",
       }}
     >
       <Box
@@ -211,7 +212,15 @@ const Navbar = () => {
           }}
         >
           <StyledLink to="/cart" aria-label="shopping cart">
-            <IconButton sx={{ p: 1 }}>
+            <IconButton
+              sx={{
+                p: 1.5,
+                background: "none",
+                ":hover": {
+                  background:"none",
+                },
+              }}
+            >
               <Badge badgeContent={cartLength} color="secondary">
                 <CardGiftcard sx={{ fontSize: 32, color: "common.white" }} />
               </Badge>
@@ -266,7 +275,7 @@ const Navbar = () => {
         MenuListProps={{
           sx: {
             background:
-              "linear-gradient(135deg, var(--forth-color), var(--third-color))",
+              "linear-gradient(135deg, var(--second-color) 50%, var(--third-color))",
             color: "common.white",
             minWidth: 180,
           },
