@@ -10,13 +10,11 @@
     url(./assets/font/iranyekan/OldVersion/IRANYekanMedium.woff2) format("woff2"),
 }
 :root{
-  --first-color:#32127A;
-  --forth-color:#7714B0;
-  --second-color:#0067A5;
-  --third-color:#00A693;
-  --fifth-color:#D99058;
-  --seven-color:#FF7F5F;
-  --six-color:rgb(240, 240, 240);
-  --white-color: white;
-
+  --first-color:#001F3F;  
+  --second-color:#333333;
+  --third-color:#F5F5F5;
+  --forth-color:#007BFF;
+  --fifth-color:#C8A2C8;
+  --six-color:#D4AF37;
+  --seven-color: #40E0D0;
 }
