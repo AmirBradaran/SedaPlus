@@ -37,7 +37,7 @@ export default function Register({ handlePageType }) {
         margin: "auto",
         marginTop: 8,
         background:
-          "linear-gradient(135deg, var(--forth-color), var(--third-color))",
+          "linear-gradient(135deg, var(--first-color), var(--second-color))",
         borderRadius: 2,
         boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.2)",
       }}
@@ -101,6 +101,9 @@ export default function Register({ handlePageType }) {
           background: "var(--second-color)",
           color: "white",
           width: "100%",
+          ":hover":{
+            background:"var(--forth-color)"
+          }
         }}
       >
         ثبت نام
