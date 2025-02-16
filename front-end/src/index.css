@@ -1,10 +1,16 @@
 *{
   margin: 0;
   padding: 0;
+  font-family: IranYekan;
+}
+@font-face {
+  font-family: IranYekan;
+  src: url(./assets/IRANYekanX-Bold.woff) format("woff"),;
+  src: url(./assets/IRANYekanX-Regular.woff) format("woff"),;
 }
 :root{
   --first-color:#001F3F;  
-  --second-color:#333333;
+  --second-color:#071739;
   --third-color:#F5F5F5;
   --forth-color:#007BFF;
   --fifth-color:#C8A2C8;
