@@ -1,13 +1,6 @@
 *{
   margin: 0;
   padding: 0;
-  font-family: IRANSans;
-}
-@font-face {
-  font-family: IRANSans;
-  src: url(./assets/font/iranyekan/OldVersion/IRANYekanMedium.ttf) format("ttf"),
-    url(./assets/font/iranyekan/OldVersion/IRANYekanMedium.woff) format("woff"),
-    url(./assets/font/iranyekan/OldVersion/IRANYekanMedium.woff2) format("woff2"),
 }
 :root{
   --first-color:#001F3F;  
