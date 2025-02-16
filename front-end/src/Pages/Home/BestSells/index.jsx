@@ -97,6 +97,8 @@ const BestSells = () => {
                     right: 5,
                     color: "red",
                     zIndex: 1,
+                    background:"var(--third-color)",
+                    borderRadius:"100%"
                   }}
                 >
                   <FavoriteBorder />
