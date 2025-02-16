@@ -145,7 +145,7 @@ const FavoriteCardsPage = () => {
             py: 4,
             background:
               "linear-gradient(135deg, var(--second-color) 50% , var(--third-color) 60%)",
-            borderRadius: 4,
+            borderRadius: 5,
             boxShadow: 4,
             padding: 3,
             my: 2.5,
@@ -166,9 +166,9 @@ const FavoriteCardsPage = () => {
             کارت های مورد علاقه من
           </Typography>
 
-          <Grid container spacing={4}>
+          <Grid container spacing={2.5}>
             {cards.map((card) => (
-              <Grid item key={card.id} xs={12} sm={6} md={4}>
+              <Grid item key={card.id} xs={12} sm={6} md={3} sx={{height:"50vh"}}>
                 <Card
                   sx={{
                     height: "100%",
@@ -207,14 +207,14 @@ const FavoriteCardsPage = () => {
                       gutterBottom
                       variant="h6"
                       component="div"
-                      color="secondary"
+                      color="var(--first-color)"
                       sx={{ fontSize: "1.5rem", fontWeight: "bolder" }}
                     >
                       {card.title}
                     </Typography>
                     <Typography
                       variant="body2"
-                      color="text.secondary"
+                      color="var(--second-color)"
                       sx={{ mb: 2, fontSize: "1.15rem", fontWeight: "bold" }}
                     >
                       {card.description}
@@ -228,7 +228,7 @@ const FavoriteCardsPage = () => {
                     >
                       <Typography
                         variant="h6"
-                        color="primary"
+                        color="var(--forth-color)"
                         sx={{ fontSize: "1.25rem", fontWeight: "bolder" }}
                       >
                         {card.price.toLocaleString("fa-IR")} تومان
@@ -252,8 +252,8 @@ const FavoriteCardsPage = () => {
                       startIcon={<AddShoppingCart />}
                       sx={{
                         borderRadius: 20,
-                        backgroundColor: "#ff4081",
-                        "&:hover": { backgroundColor: "#e91e63" },
+                        backgroundColor: "var(--forth-color)",
+                        "&:hover": { backgroundColor: "var(--first-color)" },
                       }}
                     >
                       افزودن به سبد خرید

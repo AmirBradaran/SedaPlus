@@ -17,16 +17,16 @@ import {
   RadioGroup,
   useMediaQuery,
 } from "@mui/material";
-import { createTheme } from '@mui/material/styles';
-import { purple } from '@mui/material/colors';
+import { createTheme } from "@mui/material/styles";
+import { purple } from "@mui/material/colors";
 
 const theme = createTheme({
-  direction: 'rtl',
+  direction: "rtl",
   palette: {
     primary: purple,
   },
   typography: {
-    fontFamily: 'Vazir, Arial, sans-serif',
+    fontFamily: "Vazir, Arial, sans-serif",
   },
 });
 
@@ -61,7 +61,7 @@ const ProductCard = ({ product }) => {
         <CardMedia
           component="img"
           height="50%"
-          image={product.image || "/placeholder.jpg"}
+          image={product.image}
           alt={product.title}
           sx={{
             objectFit: "cover",
@@ -76,7 +76,7 @@ const ProductCard = ({ product }) => {
           sx={{
             boxShadow: 1,
             fontWeight: 700,
-            fontFamily: 'inherit',
+            fontFamily: "inherit",
           }}
         />
       </Link>
@@ -93,7 +93,7 @@ const ProductCard = ({ product }) => {
             WebkitBoxOrient: "vertical",
             color: "var(--second-color)",
             fontSize: isMobile ? "1rem" : "1.175rem",
-            fontFamily: 'inherit',
+            fontFamily: "inherit",
           }}
         >
           {product.title}
@@ -107,10 +107,10 @@ const ProductCard = ({ product }) => {
               fontWeight: 900,
               flexGrow: 1,
               fontSize: isMobile ? "1.2rem" : "1.3rem",
-              fontFamily: 'inherit',
+              fontFamily: "inherit",
             }}
           >
-            {(product.price || 0).toLocaleString('fa-IR')} تومان
+            {(product.price || 0).toLocaleString("fa-IR")} تومان
           </Typography>
           <IconButton
             onClick={() => setIsFavorite((prev) => !prev)}
@@ -131,13 +131,13 @@ const ProductCard = ({ product }) => {
           variant="contained"
           startIcon={<ShoppingCart />}
           sx={{
-            bgcolor: purple[600],
-            "&:hover": { bgcolor: purple[800] },
+            bgcolor: "var(--forth-color)",
+            "&:hover": { bgcolor: "var(--first-color)" },
             borderRadius: 3,
             py: 1,
             fontWeight: 700,
             fontSize: "0.95rem",
-            fontFamily: 'inherit',
+            fontFamily: "inherit",
           }}
         >
           افزودن به سبد خرید
@@ -158,20 +158,92 @@ const ProductListWithFilters = () => {
   useEffect(() => {
     setTimeout(() => {
       setProducts([
-        { id: 1, title: "هدفون بی‌سیم سونی مدل WH-1000XM5", price: 9500000, available: true, image: "/B.jpeg" },
-        { id: 2, title: "هدفون هوشمند اپل ایرپادز مکس", price: 12000000, available: false, image: "/B.jpeg" },
-        { id: 3, title: "هدست گیمینگ رزر کراکن V3 پرو", price: 4500000, available: true, image: "/B.jpeg" },
-        { id: 4, title: "هدفون نویزکنسلینگ سامسونگ گلکسی بادز 2", price: 3200000, available: true, image: "/B.jpeg" },
-        { id: 5, title: "هدفون حرفه ای ادیفایر مودل HD 660S", price: 8500000, available: true, image: "/B.jpeg" },
-        { id: 6, title: "هدفون ورزشی جیبی‌ال اندیوران 2", price: 1800000, available: false, image: "/B.jpeg" },
-        { id: 7, title: "هدست حرفه ای بایر داینامیک DT 770 PRO", price: 5500000, available: true, image: "/B.jpeg" },
-        { id: 8, title: "هدفون بی‌سیم مارشال مایدن 4", price: 2900000, available: true, image: "/B.jpeg" },
-        { id: 9, title: "هدفون گیمینگ استیل سریز آرسیس 7", price: 4800000, available: false, image: "/B.jpeg" },
-        { id: 10, title: "هدفون بلوتوث شیائومی ردمی بادز 4 پرو", price: 1500000, available: true, image: "/B.jpeg" },
-        { id: 11, title: "هدفون نویزکنسلینگ هواوی فری بادز 5i", price: 2600000, available: true, image: "/B.jpeg" },
-        { id: 12, title: "هدفون استودیویی AKG K361", price: 3800000, available: true, image: "/B.jpeg" },
+        {
+          id: 1,
+          title: "هدفون بی‌سیم سونی مدل WH-1000XM5",
+          price: 9500000,
+          available: true,
+          image: "/B.jpeg",
+        },
+        {
+          id: 2,
+          title: "هدفون هوشمند اپل ایرپادز مکس",
+          price: 12000000,
+          available: false,
+          image: "/B.jpeg",
+        },
+        {
+          id: 3,
+          title: "هدست گیمینگ رزر کراکن V3 پرو",
+          price: 4500000,
+          available: true,
+          image: "/B.jpeg",
+        },
+        {
+          id: 4,
+          title: "هدفون نویزکنسلینگ سامسونگ گلکسی بادز 2",
+          price: 3200000,
+          available: true,
+          image: "/B.jpeg",
+        },
+        {
+          id: 5,
+          title: "هدفون حرفه ای ادیفایر مودل HD 660S",
+          price: 8500000,
+          available: true,
+          image: "/B.jpeg",
+        },
+        {
+          id: 6,
+          title: "هدفون ورزشی جیبی‌ال اندیوران 2",
+          price: 1800000,
+          available: false,
+          image: "/B.jpeg",
+        },
+        {
+          id: 7,
+          title: "هدست حرفه ای بایر داینامیک DT 770 PRO",
+          price: 5500000,
+          available: true,
+          image: "/B.jpeg",
+        },
+        {
+          id: 8,
+          title: "هدفون بی‌سیم مارشال مایدن 4",
+          price: 2900000,
+          available: true,
+          image: "/B.jpeg",
+        },
+        {
+          id: 9,
+          title: "هدفون گیمینگ استیل سریز آرسیس 7",
+          price: 4800000,
+          available: false,
+          image: "/B.jpeg",
+        },
+        {
+          id: 10,
+          title: "هدفون بلوتوث شیائومی ردمی بادز 4 پرو",
+          price: 1500000,
+          available: true,
+          image: "/B.jpeg",
+        },
+        {
+          id: 11,
+          title: "هدفون نویزکنسلینگ هواوی فری بادز 5i",
+          price: 2600000,
+          available: true,
+          image: "/B.jpeg",
+        },
+        {
+          id: 12,
+          title: "هدفون استودیویی AKG K361",
+          price: 3800000,
+          available: true,
+          image: "/B.jpeg",
+        },
       ]);
-    }, 500);
+    },25);
   }, []);
 
   const filteredProducts = products.filter((product) => {
@@ -186,24 +258,50 @@ const ProductListWithFilters = () => {
   });
 
   return (
-    <Box sx={{ display: "flex", flexDirection: isTablet ? "column" : "row", p: 3, gap: 3, direction: 'rtl' }}>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: isTablet ? "column" : "row",
+        p: 3,
+        gap: 3,
+        direction: "rtl",
+      }}
+    >
       {/* بخش فیلترها */}
       {!isMobile && (
-        <Box sx={{ 
-          width: 300, 
-          display: isTablet ? "none" : "block",
-          position: 'sticky',
-          top: 80,
-          alignSelf: 'flex-start'
-        }}>
+        <Box
+          sx={{
+            width: 300,
+            display: isTablet ? "none" : "block",
+            position: "sticky",
+            top: 80,
+            alignSelf: "flex-start",
+          }}
+        >
           <Card sx={{ borderRadius: 4, boxShadow: 3, p: 3 }}>
-            <Typography variant="h6" sx={{ mb: 3, fontWeight: 800, color: purple[800], fontFamily: 'inherit' }}>
+            <Typography
+              variant="h6"
+              sx={{
+                mb: 3,
+                fontWeight: 800,
+                color: "var(--first-color)",
+                fontFamily: "inherit",
+              }}
+            >
               <FilterList sx={{ ml: 1, verticalAlign: "middle" }} />
               فیلتر محصولات
             </Typography>
 
             <Box sx={{ mb: 4 }}>
-              <Typography variant="subtitle1" sx={{ mb: 2, fontWeight: 700, fontFamily: 'inherit' }}>
+              <Typography
+                variant="subtitle1"
+                sx={{
+                  mb: 2,
+                  fontWeight: 700,
+                  fontFamily: "inherit",
+                  fontSize: "1.15rem",
+                }}
+              >
                 محدوده قیمت (تومان)
               </Typography>
               <Slider
@@ -212,20 +310,28 @@ const ProductListWithFilters = () => {
                 valueLabelDisplay="auto"
                 min={5}
                 max={10000000}
-                valueLabelFormat={(value) => value.toLocaleString('fa-IR')}
+                valueLabelFormat={(value) => value.toLocaleString("fa-IR")}
                 sx={{
-                  color: purple[500],
+                  color: "var(--forth-color)",
                   "& .MuiSlider-valueLabel": {
-                    backgroundColor: purple[500],
+                    backgroundColor: "var(--first-color)",
                     borderRadius: 2,
-                    fontFamily: 'inherit',
+                    fontFamily: "inherit",
                   },
                 }}
               />
             </Box>
 
             <Box>
-              <Typography variant="subtitle1" sx={{ mb: 2, fontWeight: 700, fontFamily: 'inherit' }}>
+              <Typography
+                variant="subtitle1"
+                sx={{
+                  mb: 2,
+                  fontWeight: "700",
+                  fontFamily: "inherit",
+                  fontSize: "1.15rem",
+                }}
+              >
                 وضعیت موجودی
               </Typography>
               <RadioGroup
@@ -235,21 +341,36 @@ const ProductListWithFilters = () => {
               >
                 <FormControlLabel
                   value="all"
-                  control={<Radio sx={{ color: purple[500] }} />}
+                  control={<Radio sx={{ color: "var(--first-color)" }} />}
                   label="همه محصولات"
-                  sx={{ "& .MuiFormControlLabel-label": { fontWeight: 500, fontFamily: 'inherit' } }}
+                  sx={{
+                    "& .MuiFormControlLabel-label": {
+                      fontWeight: 700,
+                      fontFamily: "inherit",
+                    },
+                  }}
                 />
                 <FormControlLabel
                   value="available"
-                  control={<Radio sx={{ color: purple[500] }} />}
+                  control={<Radio sx={{ color: "var(--first-color)" }} />}
                   label="فقط موجود‌ها"
-                  sx={{ "& .MuiFormControlLabel-label": { fontWeight: 500, fontFamily: 'inherit' } }}
+                  sx={{
+                    "& .MuiFormControlLabel-label": {
+                      fontWeight: 700,
+                      fontFamily: "inherit",
+                    },
+                  }}
                 />
                 <FormControlLabel
                   value="unavailable"
-                  control={<Radio sx={{ color: purple[500] }} />}
+                  control={<Radio sx={{ color: "var(--first-color)" }} />}
                   label="فقط ناموجود‌ها"
-                  sx={{ "& .MuiFormControlLabel-label": { fontWeight: 500, fontFamily: 'inherit' } }}
+                  sx={{
+                    "& .MuiFormControlLabel-label": {
+                      fontWeight: 700,
+                      fontFamily: "inherit",
+                    },
+                  }}
                 />
               </RadioGroup>
             </Box>
@@ -259,7 +380,7 @@ const ProductListWithFilters = () => {
 
       {/* بخش اصلی محصولات */}
       <Box sx={{ flexGrow: 1 }}>
-        <Box sx={{ display: 'flex', justifyContent: 'center', mb: 4 }}>
+        <Box sx={{ display: "flex", justifyContent: "center", mb: 4 }}>
           <TextField
             fullWidth
             variant="outlined"
@@ -267,18 +388,22 @@ const ProductListWithFilters = () => {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             InputProps={{
-              startAdornment: <SearchIcon sx={{ color: purple[500], ml: 1.5 }} />,
+              startAdornment: (
+                <SearchIcon
+                  sx={{ color: "var(--forth-color)", ml: 1.5, mr: 2 }}
+                />
+              ),
               sx: {
                 borderRadius: 3,
                 height: 56,
                 bgcolor: "background.paper",
                 "& .MuiOutlinedInput-notchedOutline": {
-                  borderColor: purple[200],
+                  borderColor: "var(--forth-color)",
                 },
                 "&:hover .MuiOutlinedInput-notchedOutline": {
-                  borderColor: purple[300],
+                  borderColor: "var(--forth-color)",
                 },
-                fontFamily: 'inherit',
+                fontFamily: "inherit",
               },
             }}
             sx={{ maxWidth: 500 }}
@@ -312,7 +437,11 @@ const ProductListWithFilters = () => {
             >
               <Typography
                 variant="h5"
-                sx={{ color: "var(--second-color)", fontWeight: 500, fontFamily: 'inherit' }}
+                sx={{
+                  color: "var(--second-color)",
+                  fontWeight: 500,
+                  fontFamily: "inherit",
+                }}
               >
                 هیچ محصولی با این فیلترها یافت نشد
               </Typography>
