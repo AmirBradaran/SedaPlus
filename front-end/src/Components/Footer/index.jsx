@@ -29,8 +29,6 @@ const Footer = () => {
         padding: 6,
         marginTop: "auto",
         direction: "rtl",
-        borderTopRightRadius:"20%",
-        borderTopLeftRadius:"20%",
         zIndex:1005
       }}
     >
