@@ -177,6 +177,9 @@ const BestSells = () => {
                     zIndex: 1,
                     background: "var(--third-color)",
                     borderRadius: "100%",
+                    ":hover":{
+                      background: "whitesmoke",
+                    }
                   }}
                 >
                   <FavoriteBorder />
@@ -204,7 +207,7 @@ const BestSells = () => {
                     color="text.secondary"
                     sx={{ fontSize: "1.15rem", fontWeight: "bolder" }}
                   >
-                    {product.price}تومان
+                    {product.price +" "}تومان
                   </Typography>
                   <Box
                     sx={{ display: "flex", justifyContent: "center", mt: 1 }}
