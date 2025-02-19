@@ -22,7 +22,7 @@ const NotFound = () => {
       <Button
         variant="contained"
         color="primary"
-        sx={{background:"var(--seven-color)" , fontSize:"1.25rem"}}
+        sx={{background:"var(--second-color)" , fontSize:"1.25rem"}}
         onClick={() => navigate("/")}
       >
         بازگشت به صفحه اصلی
