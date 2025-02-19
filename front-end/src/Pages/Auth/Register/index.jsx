@@ -8,19 +8,42 @@ export default function Register({ handlePageType }) {
     email: "",
     password: "",
   });
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const token = Math.random().toString(36).substr(2);
-    localStorage.setItem("user", JSON.stringify({ ...formData, token }));
-    alert("ثبت نام با موفقیت انجام شد!");
 
-    navigate("/");
+    if (!formData.username || !formData.email || !formData.password) {
+      setError("لطفاً تمام فیلدها را پر کنید.");
+      return;
+    }
+
+    try {
+      const response = await fetch("http://localhost:5173/api/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      
+      const data = await response.json();
+
+      if (response.ok) {
+        localStorage.setItem("user", JSON.stringify({ ...formData, token: data.token }));
+        alert("ثبت نام با موفقیت انجام شد!");
+        navigate("/");
+      } else {
+        setError(data.message || "مشکلی در ثبت‌نام پیش آمد.");
+      }
+    } catch (error) {
+      setError("مشکلی در ارتباط با سرور به وجود آمد.");
+    }
   };
 
   return (
@@ -48,6 +71,13 @@ export default function Register({ handlePageType }) {
       >
         ثبت نام
       </Typography>
+
+      {error && (
+        <Typography color="error" sx={{ marginBottom: 2, textAlign: "center" }}>
+          {error}
+        </Typography>
+      )}
+
       <TextField
         name="username"
         label="نام کاربری"
@@ -101,9 +131,9 @@ export default function Register({ handlePageType }) {
           background: "var(--second-color)",
           color: "white",
           width: "100%",
-          ":hover":{
-            background:"var(--forth-color)"
-          }
+          ":hover": {
+            background: "var(--forth-color)",
+          },
         }}
       >
         ثبت نام
