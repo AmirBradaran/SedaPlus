@@ -22,6 +22,7 @@ export default function Home() {
           },
           gap: 3,
           justifyContent: "center",
+          alignItems:"center",
           py: 5,
           px: "5%",
           borderTopRightRadius: "15%",
