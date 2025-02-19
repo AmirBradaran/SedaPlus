@@ -14,6 +14,7 @@ import {
   ListItem,
   Divider,
   styled,
+  Stack,
 } from "@mui/material";
 import {
   DarkMode,
@@ -28,10 +29,11 @@ import { useSelector } from "react-redux";
 
 const StyledLink = styled(Link)(({ theme }) => ({
   textDecoration: "none",
-  color: theme.palette.common.white,
-  transition: "all 0.3s ease",
+  color: "var(--third-color)",
+  transition: "all 0.15s ease",
+  fontFamily: "IranYekan, sans-serif",
   "&:hover": {
-    color: theme.palette.secondary.main,
+    color: "var(--first-color)",
     transform: "translateY(-2px)",
   },
 }));
@@ -49,255 +51,191 @@ const Navbar = () => {
     () => [
       { label: "دسته بندی ها", type: "menu" },
       { label: "درباره ما", path: "/about-us" },
-      { label: "ورود", path: "/auth" },
+      { label: token ? "پروفایل" : "ورود", path: token ? "/profile" : "/auth" },
       { label: "مجله ها", path: "/magazines" },
       { label: "خانه", path: "/" },
     ],
-    []
+    [token]
   );
 
-  const categories = useMemo(
-    () => ["لوازم جانبی", "هدفون", "هدست", "هندزفری"],
-    []
-  );
-
-  const handleMenuOpen = (event) => {
-    setMenuAnchor(event.currentTarget);
-  };
-
-  const handleMenuClose = () => {
-    setMenuAnchor(null);
-  };
-
-  const toggleDrawer = (open) => (event) => {
-    if (
-      event &&
-      event.type === "keydown" &&
-      (event.key === "Tab" || event.key === "Shift")
-    ) {
-      return;
-    }
-    setDrawerOpen(open);
-  };
-
-  const renderDesktopNav = () => (
-    <Box sx={{ display: "flex", gap: 2, alignItems: "center" }}>
-      {navItems.map((item) =>
-        item.type === "menu" ? (
-          <Button
-            key={item.label}
-            onClick={handleMenuOpen}
-            sx={{
-              color: "common.white",
-              fontSize: "1.1rem",
-              fontWeight: 700,
-              "&:hover": { color: "var(--fifth-color)" },
-            }}
-          >
-            {item.label}
-          </Button>
-        ) : (
-          <StyledLink key={item.label} to={item.path}>
-            <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
-              {item.label}
-            </Typography>
-          </StyledLink>
-        )
-      )}
-    </Box>
-  );
-
-  const renderMobileNav = () => (
-    <>
-      <IconButton
-        onClick={toggleDrawer(true)}
-        aria-label="open navigation menu"
-        sx={{ color: "common.white", position: "absolute", right: "0px" }}
-      >
-        <MenuIcon fontSize="large" />
-      </IconButton>
-
-      <SwipeableDrawer
-        anchor="left"
-        open={drawerOpen}
-        onClose={toggleDrawer(false)}
-        onOpen={toggleDrawer(true)}
-        sx={{
-          "& .MuiDrawer-paper": {
-            width: 280,
-            background:
-              "linear-gradient(135deg, var(--second-color), var(--third-color))",
-            color: "common.white",
-          },
-        }}
-      >
-        <Box
-          role="presentation"
-          onClick={toggleDrawer(false)}
-          onKeyDown={toggleDrawer(false)}
-        >
-          <Box sx={{ p: 2, display: "flex", justifyContent: "flex-end" }}>
-            <IconButton aria-label="close menu" sx={{ color: "common.white" }}>
-              <Close />
-            </IconButton>
-          </Box>
-
-          <List>
-            {navItems.map((item) => (
-              <ListItem key={item.label} sx={{ py: 1.5 }}>
-                <StyledLink to={item.path} sx={{ width: "100%" }}>
-                  <Typography variant="h6" sx={{ fontWeight: 700 }}>
-                    {item.label}
-                  </Typography>
-                </StyledLink>
-              </ListItem>
-            ))}
-          </List>
-
-          <Divider sx={{ borderColor: "rgba(255,255,255,0.2)" }} />
-
-          <List>
-            <Typography variant="h6" sx={{ px: 2, py: 1.5, fontWeight: 700 }}>
-              دسته بندی ها
-            </Typography>
-            {categories.map((category) => (
-              <ListItem key={category} sx={{ py: 1 }}>
-                <Typography variant="body1" sx={{ fontWeight: 700 }}>
-                  {category}
-                </Typography>
-              </ListItem>
-            ))}
-          </List>
-        </Box>
-      </SwipeableDrawer>
-    </>
-  );
+  const categories = ["لوازم جانبی", "هدفون", "هدست", "هندزفری"];
 
   return (
-    <Box
+    <Stack
       component="nav"
+      mx="auto"
       sx={{
         position: "relative",
-        border: "none",
-        top: 0,
-        translate: "6% 0",
         width: "90%",
-        height:"150px",
+        height: "150px",
         zIndex: 1200,
         background:
-          "linear-gradient(to bottom , var(--second-color) 65% , white)",
+          "linear-gradient(to bottom , var(--second-color) 65%, white)",
         py: 2,
         borderBottomRightRadius: "50%",
         borderBottomLeftRadius: "50%",
       }}
     >
-      <Box
+      <Stack
+        justifyContent="center"
+        alignItems="center"
         sx={{
-          maxWidth: 1280,
-          margin: "0 auto",
+          mx: "auto",
           px: { xs: 0, md: 4 },
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          position: "relative",
         }}
       >
-        <Box
-          sx={{
-            display: "flex",
-            gap: 0,
-            alignItems: "center",
-            position: "absolute",
-            left: "1%",
-          }}
-        >
-          <StyledLink to="/cart" aria-label="shopping cart">
-            <IconButton
-              sx={{
-                p: 1.5,
-                background: "none",
-                ":hover": {
-                  background:"none",
-                },
-              }}
-            >
+        <Stack direction="row" position="absolute" left="1%" gap={1}>
+          <StyledLink to="/cart">
+            <IconButton>
               <Badge badgeContent={cartLength} color="secondary">
                 <CardGiftcard sx={{ fontSize: 32, color: "common.white" }} />
               </Badge>
             </IconButton>
           </StyledLink>
-
-          <StyledLink to="/favorites" aria-label="favorite">
-            <IconButton sx={{ p: 1 }}>
+          <StyledLink to="/favorites">
+            <IconButton>
               <FavoriteBorder sx={{ fontSize: 32, color: "common.white" }} />
             </IconButton>
           </StyledLink>
-          <Link to={"/products/:categoryId/:category"}>
-            <IconButton
-              aria-label="search"
-              sx={{
-                color: "common.white",
-              }}
-            >
-              <Search sx={{ fontSize: 32 }} />
+          <StyledLink to="/search">
+            <IconButton>
+              <Search sx={{ fontSize: 32, color: "common.white" }} />
             </IconButton>
-          </Link>
-        </Box>
+          </StyledLink>
+        </Stack>
 
         <StyledLink to="/">
           <img
             src="/DigiSeda.png"
-            alt=""
+            alt="Logo"
             style={{
               borderRadius: "50%",
               width: "70px",
               height: "70px",
               objectFit: "cover",
-              translate:" "
             }}
           />
         </StyledLink>
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            gap: 2,
-            position: "absolute",
-            right: "1%",
-          }}
-        >
-          {isMobile ? renderMobileNav() : renderDesktopNav()}
-        </Box>
-      </Box>
+
+        <Stack position="absolute" right="1%">
+          {isMobile ? (
+            <IconButton onClick={() => setDrawerOpen(true)}>
+              <MenuIcon fontSize="large" sx={{ color: "var(--third-color)" }} />
+            </IconButton>
+          ) : (
+            <Stack gap={2} direction="row">
+              {navItems.map((item) =>
+                item.type === "menu" ? (
+                  <Button
+                    sx={{
+                      color: "var(--third-color)",
+                      fontSize: "1.25rem",
+                      fontWeight: "bold",
+                      fontFamily: "IranYekan",
+                      p: 0,
+                      transition: "all 0.25s",
+                      ":hover": {
+                        color: "var(--first-color)",
+                        translate: "0 -15%",
+                      },
+                    }}
+                    key={item.label}
+                    onClick={(e) => setMenuAnchor(e.currentTarget)}
+                  >
+                    {item.label}
+                  </Button>
+                ) : (
+                  <StyledLink key={item.label} to={item.path}>
+                    <Typography
+                      sx={{
+                        fontSize: "1.25rem",
+                        color: "var(--third-color)",
+                        fontWeight: "bold",
+                        fontFamily: "IranYekan",
+                        transition: "all 0.35s",
+                        ":hover": { color: "var(--first-color)" },
+                      }}
+                    >
+                      {item.label === "ورود" && token ? "پروفایل" : item.label}
+                    </Typography>
+                  </StyledLink>
+                )
+              )}
+            </Stack>
+          )}
+        </Stack>
+      </Stack>
+
+      {/* دسته بندی ها */}
       <Menu
         anchorEl={menuAnchor}
         open={Boolean(menuAnchor)}
-        onClose={handleMenuClose}
-        MenuListProps={{
-          sx: {
-            background:
-              "linear-gradient(135deg, var(--second-color) 50%, var(--third-color))",
-            color: "common.white",
-            minWidth: 180,
-          },
-        }}
+        onClose={() => setMenuAnchor(null)}
       >
         {categories.map((category) => (
           <MenuItem
-            key={category}
-            onClick={handleMenuClose}
             sx={{
-              "&:hover": { bgcolor: "white", color: "black" },
-              py: 1.5,
+              width: "150px",
+              transition: "all 0.15s",
+              ":hover": {
+                background:
+                  "linear-gradient(135deg , var(--second-color) 65%, white)",
+                color: "var(--third-color)",
+              },
             }}
+            key={category}
+            onClick={() => setMenuAnchor(null)}
           >
-            <Typography variant="body1" sx={{ fontWeight: 700 }}>
-              {category}
-            </Typography>
+            {category}
           </MenuItem>
         ))}
       </Menu>
-    </Box>
+
+      {/* منو موبایل */}
+      <SwipeableDrawer
+        anchor="right"
+        open={drawerOpen}
+        onClose={() => setDrawerOpen(false)}
+      >
+        <Box
+          sx={{
+            width: 280,
+            height: "100%",
+            p: 2,
+            background:
+              "linear-gradient(135deg, var(--second-color), var(--third-color))",
+            color: "white",
+          }}
+        >
+          <IconButton
+            onClick={() => setDrawerOpen(false)}
+            sx={{ position: "absolute ", right: "5px" }}
+          >
+            <Close />
+          </IconButton>
+          <List>
+            {navItems.map((item) => (
+              <ListItem key={item.label}>
+                <StyledLink to={item.path}>
+                  <Typography>{item.label}</Typography>
+                </StyledLink>
+              </ListItem>
+            ))}
+          </List>
+          <Divider />
+          <List>
+            <Typography variant="h6" sx={{ px: 2, py: 1.5 }}>
+              دسته بندی ها
+            </Typography>
+            {categories.map((category) => (
+              <ListItem key={category}>
+                <Typography>{category}</Typography>
+              </ListItem>
+            ))}
+          </List>
+        </Box>
+      </SwipeableDrawer>
+    </Stack>
   );
 };
 
