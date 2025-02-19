@@ -24,12 +24,12 @@ const Footer = () => {
   return (
     <Box
       sx={{
-        background:"var(--second-color)" ,
+        background: "var(--second-color)",
         color: "white",
         padding: 6,
         marginTop: "auto",
         direction: "rtl",
-        zIndex:1005
+        zIndex: 1005,
       }}
     >
       <Grid container spacing={4}>
@@ -37,11 +37,11 @@ const Footer = () => {
           <Typography
             variant="h4"
             gutterBottom
-            sx={{ fontWeight: "bold", color: "var(--third-color)" }}
+            sx={{ fontWeight: "bold", color: "var(--third-color)" , fontFamily:"IranYekan" }}
           >
             صدا پلاس
           </Typography>
-          <Typography sx={{ color: "var(--third-color)" , fontSize:"1.25rem" }}>
+          <Typography sx={{ color: "var(--third-color)", fontSize: "1.25rem" , fontFamily:"IranYekan"}}>
             هدفون‌هایتان، دنیای شما را تغییر می‌دهند
           </Typography>
         </Grid>
@@ -49,7 +49,7 @@ const Footer = () => {
           <Typography
             variant="h6"
             gutterBottom
-            sx={{ fontWeight: "bold", color: "var(--third-color)" }}
+            sx={{ fontWeight: "bold", color: "var(--third-color)"  , fontFamily:"IranYekan"}}
           >
             دسترسی سریع
           </Typography>
@@ -67,11 +67,13 @@ const Footer = () => {
                   sx={{
                     color: "var(--third-color)",
                     textDecoration: "none",
+                    transition:"all 0.3s",
                     "&:hover": {
                       textDecoration: "none",
-                      color:"var(--forth-color)"
+                      color: "var(--first-color)",
+                      translate:"10px 0"
                     },
-                    fontWeight:"bold"
+                    fontWeight: "bold",
                   }}
                 >
                   {link.text}
@@ -84,9 +86,9 @@ const Footer = () => {
           <Typography
             variant="h6"
             gutterBottom
-            sx={{ fontWeight: "bold", color: "var(--third-color)" }}
+            sx={{ fontWeight: "bold", color: "var(--third-color)" , fontFamily:"IranYekan"}}
           >
-            برنامه هایی که درون آن هستیم
+            راه های ارتباطی
           </Typography>
           <Box sx={{ display: "flex", gap: 2 }}>
             <a
@@ -124,7 +126,11 @@ const Footer = () => {
 
       <Divider sx={{ my: 4, backgroundColor: "var(--third-color)" }} />
       <Link to={"/"} style={{ display: "flex", justifyContent: "center" }}>
-        <img src="DigiSeda.png" alt="" style={{borderRadius:"100%" , width:100}} />
+        <img
+          src="DigiSeda.png"
+          alt=""
+          style={{ borderRadius: "100%", width: 100 }}
+        />
       </Link>
     </Box>
   );
