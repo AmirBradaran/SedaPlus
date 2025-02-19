@@ -9,11 +9,10 @@
   src: url(./assets/IRANYekanX-Regular.woff) format("woff"),;
 }
 :root{
-  --first-color:#001F3F;  
-  --second-color:#071739;
-  --third-color:#F5F5F5;
+  --first-color:#000000;  
+  --second-color:#7020FE;
+  --third-color:#FEFEFE;
   --forth-color:#007BFF;
-  --fifth-color:#C8A2C8;
-  --six-color:#D4AF37;
-  --seven-color: #40E0D0;
+  --fifth-color:#00E460;
+  --six-color:#FF5338;
 }
