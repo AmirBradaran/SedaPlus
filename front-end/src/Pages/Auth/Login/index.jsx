@@ -4,25 +4,44 @@ import { Box, Button, TextField, Typography } from "@mui/material";
 
 export default function Login({ handlePageType }) {
   const [formData, setFormData] = useState({ username: "", password: "" });
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const storedUser = JSON.parse(localStorage.getItem("user"));
-    if (
-      storedUser &&
-      storedUser.username === formData.username &&
-      storedUser.password === formData.password
-    ) {
-      localStorage.setItem("token", storedUser.token);
-      alert("ورود با موفقیت انجام شد!");
-      navigate("/");
-    } else {
-      alert("نام کاربری یا رمز عبور اشتباه است!");
+
+    if (!formData.username || !formData.password) {
+      setError("لطفاً تمام فیلدها را پر کنید.");
+      return;
+    }
+
+    try {
+      const response = await fetch("https://fakestoreapi.com/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: formData.username,
+          password: formData.password,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        localStorage.setItem("token", data.token);
+        alert("ورود با موفقیت انجام شد!");
+        navigate("/");
+      } else {
+        setError(data.message || "مشکلی در ورود به سیستم پیش آمده است.");
+      }
+    } catch (error) {
+      setError("مشکلی در ارتباط با سرور به وجود آمد.");
     }
   };
 
@@ -51,6 +70,13 @@ export default function Login({ handlePageType }) {
       >
         ورود
       </Typography>
+
+      {error && (
+        <Typography color="error" sx={{ marginBottom: 2, textAlign: "center" }}>
+          {error}
+        </Typography>
+      )}
+
       {["username", "password"].map((field) => (
         <TextField
           key={field}
@@ -71,15 +97,16 @@ export default function Login({ handlePageType }) {
           }}
         />
       ))}
+
       <Button
         type="submit"
         sx={{
           background: "var(--second-color)",
           color: "white",
           width: "100%",
-          ":hover":{
-            background:"var(--forth-color)"
-          }
+          ":hover": {
+            background: "var(--forth-color)",
+          },
         }}
       >
         ورود
