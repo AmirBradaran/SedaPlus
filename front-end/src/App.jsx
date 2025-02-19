@@ -26,7 +26,7 @@ export default function App() {
           <Route exact path="/" element={<Home />} />
           <Route path="/cart" element={token ? <Cart /> : <Auth />} />
           <Route
-            path="/products/:categoryId/:category"
+            path="/search"
             element={<ProductsCards />}
           />
           <Route
