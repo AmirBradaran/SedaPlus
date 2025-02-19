@@ -1,24 +1,98 @@
-import { Box, Typography, useTheme, IconButton, useMediaQuery, Card, CardContent, CardMedia } from "@mui/material";
+import {
+  Box,
+  Typography,
+  useTheme,
+  IconButton,
+  useMediaQuery,
+  Card,
+  CardContent,
+  CardMedia,
+} from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
-import { ChevronLeft, ChevronRight, FavoriteBorder, Star } from "@mui/icons-material";
-import { Link } from "react-router-dom"; // For linking the cards
+import {
+  ChevronLeft,
+  ChevronRight,
+  FavoriteBorder,
+  Star,
+} from "@mui/icons-material";
+import { Link } from "react-router-dom";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { useRef, useEffect, useState } from "react";
 
 const products = [
-  { img: "/B.jpeg", title: "هدفون", price: "1,700,000", rating: 4, link: "/product/1" },
-  { img: "/B.jpeg", title: "هدفون", price: "2,000,000", rating: 5, link: "/product/2" },
-  { img: "/B.jpeg", title: "هدفون", price: "1,000,000", rating: 3, link: "/product/3" },
-  { img: "/B.jpeg", title: "هدفون", price: "3,000,000", rating: 4, link: "/product/4" },
-  { img: "/B.jpeg", title: "هدفون", price: "2,000,000", rating: 2, link: "/product/5" },
-  { img: "/B.jpeg", title: "هدفون", price: "9,000,000", rating: 5, link: "/product/6" },
-  { img: "/B.jpeg", title: "هدفون", price: "2,000,000", rating: 2, link: "/product/7" },
-  { img: "/B.jpeg", title: "هدفون", price: "9,000,000", rating: 5, link: "/product/8" },
-  { img: "/B.jpeg", title: "هدفون", price: "2,000,000", rating: 2, link: "/product/9" },
-  { img: "/B.jpeg", title: "هدفون", price: "9,000,000", rating: 5, link: "/product/10" },
+  {
+    img: "/B.jpeg",
+    title: "هدفون",
+    price: "1,700,000",
+    rating: 4,
+    link: "/product/1",
+  },
+  {
+    img: "/B.jpeg",
+    title: "هدفون",
+    price: "2,000,000",
+    rating: 5,
+    link: "/product/2",
+  },
+  {
+    img: "/B.jpeg",
+    title: "هدفون",
+    price: "1,000,000",
+    rating: 3,
+    link: "/product/3",
+  },
+  {
+    img: "/B.jpeg",
+    title: "هدفون",
+    price: "3,000,000",
+    rating: 4,
+    link: "/product/4",
+  },
+  {
+    img: "/B.jpeg",
+    title: "هدفون",
+    price: "2,000,000",
+    rating: 2,
+    link: "/product/5",
+  },
+  {
+    img: "/B.jpeg",
+    title: "هدفون",
+    price: "9,000,000",
+    rating: 5,
+    link: "/product/6",
+  },
+  {
+    img: "/B.jpeg",
+    title: "هدفون",
+    price: "2,000,000",
+    rating: 2,
+    link: "/product/7",
+  },
+  {
+    img: "/B.jpeg",
+    title: "هدفون",
+    price: "9,000,000",
+    rating: 5,
+    link: "/product/8",
+  },
+  {
+    img: "/B.jpeg",
+    title: "هدفون",
+    price: "2,000,000",
+    rating: 2,
+    link: "/product/9",
+  },
+  {
+    img: "/B.jpeg",
+    title: "هدفون",
+    price: "9,000,000",
+    rating: 5,
+    link: "/product/10",
+  },
 ];
 
 const BestSells = () => {
@@ -38,7 +112,9 @@ const BestSells = () => {
   }, [swiperInstance]);
 
   return (
-    <Box sx={{ direction: "rtl", padding: { xs: 2, sm: 4 }, position: "relative" }}>
+    <Box
+      sx={{ direction: "rtl", padding: { xs: 2, sm: 4 }, position: "relative" }}
+    >
       <Typography
         variant="h4"
         fontWeight="bold"
@@ -79,11 +155,13 @@ const BestSells = () => {
                   flexDirection: "column",
                   justifyContent: "space-between",
                   alignItems: "center",
-                  backgroundColor: theme.palette.background.paper,
+                  background:
+                    "linear-gradient (135deg , var(--second-color) , var(--third-color))",
                   boxShadow: "2px 4px 10px rgba(0, 0, 0, 0.2)",
                   position: "relative",
                   overflow: "hidden",
-                  transition: "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
+                  transition:
+                    "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
                   "&:hover": {
                     transform: "translateY(-8px)",
                     boxShadow: "0px 6px 15px rgba(0, 0, 0, 0.25)",
@@ -97,8 +175,11 @@ const BestSells = () => {
                     right: 5,
                     color: "red",
                     zIndex: 1,
-                    background:"var(--third-color)",
-                    borderRadius:"100%"
+                    background: "var(--third-color)",
+                    borderRadius: "100%",
+                    ":hover": {
+                      background: "whitesmoke",
+                    },
                   }}
                 >
                   <FavoriteBorder />
@@ -115,15 +196,27 @@ const BestSells = () => {
                   }}
                 />
                 <CardContent>
-                  <Typography variant="h6" sx={{ fontWeight: "bold", fontSize: "1.5rem" }}>
+                  <Typography
+                    variant="h6"
+                    sx={{ fontWeight: "bold", fontSize: "1.5rem" }}
+                  >
                     {product.title}
                   </Typography>
-                  <Typography variant="body2" color="text.secondary" sx={{ fontWeight: "bolder", fontSize:"1.15rem" }}>
-                    {product.price}تومان
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{ fontSize: "1.15rem", fontWeight: "bolder" }}
+                  >
+                    {product.price + " "}تومان
                   </Typography>
-                  <Box sx={{ display: "flex", justifyContent: "center", mt: 1 }}>
+                  <Box
+                    sx={{ display: "flex", justifyContent: "center", mt: 1 }}
+                  >
                     {[...Array(5)].map((_, i) => (
-                      <Star key={i} sx={{ color: i < product.rating ? "gold" : "gray" }} />
+                      <Star
+                        key={i}
+                        sx={{ color: i < product.rating ? "gold" : "gray" }}
+                      />
                     ))}
                   </Box>
                 </CardContent>
