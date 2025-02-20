@@ -32,7 +32,6 @@ const NumberedCategories = () => {
                 cursor: "pointer",
                 background: "linear-gradient(to top , var(--second-color) 5% , var(--third-color) 20%)",
                 borderRadius: 100,
-                transition: "all 5s ",
                 "&:hover": {
                   background: "var(--third-color)",
                   color: "var(--second-color)",
