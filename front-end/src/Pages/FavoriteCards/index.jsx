@@ -161,6 +161,7 @@ const FavoriteCardsPage = () => {
               textAlign: "center",
               mb: 4,
               letterSpacing: 2,
+              fontFamily: "IranYekan",
             }}
           >
             کارت های مورد علاقه من
@@ -168,7 +169,14 @@ const FavoriteCardsPage = () => {
 
           <Grid container spacing={2.5}>
             {cards.map((card) => (
-              <Grid item key={card.id} xs={12} sm={6} md={3} sx={{height:"50vh"}}>
+              <Grid
+                item
+                key={card.id}
+                xs={12}
+                sm={6}
+                md={3}
+                sx={{ height: "500px" }}
+              >
                 <Card
                   sx={{
                     height: "100%",
@@ -208,32 +216,38 @@ const FavoriteCardsPage = () => {
                       variant="h6"
                       component="div"
                       color="var(--first-color)"
-                      sx={{ fontSize: "1.5rem", fontWeight: "bolder" }}
+                      sx={{
+                        fontSize: "1.5rem",
+                        fontWeight: "bold",
+                        fontFamily: "IranYekan",
+                        textAlign: "center",
+                      }}
                     >
                       {card.title}
                     </Typography>
                     <Typography
                       variant="body2"
-                      color="var(--second-color)"
-                      sx={{ mb: 2, fontSize: "1.15rem", fontWeight: "bold" }}
+                      color="var(--first-color)"
+                      sx={{
+                        mb: 2,
+                        fontSize: "1.05rem",
+                        fontFamily: "IranYekan",
+                        textAlign: "right",
+                      }}
                     >
                       {card.description}
                     </Typography>
-                    <Box
+                    <Typography
+                      variant="h6"
+                      color="var(--first-color)"
                       sx={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        alignItems: "center",
+                        fontSize: "1.25rem",
+                        fontWeight: "bolder",
+                        fontFamily: "IranYekan",
                       }}
                     >
-                      <Typography
-                        variant="h6"
-                        color="var(--forth-color)"
-                        sx={{ fontSize: "1.25rem", fontWeight: "bolder" }}
-                      >
-                        {card.price.toLocaleString("fa-IR")} تومان
-                      </Typography>
-                    </Box>
+                      {card.price.toLocaleString("fa-IR")} تومان
+                    </Typography>
                   </CardContent>
 
                   <CardActions
@@ -253,7 +267,10 @@ const FavoriteCardsPage = () => {
                       sx={{
                         borderRadius: 20,
                         backgroundColor: "var(--forth-color)",
-                        "&:hover": { backgroundColor: "var(--first-color)" },
+                        transition: "all 0.15s",
+                        "&:hover": { backgroundColor: "var(--second-color)" },
+                        fontFamily: "IranYekan",
+                        fontWeight: "bold",
                       }}
                     >
                       افزودن به سبد خرید
