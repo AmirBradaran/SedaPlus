@@ -24,7 +24,7 @@ export default function App() {
       <Box sx={{ backgroundColor: "", minHeight: "70vh" }} component={"main"}>
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route path="/cart" element={token ? <Cart /> : <Auth />} />
+          <Route path="/cart" element={<Cart />} />
           <Route
             path="/search"
             element={<ProductsCards />}
