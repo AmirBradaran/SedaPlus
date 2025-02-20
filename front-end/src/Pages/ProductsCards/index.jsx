@@ -16,6 +16,7 @@ import {
   Radio,
   RadioGroup,
   useMediaQuery,
+  Stack,
 } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 import { purple } from "@mui/material/colors";
@@ -69,16 +70,6 @@ const ProductCard = ({ product }) => {
             borderBottom: `1px solid ${purple[100]}`,
           }}
         />
-        <Chip
-          label={product.available ? "موجود در انبار" : "ناموجود"}
-          color={product.available ? "success" : "error"}
-          size="small"
-          sx={{
-            boxShadow: 1,
-            fontWeight: 700,
-            fontFamily: "inherit",
-          }}
-        />
       </Link>
 
       <CardContent sx={{ px: 2.5, pt: 2, pb: 0 }}>
@@ -91,9 +82,9 @@ const ProductCard = ({ product }) => {
             display: "-webkit-box",
             WebkitLineClamp: 2,
             WebkitBoxOrient: "vertical",
-            color: "var(--second-color)",
+            color: "var(--first-color)",
             fontSize: isMobile ? "1rem" : "1.175rem",
-            fontFamily: "inherit",
+            fontFamily: "IranYekan",
           }}
         >
           {product.title}
@@ -103,11 +94,11 @@ const ProductCard = ({ product }) => {
           <Typography
             variant="h5"
             sx={{
-              color: "var(--second-color)",
+              color: "var(--first-color)",
               fontWeight: 900,
               flexGrow: 1,
               fontSize: isMobile ? "1.2rem" : "1.3rem",
-              fontFamily: "inherit",
+              fontFamily: "IranYekan",
             }}
           >
             {(product.price || 0).toLocaleString("fa-IR")} تومان
@@ -132,12 +123,12 @@ const ProductCard = ({ product }) => {
           startIcon={<ShoppingCart />}
           sx={{
             bgcolor: "var(--forth-color)",
-            "&:hover": { bgcolor: "var(--first-color)" },
+            "&:hover": { bgcolor: "var(--second-color)" },
             borderRadius: 3,
             py: 1,
             fontWeight: 700,
             fontSize: "0.95rem",
-            fontFamily: "inherit",
+            fontFamily: "IranYekan",
           }}
         >
           افزودن به سبد خرید
@@ -243,7 +234,7 @@ const ProductListWithFilters = () => {
           image: "/B.jpeg",
         },
       ]);
-    },25);
+    }, 25);
   }, []);
 
   const filteredProducts = products.filter((product) => {
@@ -285,7 +276,7 @@ const ProductListWithFilters = () => {
                 mb: 3,
                 fontWeight: 800,
                 color: "var(--first-color)",
-                fontFamily: "inherit",
+                fontFamily: "IranYekan",
               }}
             >
               <FilterList sx={{ ml: 1, verticalAlign: "middle" }} />
@@ -298,7 +289,7 @@ const ProductListWithFilters = () => {
                 sx={{
                   mb: 2,
                   fontWeight: 700,
-                  fontFamily: "inherit",
+                  fontFamily: "IranYekan",
                   fontSize: "1.15rem",
                 }}
               >
@@ -316,7 +307,7 @@ const ProductListWithFilters = () => {
                   "& .MuiSlider-valueLabel": {
                     backgroundColor: "var(--first-color)",
                     borderRadius: 2,
-                    fontFamily: "inherit",
+                    fontFamily: "IranYekan",
                   },
                 }}
               />
@@ -328,7 +319,7 @@ const ProductListWithFilters = () => {
                 sx={{
                   mb: 2,
                   fontWeight: "700",
-                  fontFamily: "inherit",
+                  fontFamily: "IranYekan",
                   fontSize: "1.15rem",
                 }}
               >
@@ -346,7 +337,7 @@ const ProductListWithFilters = () => {
                   sx={{
                     "& .MuiFormControlLabel-label": {
                       fontWeight: 700,
-                      fontFamily: "inherit",
+                      fontFamily: "IranYekan",
                     },
                   }}
                 />
@@ -357,7 +348,7 @@ const ProductListWithFilters = () => {
                   sx={{
                     "& .MuiFormControlLabel-label": {
                       fontWeight: 700,
-                      fontFamily: "inherit",
+                      fontFamily: "IranYekan",
                     },
                   }}
                 />
@@ -368,7 +359,7 @@ const ProductListWithFilters = () => {
                   sx={{
                     "& .MuiFormControlLabel-label": {
                       fontWeight: 700,
-                      fontFamily: "inherit",
+                      fontFamily: "IranYekan",
                     },
                   }}
                 />
@@ -380,7 +371,7 @@ const ProductListWithFilters = () => {
 
       {/* بخش اصلی محصولات */}
       <Box sx={{ flexGrow: 1 }}>
-        <Box sx={{ display: "flex", justifyContent: "center", mb: 4 }}>
+        <Stack mb={4} alignItems="center" justifyContent="center">
           <TextField
             fullWidth
             variant="outlined"
@@ -403,12 +394,12 @@ const ProductListWithFilters = () => {
                 "&:hover .MuiOutlinedInput-notchedOutline": {
                   borderColor: "var(--forth-color)",
                 },
-                fontFamily: "inherit",
+                fontFamily: "IranYekan",
               },
             }}
             sx={{ maxWidth: 500 }}
           />
-        </Box>
+        </Stack>
 
         <Box
           sx={{
@@ -440,7 +431,7 @@ const ProductListWithFilters = () => {
                 sx={{
                   color: "var(--second-color)",
                   fontWeight: 500,
-                  fontFamily: "inherit",
+                  fontFamily: "IranYekan",
                 }}
               >
                 هیچ محصولی با این فیلترها یافت نشد
