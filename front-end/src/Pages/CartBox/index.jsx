@@ -73,7 +73,7 @@ const CartBox = () => {
           <Badge badgeContent={cartItems.length} color="primary">
             <ShoppingCartCheckout fontSize="large" />
           </Badge>
-          <Typography variant="h5" ml={2} fontWeight="bold" color="primary">
+          <Typography variant="h5" ml={2} fontFamily="IranYekan" fontWeight="bold" color="primary">
             سبد خرید
           </Typography>
         </Box>
@@ -88,10 +88,10 @@ const CartBox = () => {
               </Grid>
               <Grid item xs={8} sm={9}>
                 <Box display="flex" flexDirection="column" height="100%">
-                  <Typography variant="h6" fontWeight="bold" color="text.primary" gutterBottom>
+                  <Typography variant="h6" fontFamily="IranYekan" fontWeight="bold" color="text.primary" gutterBottom>
                     {item.name}
                   </Typography>
-                  <Typography variant="body2" color="text.secondary" mb={1}>
+                  <Typography variant="body2" color="text.secondary" mb={1} fontFamily="IranYekan" fontWeight="bold">
                     {item.price.toFixed(2)} تومان هر کالا
                   </Typography>
 
@@ -121,9 +121,9 @@ const CartBox = () => {
         <Divider sx={{ my: 2 }} />
 
         <Box display="flex" justifyContent="space-between" mb={2}>
-          <Typography variant="h6">مجموع:</Typography>
-          <Typography variant="h6" fontWeight="bold" color="primary">
-            ${total.toFixed(2)}
+          <Typography variant="h6" fontFamily="IranYekan" fontWeight="bold">مجموع:</Typography>
+          <Typography variant="h6" fontWeight="bold" color="primary" fontFamily="IranYekan" >
+            {total.toFixed(2)} تومان
           </Typography>
         </Box>
 
@@ -135,8 +135,10 @@ const CartBox = () => {
           sx={{
             py: 1.5,
             borderRadius: 12,
-            '&:hover': { backgroundColor: '#3f51b5' },
-            transition: 'background-color 0.3s',
+            '&:hover': { backgroundColor: 'Var(--second-color)' },
+            transition: 'all 0.5s',
+            fontFamily:"IranYekan",
+            fontWeight:"bold"
           }}
         >
           پرداخت نهایی
