@@ -123,6 +123,7 @@ const BestSells = () => {
           borderBottom: "3px solid var(--first-color)",
           paddingBottom: "5px",
           display: "inline-block",
+          fontFamily: "IranYekan",
         }}
       >
         تازه ترین ها
@@ -130,7 +131,7 @@ const BestSells = () => {
       <Swiper
         style={{ padding: "1% 0" }}
         modules={[Navigation]}
-        spaceBetween={15}
+        spaceBetween={40}
         slidesPerView={isMobile ? 2 : 4}
         breakpoints={{
           100: { slidesPerView: 1.5 },
@@ -150,7 +151,6 @@ const BestSells = () => {
                   padding: 2,
                   textAlign: "center",
                   height: "auto",
-                  width: "180px",
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "space-between",
@@ -177,9 +177,9 @@ const BestSells = () => {
                     zIndex: 1,
                     background: "var(--third-color)",
                     borderRadius: "100%",
-                    ":hover":{
+                    ":hover": {
                       background: "whitesmoke",
-                    }
+                    },
                   }}
                 >
                   <FavoriteBorder />
@@ -198,16 +198,24 @@ const BestSells = () => {
                 <CardContent>
                   <Typography
                     variant="h6"
-                    sx={{ fontWeight: "bold", fontSize: "1.5rem" }}
+                    sx={{
+                      fontWeight: "bold",
+                      fontSize: "1.25rem",
+                      fontFamily: "IranYekan",
+                    }}
                   >
                     {product.title}
                   </Typography>
                   <Typography
                     variant="body2"
                     color="text.secondary"
-                    sx={{ fontSize: "1.15rem", fontWeight: "bolder" }}
+                    sx={{
+                      fontSize: "1.15rem",
+                      fontWeight: "bolder",
+                      fontFamily: "IranYekan",
+                    }}
                   >
-                    {product.price +" "}تومان
+                    {product.price + " "}تومان
                   </Typography>
                   <Box
                     sx={{ display: "flex", justifyContent: "center", mt: 1 }}
