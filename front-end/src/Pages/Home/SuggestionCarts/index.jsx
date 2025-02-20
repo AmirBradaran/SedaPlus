@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, Grid, Typography, Box, useTheme } from "@mui/material";
-import { Link } from "react-router-dom";  // استفاده از Link
+import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import "swiper/css";
@@ -94,7 +94,6 @@ const ProductList = () => {
       price: "۴,۰۰۰,۰۰۰ تومان",
     },
   ];
-  
 
   return (
     <Box
@@ -104,15 +103,17 @@ const ProductList = () => {
         width: "90%",
         margin: theme.spacing(4, "auto"),
         background:
-          "linear-gradient(to right, var(--second-color), var(--second-color) 50% )",
+          "linear-gradient(155deg, var(--second-color) 50%, var(--forth-color) 70% )",
         boxShadow: "2px 4px 10px 2px rgba(0,0,0,0.2)",
         borderRadius: 4,
         position: "relative",
         overflow: "hidden",
         display: "flex",
         alignItems: "center",
-        flexDirection: "row",
-        borderRadius: 5,
+        flexDirection: { xs: "column", sm: "row" },
+        flexWrap: "wrap",
+        justifyContent: "center",
+        gap: theme.spacing(2),
       }}
     >
       <Box
@@ -124,7 +125,10 @@ const ProductList = () => {
           background: "rgba(255, 255, 255, 0.1)",
           borderRadius: 2,
           backdropFilter: "blur(5px)",
-          mb: 2,
+          mb: { xs: 2, sm: 0 },
+          width: { xs: "100%", sm: "auto" },
+          order: { xs: 0, sm: 0 },
+          alignSelf: "center",
         }}
       >
         <Typography
@@ -132,132 +136,136 @@ const ProductList = () => {
           fontWeight="bold"
           sx={{
             color: "var(--third-color)",
-            fontSize: { xs: "1.8rem", sm: "2.4rem", md: "3rem" },
+            fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem" },
             textShadow: "2px 2px 4px rgba(0,0,0,0.3)",
+            fontFamily: "IranYekan",
           }}
         >
           پیشنهادات ویژه
         </Typography>
       </Box>
-      <Swiper
-        modules={[Pagination]}
-        slidesPerView={4.5}
-        spaceBetween={"2%"}
-        pagination={{ clickable: true }}
-        breakpoints={{
-          200: { slidesPerView: 1 },
-          600: { slidesPerView: 1.5 },
-          1020: { slidesPerView: 2.5 },
-          1350: { slidesPerView: 3.5 },
-          1600: { slidesPerView: 4.5 },
-        }}
-        style={{ width: "85%", padding: "1% 0" }}
-      >
-        {products.map((product, index) => (
-          <SwiperSlide key={index} style={{ background: "none" }}>
-            <Grid
-              item
-              sx={{
-                flex: "0 0 auto",
-                display: "flex",
-                justifyContent: "center",
-                background: "transparent",
-              }}
-            >
-              <Link to={`/product-detail/${product.id}`} style={{ textDecoration: "none", display: "block", background: "transparent" }}>
-                <Card
-                  sx={{
-                    width: 250,
-                    minHeight: 350,
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "space-between",
-                    padding: 2,
-                    borderRadius: 4,
-                    transition: "all 0.3s",
-                    background: "var(--third-color)",
-                    "&:hover": {
-                      transform: "translateY(-10px)",
-                      boxShadow: "0 8px 20px rgba(0,0,0,0.2)",
-                      background: "rgb(255, 255, 255)",
-                    },
+      <Box sx={{ flexGrow: 1, width: "100%" }}>
+        <Swiper
+          modules={[Pagination]}
+          slidesPerView={4.5}
+          spaceBetween={10}
+          pagination={{ clickable: true }}
+          breakpoints={{
+            200: { slidesPerView: 1 },
+            600: { slidesPerView: 1.5 },
+            1020: { slidesPerView: 2 },
+            1350: { slidesPerView: 3 },
+            1600: { slidesPerView: 4 },
+          }}
+          style={{ width: "100%", padding: "1% 0" }}
+        >
+          {products.map((product, index) => (
+            <SwiperSlide key={index} style={{ background: "none" }}>
+              <Grid
+                item
+                sx={{
+                  flex: "0 0 auto",
+                  display: "flex",
+                  justifyContent: "center",
+                  background: "transparent",
+                }}
+              >
+                <Link
+                  to={`/product-detail/${product.id}`}
+                  style={{
+                    textDecoration: "none",
+                    display: "block",
+                    background: "transparent",
                   }}
                 >
-                  <Box
+                  <Card
                     sx={{
-                      width: "100%",
-                      height: 150,
-                      borderRadius: 2,
-                      mb: 3,
+                      width: { xs: "90%", sm: 250 },
+                      minHeight: 350,
                       display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      overflow: "hidden",
+                      flexDirection: "column",
+                      justifyContent: "space-between",
+                      padding: 2,
+                      borderRadius: 4,
+                      transition: "all 0.3s",
+                      background: "var(--third-color)",
+                      "&:hover": {
+                        transform: "translateY(-10px)",
+                        boxShadow: "0 8px 20px rgba(0,0,0,0.2)",
+                        background: "rgb(255, 255, 255)",
+                      },
                     }}
                   >
-                    <img
-                      src={product.img}
-                      alt={product.title}
-                      style={{
+                    <Box
+                      sx={{
                         width: "100%",
-                        height: "100%",
-                        objectFit: "contain",
-                      }}
-                    />
-                  </Box>
-
-                  <Box sx={{ textAlign: "center", flexGrow: 1 }}>
-                    <Typography
-                      variant="h5"
-                      fontWeight="bold"
-                      sx={{
-                        color: "var(--primary-color)",
-                        fontSize: { xs: "1.2rem", md: "1.4rem" },
-                        mb: 2,
+                        height: { xs: 120, sm: 150 },
+                        borderRadius: 2,
+                        mb: 3,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        overflow: "hidden",
                       }}
                     >
-                      {product.title}
-                    </Typography>
+                      <img
+                        src={product.img}
+                        alt={product.title}
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "contain",
+                        }}
+                      />
+                    </Box>
 
-                    <Typography
-                      variant="body1"
-                      sx={{
-                        color: "text.secondary",
-                        lineHeight: 1.6,
-                        minHeight: 60,
-                        fontSize: { xs: "0.9rem", md: "1rem" },
-                      }}
-                    >
-                      {product.model}
-                    </Typography>
-                  </Box>
+                    <Box sx={{ textAlign: "center", flexGrow: 1 }}>
+                      <Typography
+                        variant="h5"
+                        fontWeight="bold"
+                        sx={{
+                          color: "var(--primary-color)",
+                          fontSize: { xs: "1rem", md: "1.2rem" },
+                          mb: 2,
+                          fontFamily: "IranYekan",
+                        }}
+                      >
+                        {product.title}
+                      </Typography>
 
-                  <Box
-                    sx={{
-                      textAlign: "center",
-                      mt: 3,
-                      pt: 2,
-                      borderTop: `1px solid ${theme.palette.divider}`,
-                    }}
-                  >
-                    <Typography
-                      variant="h6"
-                      sx={{
-                        color: "var(--first-color)",
-                        fontWeight: "bold",
-                        fontSize: { xs: "1.1rem", md: "1.3rem" },
-                        letterSpacing: "0.5px",
-                      }}
-                    >
-                      {product.price}
-                    </Typography>
-                  </Box>
-                </Card>
-              </Link>
-            </Grid>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+                      <Typography
+                        variant="body1"
+                        sx={{
+                          color: "text.secondary",
+                          lineHeight: 1.6,
+                          minHeight: 60,
+                          fontSize: { xs: "0.8rem", md: "0.9rem" },
+                          fontFamily: "IranYekan",
+                        }}
+                      >
+                        {product.model}
+                      </Typography>
+
+                      <Typography
+                        variant="h6"
+                        fontWeight="bold"
+                        sx={{
+                          color: "var(--secondary-color)",
+                          fontSize: { xs: "1rem", md: "1.2rem" },
+                          mt: 2,
+                          fontFamily: "IranYekan",
+                        }}
+                      >
+                        {product.price}
+                      </Typography>
+                    </Box>
+                  </Card>
+                </Link>
+              </Grid>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </Box>
     </Box>
   );
 };
