@@ -17,6 +17,7 @@ import {
   RadioGroup,
   useMediaQuery,
   Stack,
+  patch,
 } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 import { purple } from "@mui/material/colors";
@@ -58,7 +59,7 @@ const ProductCard = ({ product }) => {
         },
       }}
     >
-      <Link to={`/products/${product.id}`} style={{ textDecoration: "none" }}>
+      <Link to={`/product-details/${product.id}/${product.title}`} style={{ textDecoration: "none" }}>
         <CardMedia
           component="img"
           height="50%"
