@@ -30,15 +30,15 @@ const NumberedCategories = () => {
                 justifyContent: 'center',
                 textAlign: 'center',
                 cursor: "pointer",
-                background: "linear-gradient(to top , var(--second-color) 5% , var(--third-color) 20%)",
+                background: "var(--third-color)",
                 borderRadius: 100,
+                transition:"all 0.15s",
                 "&:hover": {
                   background: "var(--third-color)",
                   color: "var(--second-color)",
                   transform: "scale(1.05)",
                   boxShadow: "0px 4px 15px rgba(0,0,0,0.2)",
                 },
-                boxShadow:"0px 10px 8px 2px var(--second-color)"
               }}
             >
               <Box>
