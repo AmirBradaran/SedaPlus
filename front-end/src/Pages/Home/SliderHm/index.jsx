@@ -3,11 +3,11 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination, Autoplay } from "swiper/modules";
-import "./index.css";
+import { Box } from "@mui/material";
 
 export default function SliderHm() {
   return (
-    <>
+    <Box sx={{width:"350px"}}>
       <Swiper
         autoplay={{ delay: 2000, disableOnInteraction: false }}
         pagination={{ dynamicBullets: true }}
@@ -17,7 +17,7 @@ export default function SliderHm() {
         spaceBetween={20}
         slidesPerView={1}
         style={{
-          width: "100%",
+          width:"100%",
           maxWidth: "800px",
           height: "40vh",
           border: "1px solid black",
@@ -31,6 +31,7 @@ export default function SliderHm() {
             src="./Jd.jpg"
             alt=""
             style={{
+              display:"block",
               width: "100%",
               height: "100%",
               objectFit: "cover",
@@ -43,6 +44,7 @@ export default function SliderHm() {
             src="./Jg.jpg"
             alt=""
             style={{
+              display:"block",
               width: "100%",
               height: "100%",
               objectFit: "cover",
@@ -55,6 +57,7 @@ export default function SliderHm() {
             src="./Sl.jpg"
             alt=""
             style={{
+              display:"block",
               width: "100%",
               height: "100%",
               objectFit: "cover",
@@ -67,6 +70,7 @@ export default function SliderHm() {
             src="./S.jpg"
             alt=""
             style={{
+              display:"block",
               width: "100%",
               height: "100%",
               objectFit: "cover",
@@ -79,6 +83,7 @@ export default function SliderHm() {
             src="./Sb.png"
             alt=""
             style={{
+              display:"block",
               width: "100%",
               height: "100%",
               objectFit: "cover",
@@ -91,6 +96,7 @@ export default function SliderHm() {
             src="./sj.jpg"
             alt=""
             style={{
+              display:"block",
               width: "100%",
               height: "100%",
               objectFit: "cover",
@@ -103,6 +109,7 @@ export default function SliderHm() {
             src="./Sja.jpg"
             alt=""
             style={{
+              display:"block",
               width: "100%",
               height: "100%",
               objectFit: "cover",
@@ -115,6 +122,7 @@ export default function SliderHm() {
             src="./Space.png"
             alt=""
             style={{
+              display:"block",
               width: "100%",
               height: "100%",
               objectFit: "cover",
@@ -127,6 +135,7 @@ export default function SliderHm() {
             src="./Sl.jpg"
             alt=""
             style={{
+              display:"block",
               width: "100%",
               height: "100%",
               objectFit: "cover",
@@ -135,6 +144,6 @@ export default function SliderHm() {
           />
         </SwiperSlide>
       </Swiper>
-    </>
+    </Box>
   );
 }
