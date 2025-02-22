@@ -153,9 +153,9 @@ const ProductList = () => {
           breakpoints={{
             200: { slidesPerView: 1 },
             600: { slidesPerView: 1.5 },
-            1020: { slidesPerView: 2.5 },
-            1350: { slidesPerView: 3.5 },
-            1600: { slidesPerView: 4.5 },
+            1020: { slidesPerView: 3.5 },
+            1350: { slidesPerView: 4.5 },
+            1600: { slidesPerView: 5.5 },
           }}
           style={{ width: "100%", padding: "1% 0" }}
         >
