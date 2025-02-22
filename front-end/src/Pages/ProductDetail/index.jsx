@@ -20,7 +20,12 @@ import {
   Chip,
   useMediaQuery,
 } from "@mui/material";
-import { AddShoppingCart, FavoriteBorder, Share, Send } from "@mui/icons-material";
+import {
+  AddShoppingCart,
+  FavoriteBorder,
+  Share,
+  Send,
+} from "@mui/icons-material";
 
 const products = [
   {
@@ -60,7 +65,8 @@ const ProductDetail = () => {
   const theme = useTheme();
   const { id } = useParams();
   const location = useLocation();
-  const product = location.state?.product || products.find((p) => p.id === parseInt(id, 10));
+  const product =
+    location.state?.product || products.find((p) => p.id === parseInt(id, 10));
   const [selectedSize, setSelectedSize] = useState("");
   const [mainImage, setMainImage] = useState(0);
   const [review, setReview] = useState({ rating: 0, comment: "", name: "" });
@@ -89,7 +95,9 @@ const ProductDetail = () => {
   if (!product) {
     return (
       <Container maxWidth="lg" sx={{ py: 4, textAlign: "center" }}>
-        <Typography fontFamily="IranYekan" variant="h4">محصول یافت نشد</Typography>
+        <Typography fontFamily="IranYekan" variant="h4">
+          محصول یافت نشد
+        </Typography>
       </Container>
     );
   }
@@ -136,7 +144,10 @@ const ProductDetail = () => {
                       onClick={() => setMainImage(index)}
                       sx={{
                         cursor: "pointer",
-                        border: mainImage === index ? `2px solid ${theme.palette.primary.main}` : "1px solid #e0e0e0",
+                        border:
+                          mainImage === index
+                            ? `2px solid ${theme.palette.primary.main}`
+                            : "1px solid #e0e0e0",
                         borderRadius: 1,
                         overflow: "hidden",
                         flexShrink: 0,
@@ -166,7 +177,8 @@ const ProductDetail = () => {
                 [theme.breakpoints.down("md")]: { position: "static" },
               }}
             >
-              <Typography fontFamily="IranYekan"
+              <Typography
+                fontFamily="IranYekan"
                 variant="h4"
                 component="h1"
                 gutterBottom
@@ -181,32 +193,55 @@ const ProductDetail = () => {
 
               <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
                 <Rating value={product.rating} precision={0.5} readOnly />
-                <Typography fontFamily="IranYekan" variant="body2" sx={{ ml: 1, color: "text.secondary" }}>
+                <Typography
+                  fontFamily="IranYekan"
+                  variant="body2"
+                  sx={{ ml: 1, color: "text.secondary" }}
+                >
                   ({reviews.length} نظر)
                 </Typography>
               </Box>
 
-              <Typography fontFamily="IranYekan" variant="h5" sx={{ mb: 3, color: "primary.main", fontWeight: 600 }}>
+              <Typography
+                fontFamily="IranYekan"
+                variant="h5"
+                sx={{ mb: 3, color: "primary.main", fontWeight: 600 }}
+              >
                 {product.price} تومان
               </Typography>
 
               <Divider sx={{ my: 3 }} />
 
-              <Typography fontFamily="IranYekan" variant="body1" paragraph sx={{ mb: 3, lineHeight: 1.8 }}>
+              <Typography
+                fontFamily="IranYekan"
+                variant="body1"
+                paragraph
+                sx={{ mb: 3, lineHeight: 1.8 }}
+              >
                 {product.description}
               </Typography>
 
               <Box component="ul" sx={{ pr: 3, mb: 4 }}>
                 {product.features.map((feature, index) => (
                   <li key={index}>
-                    <Typography fontFamily="IranYekan" variant="body1" color="text.secondary" sx={{ lineHeight: 1.8 }}>
+                    <Typography
+                      fontFamily="IranYekan"
+                      variant="body1"
+                      color="text.secondary"
+                      sx={{ lineHeight: 1.8 }}
+                    >
                       {feature}
                     </Typography>
                   </li>
                 ))}
               </Box>
 
-              <Typography fontFamily="IranYekan" variant="h6" gutterBottom sx={{ fontWeight: 600 }}>
+              <Typography
+                fontFamily="IranYekan"
+                variant="h6"
+                gutterBottom
+                sx={{ fontWeight: 600 }}
+              >
                 انتخاب رنگ
               </Typography>
               <ToggleButtonGroup
@@ -230,7 +265,9 @@ const ProductDetail = () => {
                       backgroundColor: "white",
                       color: product.sizeColors[size] ? "#000" : "inherit",
                       "&.Mui-selected": {
-                        backgroundColor: product.sizeColors[size] || theme.palette.primary.main,
+                        backgroundColor:
+                          product.sizeColors[size] ||
+                          theme.palette.primary.main,
                         color: theme.palette.primary.contrastText,
                       },
                     }}
@@ -240,7 +277,7 @@ const ProductDetail = () => {
                 ))}
               </ToggleButtonGroup>
 
-              {/* دکمه‌های خرید و اشتراک‌گذاری */}
+              {/* دکمه‌های خرید و اشتراک ‌گذاری */}
               <Box
                 sx={{
                   display: "flex",
@@ -264,7 +301,8 @@ const ProductDetail = () => {
                     py: 1.5,
                     fontWeight: 600,
                     boxShadow: 3,
-                    background: "linear-gradient(45deg, #1976d2 30%, #2196f3 90%)",
+                    background:
+                      "linear-gradient(45deg, #1976d2 30%, #2196f3 90%)",
                     "&:hover": {
                       boxShadow: 6,
                       transform: "translateY(-2px)",
@@ -274,7 +312,13 @@ const ProductDetail = () => {
                 >
                   افزودن به سبد خرید
                 </Button>
-                <Box sx={{ display: "flex", gap: 2, justifyContent: { xs: "center", sm: "flex-start" } }}>
+                <Box
+                  sx={{
+                    display: "flex",
+                    gap: 2,
+                    justifyContent: { xs: "center", sm: "flex-start" },
+                  }}
+                >
                   <IconButton
                     color="primary"
                     sx={{
@@ -306,7 +350,7 @@ const ProductDetail = () => {
             </Box>
           </Grid>
 
-          {/* بخش نظرات - کل عرض */}
+          {/* بخش نظرات */}
           <Grid item xs={12}>
             <Box
               sx={{
@@ -318,7 +362,8 @@ const ProductDetail = () => {
               }}
             >
               {/* فرم ارسال نظر */}
-              <Typography fontFamily="IranYekan"
+              <Typography
+                fontFamily="IranYekan"
                 variant="h5"
                 gutterBottom
                 sx={{
@@ -334,14 +379,20 @@ const ProductDetail = () => {
                 ثبت نظر جدید
               </Typography>
 
-              <Box component="form" onSubmit={handleReviewSubmit} sx={{ mb: 6 }}>
+              <Box
+                component="form"
+                onSubmit={handleReviewSubmit}
+                sx={{ mb: 6 }}
+              >
                 <Grid container spacing={3}>
                   <Grid item xs={12} md={4}>
                     <TextField
                       fullWidth
                       label="نام شما"
                       value={review.name}
-                      onChange={(e) => setReview({ ...review, name: e.target.value })}
+                      onChange={(e) =>
+                        setReview({ ...review, name: e.target.value })
+                      }
                       sx={{
                         "& .MuiOutlinedInput-root": {
                           borderRadius: 4,
@@ -353,7 +404,9 @@ const ProductDetail = () => {
                   <Grid item xs={12} md={3}>
                     <Rating
                       value={review.rating}
-                      onChange={(e, newRating) => setReview({ ...review, rating: newRating })}
+                      onChange={(e, newRating) =>
+                        setReview({ ...review, rating: newRating })
+                      }
                       sx={{ mb: 2 }}
                     />
                   </Grid>
@@ -365,7 +418,9 @@ const ProductDetail = () => {
                       rows={4}
                       label="نظر شما"
                       value={review.comment}
-                      onChange={(e) => setReview({ ...review, comment: e.target.value })}
+                      onChange={(e) =>
+                        setReview({ ...review, comment: e.target.value })
+                      }
                       sx={{
                         "& .MuiOutlinedInput-root": {
                           borderRadius: 4,
@@ -407,20 +462,44 @@ const ProductDetail = () => {
                       borderBottom: "1px solid #ddd",
                     }}
                   >
-                    <Typography fontFamily="IranYekan" variant="subtitle1" sx={{ fontWeight: 600 }}>
+                    <Typography
+                      fontFamily="IranYekan"
+                      variant="subtitle1"
+                      sx={{ fontWeight: 600 }}
+                    >
                       {review.user}
                     </Typography>
-                    <Rating value={review.rating} readOnly precision={0.5} sx={{ mb: 1 }} />
-                    <Typography fontFamily="IranYekan" variant="body2" sx={{ color: theme.palette.text.secondary }}>
+                    <Rating
+                      value={review.rating}
+                      readOnly
+                      precision={0.5}
+                      sx={{ mb: 1 }}
+                    />
+                    <Typography
+                      fontFamily="IranYekan"
+                      variant="body2"
+                      sx={{ color: theme.palette.text.secondary }}
+                    >
                       {review.comment}
                     </Typography>
-                    <Typography fontFamily="IranYekan" variant="body2" sx={{ fontSize: "0.875rem", color: theme.palette.text.secondary }}>
+                    <Typography
+                      fontFamily="IranYekan"
+                      variant="body2"
+                      sx={{
+                        fontSize: "0.875rem",
+                        color: theme.palette.text.secondary,
+                      }}
+                    >
                       {review.date}
                     </Typography>
                   </Box>
                 ))
               ) : (
-                <Typography fontFamily="IranYekan" variant="body1" color="text.secondary">
+                <Typography
+                  fontFamily="IranYekan"
+                  variant="body1"
+                  color="text.secondary"
+                >
                   هیچ نظری برای این محصول ثبت نشده است.
                 </Typography>
               )}
