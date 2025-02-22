@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Box,
   Card,
@@ -10,52 +10,55 @@ import {
   Divider,
   Badge,
   styled,
-} from '@mui/material';
-import { Add, Remove, Delete, ShoppingCartCheckout } from '@mui/icons-material';
+} from "@mui/material";
+import { Add, Remove, Delete, ShoppingCartCheckout } from "@mui/icons-material";
 const StyledCard = styled(Card)(({ theme }) => ({
-  maxWidth: '80%',
-  margin: '20px auto',
-  transition: 'transform 0.3s, box-shadow 0.3s',
+  maxWidth: "80%",
+  margin: "20px auto",
+  transition: "transform 0.3s, box-shadow 0.3s",
   borderRadius: 16,
   boxShadow: theme.shadows[10],
-  background: 'linear-gradient(135deg, #f0f8ff, #f5f5f5)',
-  direction: 'rtl',
-  '&:hover': {
-    transform: 'translateY(-5px)',
+  background: "linear-gradient(135deg, #f0f8ff, #f5f5f5)",
+  direction: "rtl",
+  "&:hover": {
+    transform: "translateY(-5px)",
     boxShadow: theme.shadows[20],
   },
-  display:"flex",flexWrap:"wrap"
+  display: "flex",
+  flexWrap: "wrap",
 }));
 
-const CartItemImage = styled('img')({
-  width: '80%',
-  height: '100%',
+const CartItemImage = styled("img")({
+  width: "80%",
+  height: "100%",
   borderRadius: 8,
-  objectFit: 'contain',
+  objectFit: "contain",
 });
 
 const CartBox = () => {
   const [cartItems, setCartItems] = React.useState([
     {
       id: 1,
-      name: 'کفش اسپرت پریمیوم',
+      name: "کفش اسپرت پریمیوم",
       price: 129.99,
       quantity: 2,
-      image: '/B.jpeg',
+      image: "/B.jpeg",
     },
     {
       id: 2,
-      name: 'هدفون بی‌سیم',
+      name: "هدفون بی‌سیم",
       price: 199.99,
       quantity: 1,
-      image: '/B.jpeg',
+      image: "/B.jpeg",
     },
   ]);
 
   const handleQuantityChange = (id, delta) => {
     setCartItems(
       cartItems.map((item) =>
-        item.id === id ? { ...item, quantity: Math.max(1, item.quantity + delta) } : item
+        item.id === id
+          ? { ...item, quantity: Math.max(1, item.quantity + delta) }
+          : item
       )
     );
   };
@@ -64,7 +67,10 @@ const CartBox = () => {
     setCartItems(cartItems.filter((item) => item.id !== id));
   };
 
-  const total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const total = cartItems.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0
+  );
 
   return (
     <StyledCard>
@@ -73,7 +79,13 @@ const CartBox = () => {
           <Badge badgeContent={cartItems.length} color="primary">
             <ShoppingCartCheckout fontSize="large" />
           </Badge>
-          <Typography variant="h5" ml={2} fontFamily="IranYekan" fontWeight="bold" color="primary">
+          <Typography
+            variant="h5"
+            ml={2}
+            fontFamily="IranYekan"
+            fontWeight="bold"
+            color="primary"
+          >
             سبد خرید
           </Typography>
         </Box>
@@ -88,26 +100,44 @@ const CartBox = () => {
               </Grid>
               <Grid item xs={8} sm={9}>
                 <Box display="flex" flexDirection="column" height="100%">
-                  <Typography variant="h6" fontFamily="IranYekan" fontWeight="bold" color="text.primary" gutterBottom>
+                  <Typography
+                    variant="h6"
+                    fontFamily="IranYekan"
+                    fontWeight="bold"
+                    color="text.primary"
+                    gutterBottom
+                  >
                     {item.name}
                   </Typography>
-                  <Typography variant="body2" color="text.secondary" mb={1} fontFamily="IranYekan" fontWeight="bold">
-                    {item.price.toFixed(2)} تومان هر کالا
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    mb={1}
+                    fontFamily="IranYekan"
+                    fontWeight="bold"
+                  >
+                    {item.price.toLocaleString("fa-IR")} تومان هر کالا
                   </Typography>
 
                   <Box mt="auto" display="flex" alignItems="center">
-                    <IconButton size="small" onClick={() => handleQuantityChange(item.id, -1)}>
+                    <IconButton
+                      size="small"
+                      onClick={() => handleQuantityChange(item.id, -1)}
+                    >
                       <Remove fontSize="small" />
                     </IconButton>
                     <Typography mx={1}>{item.quantity}</Typography>
-                    <IconButton size="small" onClick={() => handleQuantityChange(item.id, 1)}>
+                    <IconButton
+                      size="small"
+                      onClick={() => handleQuantityChange(item.id, 1)}
+                    >
                       <Add fontSize="small" />
                     </IconButton>
 
                     <IconButton
                       size="small"
                       onClick={() => handleRemoveItem(item.id)}
-                      sx={{ ml: 'auto' }}
+                      sx={{ ml: "auto" }}
                     >
                       <Delete fontSize="small" color="error" />
                     </IconButton>
@@ -121,9 +151,16 @@ const CartBox = () => {
         <Divider sx={{ my: 2 }} />
 
         <Box display="flex" justifyContent="space-between" mb={2}>
-          <Typography variant="h6" fontFamily="IranYekan" fontWeight="bold">مجموع:</Typography>
-          <Typography variant="h6" fontWeight="bold" color="primary" fontFamily="IranYekan" >
-            {total.toFixed(2)} تومان
+          <Typography variant="h6" fontFamily="IranYekan" fontWeight="bold">
+            مجموع:
+          </Typography>
+          <Typography
+            variant="h6"
+            fontWeight="bold"
+            color="primary"
+            fontFamily="IranYekan"
+          >
+            {total.toLocaleString("fa-IR")} تومان
           </Typography>
         </Box>
 
@@ -135,10 +172,10 @@ const CartBox = () => {
           sx={{
             py: 1.5,
             borderRadius: 12,
-            '&:hover': { backgroundColor: 'Var(--second-color)' },
-            transition: 'all 0.5s',
-            fontFamily:"IranYekan",
-            fontWeight:"bold"
+            "&:hover": { backgroundColor: "Var(--second-color)" },
+            transition: "all 0.5s",
+            fontFamily: "IranYekan",
+            fontWeight: "bold",
           }}
         >
           پرداخت نهایی
