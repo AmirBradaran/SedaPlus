@@ -29,12 +29,13 @@ export default function Home() {
           borderTopLeftRadius: "15%",
           background: "linear-gradient(to bottom, var(--second-color), white)",
           alignItems: "center",
+          width:"100%"
         }}
       >
         <Box sx={{ display: "flex", justifyContent: "center" }}>
           <SuggestionLeftSlider />
         </Box>
-        <Box sx={{ display: "flex", justifyContent: "center" }}>
+        <Box sx={{ display: "flex", justifyContent: "center" , width:"100%" }}>
           <SliderHm />
         </Box>
         <Box sx={{ display: "flex", justifyContent: "center" }}>
