@@ -7,7 +7,7 @@ import BuildIcon from '@mui/icons-material/Build';
 
 const NumberedCategories = () => {
   const categories = [
-    { title: 'هدفون', icon: <HeadphonesIcon style={{ fontSize: 50 }} /> },
+    { title: 'هدفون', icon: <HeadphonesIcon style={{ fontSize: 50 }} />},
     { title: 'هدست', icon: <HeadsetIcon style={{ fontSize: 50 }} /> },
     { title: 'هندزفری', icon: <PhoneAndroidIcon style={{ fontSize: 50 }} /> },
     { title: 'لوازم جانبی', icon: <BuildIcon style={{ fontSize: 50 }} /> },
@@ -39,11 +39,12 @@ const NumberedCategories = () => {
                   transform: "scale(1.05)",
                   boxShadow: "0px 4px 15px rgba(0,0,0,0.2)",
                 },
+                mx:{xs:"15%" , sm:"10%" , md:"0"}
               }}
             >
               <Box>
                 {category.icon}
-                <Typography variant="h7" fontWeight="bold" sx={{ marginTop: 1 }}>
+                <Typography variant="h7" fontWeight="bold" sx={{ marginTop: 1 }} fontFamily={'IranYekan'}>
                   {category.title}
                 </Typography>
               </Box>
