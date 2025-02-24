@@ -14,6 +14,8 @@ import Auth from "./Pages/Auth";
 import NotFound from "./Pages/NotFound";
 import AboutUs from "./Pages/AboutUs";
 import FavoriteCards from "./Pages/FavoriteCards";
+import Magazine from "./Pages/Magazine";
+
 import "./App.css";
 export default function App() {
   const { token } = useSelector((state) => state.auth);
@@ -44,6 +46,7 @@ export default function App() {
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/favorites" element={<FavoriteCards />} />
           <Route path="*" element={<NotFound />} />
+          <Route path="/magazine" element={<Magazine/>} />
         </Routes>
       </Box>
       <Footer />
