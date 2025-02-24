@@ -7,7 +7,7 @@ import { Box } from "@mui/material";
 
 export default function SliderHm() {
   return (
-    <Box sx={{width:"350px"}}>
+    <Box sx={{width:{xs:"325px" , sm:"600px" , md:"700px" }}}>
       <Swiper
         autoplay={{ delay: 2000, disableOnInteraction: false }}
         pagination={{ dynamicBullets: true }}
