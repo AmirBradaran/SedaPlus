@@ -149,7 +149,7 @@ const ProductList = () => {
           modules={[Pagination]}
           slidesPerView={4.5}
           spaceBetween={10}
-          pagination={{ clickable: true }}
+          pagination={{ el: ".custom-pagination",clickable: true }}
           breakpoints={{
             200: { slidesPerView: 1 },
             600: { slidesPerView: 1.5 },
@@ -186,13 +186,14 @@ const ProductList = () => {
                       flexDirection: "column",
                       justifyContent: "space-between",
                       padding: 2,
-                      borderRadius: 4,
+                      borderRadius: 2.5,
                       transition: "all 0.3s",
                       background: "var(--third-color)",
                       "&:hover": {
                         transform: "translateY(-10px)",
                         boxShadow: "0 8px 20px rgba(0,0,0,0.2)",
                         background: "rgb(255, 255, 255)",
+                        borderRadius: 5,
                       },
                     }}
                   >
@@ -265,6 +266,7 @@ const ProductList = () => {
             </SwiperSlide>
           ))}
         </Swiper>
+        <div className="custom-pagination" style={{ textAlign: "center", marginTop: "0px"  }}></div>
       </Box>
     </Box>
   );
