@@ -25,8 +25,8 @@ export default function Home() {
           alignItems:"center",
           py: 5,
           px: "5%",
-          borderTopRightRadius: "15%",
-          borderTopLeftRadius: "15%",
+          borderTopRightRadius: "5%",
+          borderTopLeftRadius: "5%",
           background: "linear-gradient(to bottom, var(--second-color), white)",
           alignItems: "center",
           width:"100%"
