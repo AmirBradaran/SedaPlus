@@ -67,7 +67,7 @@ const Navbar = () => {
       sx={{
         position: "relative",
         width: "90%",
-        height: "150px",
+        height: "130px",
         zIndex: 1200,
         background:
           "linear-gradient(to bottom , var(--second-color) 65%, white)",
@@ -135,12 +135,12 @@ const Navbar = () => {
                       p: 0,
                       transition: "all 0.25s",
                       ":hover": {
-                        color: "var(--first-color)",
+                        color: "#b8b8b8",
                         translate: "0 -15%",
                       },
                     }}
                     key={item.label}
-                    onClick={(e) => setMenuAnchor(e.currentTarget)}
+                    onMouseEnter={(e) => setMenuAnchor(e.currentTarget)}
                   >
                     {item.label}
                   </Button>
@@ -153,7 +153,7 @@ const Navbar = () => {
                         fontWeight: "bold",
                         fontFamily: "IranYekan",
                         transition: "all 0.35s",
-                        ":hover": { color: "var(--first-color)" },
+                        ":hover": { color: "#b8b8b8" },
                       }}
                     >
                       {item.label === "ورود" && token ? "پروفایل" : item.label}
@@ -182,6 +182,7 @@ const Navbar = () => {
                   "linear-gradient(135deg , var(--second-color) 65%, white)",
                 color: "var(--third-color)",
               },
+              fontFamily:"IranYekan"
             }}
             key={category}
             onClick={() => setMenuAnchor(null)}
@@ -213,23 +214,23 @@ const Navbar = () => {
           >
             <Close />
           </IconButton>
-          <List>
+          <List >
             {navItems.map((item) => (
               <ListItem key={item.label}>
                 <StyledLink to={item.path}>
-                  <Typography>{item.label}</Typography>
+                  <Typography sx={{fontFamily:"IranYekan"}}>{item.label}</Typography>
                 </StyledLink>
               </ListItem>
             ))}
           </List>
           <Divider />
           <List>
-            <Typography variant="h6" sx={{ px: 2, py: 1.5 }}>
+            <Typography variant="h6" sx={{ px: 2, py: 1.5 , fontFamily:"IranYekan" }}>
               دسته بندی ها
             </Typography>
             {categories.map((category) => (
               <ListItem key={category}>
-                <Typography>{category}</Typography>
+                <Typography sx={{fontFamily:"IranYekan"}}>{category}</Typography>
               </ListItem>
             ))}
           </List>
