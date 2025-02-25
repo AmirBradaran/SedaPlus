@@ -62,17 +62,19 @@ export default function Login({ handlePageType }) {
           "linear-gradient(135deg, var(--first-color), var(--second-color))",
         borderRadius: 2,
         boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.2)",
+        fontFamily: "IranYekan",
+        textAlign: "right"
       }}
     >
       <Typography
         variant="h4"
-        sx={{ color: "#fff", fontWeight: "bold", textAlign: "center" }}
+        sx={{ color: "#fff", fontWeight: "bold", textAlign: "right", fontFamily: "IranYekan" }}
       >
         ورود
       </Typography>
 
       {error && (
-        <Typography color="error" sx={{ marginBottom: 2, textAlign: "center" }}>
+        <Typography color="error" sx={{ marginBottom: 2, textAlign: "right", fontFamily: "IranYekan" }}>
           {error}
         </Typography>
       )}
@@ -85,10 +87,17 @@ export default function Login({ handlePageType }) {
           type={field === "password" ? "password" : "text"}
           fullWidth
           onChange={handleChange}
-          InputLabelProps={{ sx: { color: "#fff" } }}
+          InputLabelProps={{
+            sx: {
+              color: "#fff",
+              textAlign: "right",
+              fontFamily: "IranYekan",
+              direction: "rtl",
+            }
+          }}
           sx={{
             backgroundColor: "rgba(255, 255, 255, 0.1)",
-            input: { color: "#fff" },
+            input: { color: "#fff", fontFamily: "IranYekan" },
             "& .MuiOutlinedInput-root": {
               "& fieldset": { borderColor: "#fff" },
               "&:hover fieldset": { borderColor: "#a8dadc" },
@@ -104,14 +113,17 @@ export default function Login({ handlePageType }) {
           background: "var(--second-color)",
           color: "white",
           width: "100%",
+          fontFamily: "IranYekan",
+          textAlign: "right",
           ":hover": {
             background: "var(--forth-color)",
           },
+           fontWeight:"bold"
         }}
       >
         ورود
       </Button>
-      <Button variant="text" onClick={handlePageType} sx={{ color: "#f1faee" }}>
+      <Button variant="text" onClick={handlePageType} sx={{ color: "#f1faee", fontFamily: "IranYekan", textAlign: "right" }}>
         حساب کاربری ندارید؟ بسازید
       </Button>
     </Box>
