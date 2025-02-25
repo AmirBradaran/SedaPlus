@@ -68,7 +68,6 @@ const ProductCard = ({ product }) => {
           sx={{
             objectFit: "cover",
             p: 2,
-            borderBottom: `1px solid ${purple[100]}`,
           }}
         />
       </Link>
@@ -121,7 +120,7 @@ const ProductCard = ({ product }) => {
         <Button
           fullWidth
           variant="contained"
-          startIcon={<ShoppingCart />}
+          startIcon={<ShoppingCart style={{marginLeft:15}} />}
           sx={{
             bgcolor: "var(--forth-color)",
             "&:hover": { bgcolor: "var(--second-color)" },
