@@ -63,17 +63,19 @@ export default function Register({ handlePageType }) {
           "linear-gradient(135deg, var(--first-color), var(--second-color))",
         borderRadius: 2,
         boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.2)",
+        fontFamily: "IranYekan",
+        textAlign: "right"
       }}
     >
       <Typography
         variant="h4"
-        sx={{ color: "#fff", fontWeight: "bold", textAlign: "center" }}
+        sx={{ color: "#fff", fontWeight: "bold", textAlign: "right", fontFamily: "IranYekan" }}
       >
         ثبت نام
       </Typography>
 
       {error && (
-        <Typography color="error" sx={{ marginBottom: 2, textAlign: "center" }}>
+        <Typography color="error" sx={{ marginBottom: 2, textAlign: "right", fontFamily: "IranYekan" }}>
           {error}
         </Typography>
       )}
@@ -83,9 +85,9 @@ export default function Register({ handlePageType }) {
         label="نام کاربری"
         fullWidth
         onChange={handleChange}
-        InputLabelProps={{ sx: { color: "#fff" } }}
+        InputLabelProps={{ sx: { color: "#fff", textAlign: "right", fontFamily: "IranYekan", direction: "rtl" } }}
         sx={{
-          input: { color: "#fff" },
+          input: { color: "#fff", textAlign: "right", fontFamily: "IranYekan" },
           "& .MuiOutlinedInput-root": {
             "& fieldset": { borderColor: "#fff" },
             "&:hover fieldset": { borderColor: "#a8dadc" },
@@ -99,9 +101,9 @@ export default function Register({ handlePageType }) {
         type="email"
         fullWidth
         onChange={handleChange}
-        InputLabelProps={{ sx: { color: "#fff" } }}
+        InputLabelProps={{ sx: { color: "#fff", textAlign: "right", fontFamily: "IranYekan", direction: "rtl" } }}
         sx={{
-          input: { color: "#fff" },
+          input: { color: "#fff", textAlign: "right", fontFamily: "IranYekan" },
           "& .MuiOutlinedInput-root": {
             "& fieldset": { borderColor: "#fff" },
             "&:hover fieldset": { borderColor: "#a8dadc" },
@@ -115,9 +117,9 @@ export default function Register({ handlePageType }) {
         type="password"
         fullWidth
         onChange={handleChange}
-        InputLabelProps={{ sx: { color: "#fff" } }}
+        InputLabelProps={{ sx: { color: "#fff", textAlign: "right", fontFamily: "IranYekan", direction: "rtl" } }}
         sx={{
-          input: { color: "#fff" },
+          input: { color: "#fff", textAlign: "right", fontFamily: "IranYekan" },
           "& .MuiOutlinedInput-root": {
             "& fieldset": { borderColor: "#fff" },
             "&:hover fieldset": { borderColor: "#a8dadc" },
@@ -131,16 +133,21 @@ export default function Register({ handlePageType }) {
           background: "var(--second-color)",
           color: "white",
           width: "100%",
+          fontFamily: "IranYekan",
+          textAlign: "right",
           ":hover": {
             background: "var(--forth-color)",
           },
+          fontWeight:"bold"
         }}
       >
         ثبت نام
       </Button>
-      <Button variant="text" onClick={handlePageType} sx={{ color: "#f1faee" }}>
+      <Button variant="text" onClick={handlePageType} sx={{ color: "#f1faee", fontFamily: "IranYekan", textAlign: "right" }}>
         اکانت دارید؟ وارد شوید
       </Button>
     </Box>
+
+
   );
 }
