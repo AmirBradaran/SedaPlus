@@ -92,11 +92,13 @@ const Navbar = () => {
               </Badge>
             </IconButton>
           </StyledLink>
-          <StyledLink to="/favorites">
-            <IconButton>
-              <FavoriteBorder sx={{ fontSize: 32, color: "common.white" }} />
-            </IconButton>
-          </StyledLink>
+          {token ? (
+            <StyledLink to="/favorites">
+              <IconButton>
+                <FavoriteBorder sx={{ fontSize: 32, color: "common.white" }} />
+              </IconButton>
+            </StyledLink>
+          ) : null}
           <StyledLink to="/search">
             <IconButton>
               <Search sx={{ fontSize: 32, color: "common.white" }} />
@@ -182,7 +184,7 @@ const Navbar = () => {
                   "linear-gradient(135deg , var(--second-color) 65%, white)",
                 color: "var(--third-color)",
               },
-              fontFamily:"IranYekan"
+              fontFamily: "IranYekan",
             }}
             key={category}
             onClick={() => setMenuAnchor(null)}
@@ -214,23 +216,30 @@ const Navbar = () => {
           >
             <Close />
           </IconButton>
-          <List >
+          <List>
             {navItems.map((item) => (
               <ListItem key={item.label}>
                 <StyledLink to={item.path}>
-                  <Typography sx={{fontFamily:"IranYekan"}}>{item.label}</Typography>
+                  <Typography sx={{ fontFamily: "IranYekan" }}>
+                    {item.label}
+                  </Typography>
                 </StyledLink>
               </ListItem>
             ))}
           </List>
           <Divider />
           <List>
-            <Typography variant="h6" sx={{ px: 2, py: 1.5 , fontFamily:"IranYekan" }}>
+            <Typography
+              variant="h6"
+              sx={{ px: 2, py: 1.5, fontFamily: "IranYekan" }}
+            >
               دسته بندی ها
             </Typography>
             {categories.map((category) => (
               <ListItem key={category}>
-                <Typography sx={{fontFamily:"IranYekan"}}>{category}</Typography>
+                <Typography sx={{ fontFamily: "IranYekan" }}>
+                  {category}
+                </Typography>
               </ListItem>
             ))}
           </List>
