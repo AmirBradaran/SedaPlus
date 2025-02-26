@@ -113,7 +113,7 @@ const BestSells = () => {
 
   return (
     <Box
-      sx={{ direction: "rtl", padding: { xs: 2, sm: 4 }, position: "relative" }}
+      sx={{ direction: "rtl", py: { xs: 2, sm: 4 }, position: "relative" , px:{xs:2 , sm:12} }}
     >
       <Typography
         variant="h4"
