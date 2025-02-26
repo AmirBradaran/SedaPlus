@@ -120,7 +120,7 @@ const BestSells = () => {
         fontWeight="bold"
         sx={{
           color: "var(--primary-color)",
-          borderBottom: "3px solid var(--first-color)",
+          borderBottom: "3px solid var(--second-color)",
           paddingBottom: "5px",
           display: "inline-block",
           fontFamily: "IranYekan",
@@ -239,9 +239,9 @@ const BestSells = () => {
         ref={nextRef}
         sx={{
           position: "absolute",
-          top: "50%",
+          top: "60%",
           transform: "translateY(-50%)",
-          left: "5px",
+          left: "2%",
           zIndex: 10,
           color: theme.palette.primary.main,
           backgroundColor: "rgba(255, 255, 255, 0.75)",
@@ -257,9 +257,9 @@ const BestSells = () => {
         ref={prevRef}
         sx={{
           position: "absolute",
-          top: "50%",
+          top: "60%",
           transform: "translateY(-50%)",
-          right: "5px",
+          right: "2%",
           zIndex: 10,
           color: theme.palette.primary.main,
           backgroundColor: "rgba(255, 255, 255, 0.75)",
