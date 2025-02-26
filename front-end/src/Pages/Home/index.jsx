@@ -7,6 +7,7 @@ import SuggestionRightSlider from "./SuggestionRightSlider/index";
 import React from "react";
 import { Box, Stack } from "@mui/material";
 import SuggestionCarts from "./SuggestionCarts";
+import MagazineHm from "./MagazineHm";
 
 export default function Home() {
   return (
@@ -46,6 +47,7 @@ export default function Home() {
       <SuggestionCarts />
       <NewstSells />
       <BestSells />
+      <MagazineHm/>
     </Stack>
   );
 }
