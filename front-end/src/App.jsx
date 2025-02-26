@@ -15,6 +15,7 @@ import NotFound from "./Pages/NotFound";
 import AboutUs from "./Pages/AboutUs";
 import FavoriteCards from "./Pages/FavoriteCards";
 import Magazine from "./Pages/Magazine";
+import MoreInf from "./Pages/Magazine/MoreInf";
 
 import "./App.css";
 export default function App() {
@@ -47,6 +48,7 @@ export default function App() {
           <Route path="/favorites" element={<FavoriteCards />} />
           <Route path="*" element={<NotFound />} />
           <Route path="/magazine" element={<Magazine/>} />
+          <Route path="/news/:id" element={<MoreInf/>} />
         </Routes>
       </Box>
       <Footer />
