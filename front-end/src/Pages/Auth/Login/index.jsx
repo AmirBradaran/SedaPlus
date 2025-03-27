@@ -13,37 +13,43 @@ export default function Login({ handlePageType }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     if (!formData.username || !formData.password) {
       setError("لطفاً تمام فیلدها را پر کنید.");
       return;
     }
-
+  
     try {
-      const response = await fetch("https://fakestoreapi.com/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username: formData.username,
-          password: formData.password,
-        }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        localStorage.setItem("token", data.token);
+      const response = await fetch("https://67c2e5c71851890165ad918c.mockapi.io/users");
+  
+      if (!response.ok) {
+        throw new Error("خطا در دریافت داده‌ها از سرور");
+      }
+  
+      const users = await response.json();
+  
+      if (!Array.isArray(users) || users.length === 0) {
+        setError("هیچ کاربری ثبت نشده است.");
+        return;
+      }
+  
+      const user = users.find(
+        (user) => user.username === formData.username && user.password === formData.password
+      );
+  
+      if (user) {
+        localStorage.setItem("token", user.id);
         alert("ورود با موفقیت انجام شد!");
         navigate("/");
       } else {
-        setError(data.message || "مشکلی در ورود به سیستم پیش آمده است.");
+        setError("نام کاربری یا رمز عبور اشتباه است.");
       }
     } catch (error) {
+      console.error("خطا:", error);
       setError("مشکلی در ارتباط با سرور به وجود آمد.");
     }
   };
+  
 
   return (
     <Box
@@ -118,7 +124,7 @@ export default function Login({ handlePageType }) {
           ":hover": {
             background: "var(--forth-color)",
           },
-           fontWeight:"bold"
+          fontWeight:"bold"
         }}
       >
         ورود
