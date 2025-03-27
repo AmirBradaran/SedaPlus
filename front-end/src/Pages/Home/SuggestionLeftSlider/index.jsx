@@ -10,7 +10,7 @@ export default function SuggestionLeftSlider() {
           border: "none",
           height: "40vh",
           width: "300px",
-          borderRadius: 5,
+          borderRadius: 10,
           boxShadow: 10,
           bgcolor: "#f5f5f5",
           transition: "0.15s",
@@ -21,7 +21,7 @@ export default function SuggestionLeftSlider() {
         <img
           src="DD.jpg"
           style={{
-            borderRadius: 5,
+            borderRadius: 10,
             width: "100%",
             height: "100%",
             padding: "0px",
