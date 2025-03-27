@@ -1,7 +1,9 @@
 import SliderHm from "./SliderHm/index";
 import CategoriesHm from "./CategoriesHm/index";
 import BestSells from "./BestSells/index";
-import NewstSells from "./NewstSells/index";
+import FamousSells from "./FamousSells/index";
+import FamousBrands from "./FamousBrands/index";
+import NewestSells from "./NewestSells/index";
 import SuggestionLeftSlider from "./SuggestionLeftSlider/index";
 import SuggestionRightSlider from "./SuggestionRightSlider/index";
 import React from "react";
@@ -21,33 +23,30 @@ export default function Home() {
             md: "1fr",
             lg: "1fr 1fr 1fr",
           },
-          gap: 3,
+          gap: { xs: 5, sm: 3, md: 2, lg: 0 },
           justifyContent: "center",
-          alignItems:"center",
-          py: 5,
-          px: "5%",
-          borderTopRightRadius: "5%",
-          borderTopLeftRadius: "5%",
-          background: "linear-gradient(to bottom, var(--second-color), white)",
           alignItems: "center",
-          width:"100%"
+          alignItems: "center",
+          width: "100%",
         }}
       >
         <Box sx={{ display: "flex", justifyContent: "center" }}>
           <SuggestionLeftSlider />
         </Box>
-        <Box sx={{ display: "flex", justifyContent: "center" , width:"100%" }}>
+        <Box sx={{ display: "flex", justifyContent: "center", width: "100%" }}>
           <SliderHm />
         </Box>
         <Box sx={{ display: "flex", justifyContent: "center" }}>
           <SuggestionRightSlider />
         </Box>
       </Box>
-      <CategoriesHm />
+      <FamousBrands/>
       <SuggestionCarts />
-      <NewstSells />
+      <CategoriesHm />
+      <NewestSells />
       <BestSells />
-      <MagazineHm/>
+      <FamousSells />
+      <MagazineHm />
     </Stack>
   );
 }
