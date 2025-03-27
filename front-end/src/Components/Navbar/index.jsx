@@ -67,24 +67,25 @@ const Navbar = () => {
       sx={{
         position: "relative",
         width: "90%",
-        height: "130px",
+        height: "100%",
         zIndex: 1200,
         background:
-          "linear-gradient(to bottom , var(--second-color) 65%, white)",
+          "linear-gradient(to right , var(--second-color) 65%, #7A4A94)",
         py: 2,
-        borderBottomRightRadius: "50%",
-        borderBottomLeftRadius: "50%",
+        borderBottomRightRadius: "80px",
+        borderBottomLeftRadius: "80px",
       }}
     >
       <Stack
-        justifyContent="center"
+        justifyContent="space-between"
         alignItems="center"
+        direction={"row"}
         sx={{
-          mx: "auto",
+          mx: {xs:1 , md:5},
           px: { xs: 0, md: 4 },
         }}
       >
-        <Stack direction="row" position="absolute" left="1%" gap={1}>
+        <Stack direction="row" gap={1}>
           <StyledLink to="/cart">
             <IconButton>
               <Badge badgeContent={cartLength} color="secondary">
@@ -106,26 +107,13 @@ const Navbar = () => {
           </StyledLink>
         </Stack>
 
-        <StyledLink to="/">
-          <img
-            src="/DigiSeda.png"
-            alt="Logo"
-            style={{
-              borderRadius: "50%",
-              width: "70px",
-              height: "70px",
-              objectFit: "cover",
-            }}
-          />
-        </StyledLink>
-
-        <Stack position="absolute" right="1%">
+        <Stack>
           {isMobile ? (
             <IconButton onClick={() => setDrawerOpen(true)}>
               <MenuIcon fontSize="large" sx={{ color: "var(--third-color)" }} />
             </IconButton>
           ) : (
-            <Stack gap={2} direction="row">
+            <Stack gap={5} direction="row">
               {navItems.map((item) =>
                 item.type === "menu" ? (
                   <Button
@@ -165,6 +153,21 @@ const Navbar = () => {
               )}
             </Stack>
           )}
+        </Stack>
+
+        <Stack>
+          <StyledLink to="/">
+            <img
+              src="/DigiSeda.png"
+              alt="Logo"
+              style={{
+                borderRadius: "50%",
+                width: "70px",
+                height: "70px",
+                objectFit: "cover",
+              }}
+            />
+          </StyledLink>
         </Stack>
       </Stack>
 
