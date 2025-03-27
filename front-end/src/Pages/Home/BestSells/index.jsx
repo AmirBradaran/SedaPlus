@@ -7,6 +7,8 @@ import {
   Card,
   CardContent,
   CardMedia,
+  Stack,
+  Button,
 } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
@@ -15,6 +17,7 @@ import {
   ChevronRight,
   FavoriteBorder,
   Star,
+  Shuffle
 } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import "swiper/css";
@@ -123,7 +126,10 @@ const BestSells = () => {
           borderBottom: "3px solid var(--second-color)",
           paddingBottom: "5px",
           display: "inline-block",
-          fontFamily:"IranYekan"
+          fontFamily: "IranYekan",
+          borderRadius:"20%",
+          width:"230px",
+          paddingRight:"2.5%"
         }}
       >
         بهترین ها
@@ -168,22 +174,6 @@ const BestSells = () => {
                   },
                 }}
               >
-                <IconButton
-                  sx={{
-                    position: "absolute",
-                    top: 5,
-                    right: 5,
-                    color: "red",
-                    zIndex: 1,
-                    background: "var(--third-color)",
-                    borderRadius: "100%",
-                    ":hover": {
-                      background: "whitesmoke",
-                    },
-                  }}
-                >
-                  <FavoriteBorder />
-                </IconButton>
                 <CardMedia
                   component="img"
                   height="120"
@@ -198,14 +188,22 @@ const BestSells = () => {
                 <CardContent>
                   <Typography
                     variant="h6"
-                    sx={{ fontWeight: "bold", fontSize: "1.25rem" , fontFamily:"IranYekan" }}
+                    sx={{
+                      fontWeight: "bold",
+                      fontSize: "1.25rem",
+                      fontFamily: "IranYekan",
+                    }}
                   >
                     {product.title}
                   </Typography>
                   <Typography
                     variant="body2"
                     color="text.secondary"
-                    sx={{ fontSize: "1.15rem", fontWeight: "bolder" , fontFamily:"IranYekan" }}
+                    sx={{
+                      fontSize: "1.15rem",
+                      fontWeight: "bolder",
+                      fontFamily: "IranYekan",
+                    }}
                   >
                     {product.price + " "}تومان
                   </Typography>
@@ -220,6 +218,27 @@ const BestSells = () => {
                     ))}
                   </Box>
                 </CardContent>
+                <Stack direction={"row-reverse"} width={"100%"}>
+                      <IconButton color="error" LinkComponent={"/favorite"}>
+                        <FavoriteBorder sx={{ fontSize: "25px" }} />
+                      </IconButton>
+                      <Button
+                        variant="contained"
+                        LinkComponent={"/"}
+                        sx={{
+                          width: "100%",
+                          fontFamily: "IranYekan",
+                          background: "#4765F4",
+                          ":hover": { background: "#1B2E8B" },
+                          borderRadius: 5,
+                        }}
+                      >
+                        مشاهده
+                      </Button>
+                      <IconButton color="primary" LinkComponent={"/shuffle"}>
+                        <Shuffle sx={{ fontSize: "25px" }} />
+                      </IconButton>
+                    </Stack>
               </Card>
             </Link>
           </SwiperSlide>
