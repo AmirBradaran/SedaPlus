@@ -24,7 +24,7 @@ export default function Register({ handlePageType }) {
     }
 
     try {
-      const response = await fetch("http://localhost:5173/api/register", {
+      const response = await fetch("https://67c2e5c71851890165ad918c.mockapi.io/users", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
