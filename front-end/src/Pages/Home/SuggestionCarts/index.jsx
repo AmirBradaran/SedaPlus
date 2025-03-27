@@ -1,11 +1,20 @@
 import React from "react";
-import { Card, Grid, Typography, Box, useTheme } from "@mui/material";
+import {
+  Card,
+  Grid,
+  Typography,
+  Box,
+  useTheme,
+  Button,
+  Stack,
+  IconButton,
+} from "@mui/material";
 import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-
+import { FavoriteBorder, Shuffle } from "@mui/icons-material";
 const ProductList = () => {
   const theme = useTheme();
   const products = [
@@ -102,8 +111,7 @@ const ProductList = () => {
         direction: "rtl",
         width: "90%",
         margin: theme.spacing(4, "auto"),
-        background:
-          "linear-gradient(155deg, var(--second-color) 50%, var(--forth-color) 70% )",
+        background: "var(--second-color)",
         boxShadow: "2px 4px 10px 2px rgba(0,0,0,0.2)",
         borderRadius: 4,
         position: "relative",
@@ -122,7 +130,7 @@ const ProductList = () => {
           zIndex: 1,
           textAlign: "center",
           padding: theme.spacing(3),
-          background: "rgba(255, 255, 255, 0.1)",
+          background: "var(--seven-color)",
           borderRadius: 2,
           backdropFilter: "blur(5px)",
           mb: { xs: 2, sm: 0 },
@@ -149,7 +157,7 @@ const ProductList = () => {
           modules={[Pagination]}
           slidesPerView={4.5}
           spaceBetween={10}
-          pagination={{ el: ".custom-pagination",clickable: true }}
+          pagination={{ el: ".custom-pagination", clickable: true }}
           breakpoints={{
             200: { slidesPerView: 1 },
             600: { slidesPerView: 1.5 },
@@ -168,6 +176,7 @@ const ProductList = () => {
                   display: "flex",
                   justifyContent: "center",
                   background: "transparent",
+                  alignItems: "center",
                 }}
               >
                 <Link
@@ -184,25 +193,25 @@ const ProductList = () => {
                       minHeight: 350,
                       display: "flex",
                       flexDirection: "column",
-                      justifyContent: "space-between",
-                      padding: 2,
+                      justifyContent: "center",
+                      alignItems: "center",
+                      padding: 1.5,
                       borderRadius: 2.5,
                       transition: "all 0.3s",
                       background: "var(--third-color)",
                       "&:hover": {
-                        transform: "translateY(-10px)",
+                        transform: "translateY(-5px)",
                         boxShadow: "0 8px 20px rgba(0,0,0,0.2)",
                         background: "rgb(255, 255, 255)",
                         borderRadius: 5,
                       },
                     }}
                   >
-                    <Box
+                    <Stack
                       sx={{
                         width: "100%",
                         height: { xs: 120, sm: 150 },
                         borderRadius: 2,
-                        mb: 3,
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
@@ -216,18 +225,23 @@ const ProductList = () => {
                           width: "100%",
                           height: "100%",
                           objectFit: "contain",
+                          borderRadius: 10,
                         }}
                       />
-                    </Box>
+                    </Stack>
 
-                    <Box sx={{ textAlign: "center", flexGrow: 1 }}>
+                    <Stack
+                      sx={{
+                        textAlign: "center",
+                        flexGrow: 1,
+                        justifyContent: "space-around",
+                      }}
+                    >
                       <Typography
                         variant="h5"
                         fontWeight="bold"
                         sx={{
                           color: "var(--primary-color)",
-                          fontSize: { xs: "1rem", md: "1.2rem" },
-                          mb: 2,
                           fontFamily: "IranYekan",
                         }}
                       >
@@ -238,9 +252,6 @@ const ProductList = () => {
                         variant="body1"
                         sx={{
                           color: "text.secondary",
-                          lineHeight: 1.6,
-                          minHeight: 60,
-                          fontSize: { xs: "0.8rem", md: "0.9rem" },
                           fontFamily: "IranYekan",
                         }}
                       >
@@ -252,21 +263,43 @@ const ProductList = () => {
                         fontWeight="bold"
                         sx={{
                           color: "var(--secondary-color)",
-                          fontSize: { xs: "1rem", md: "1.2rem" },
-                          mt: 2,
                           fontFamily: "IranYekan",
                         }}
                       >
                         {product.price}
                       </Typography>
-                    </Box>
+                    </Stack>
+                    <Stack direction={"row-reverse"} width={"100%"}>
+                      <IconButton color="error" LinkComponent={"/favorite"}>
+                        <FavoriteBorder sx={{ fontSize: "25px" }} />
+                      </IconButton>
+                      <Button
+                        variant="contained"
+                        LinkComponent={"/"}
+                        sx={{
+                          width: "100%",
+                          fontFamily: "IranYekan",
+                          background: "#4765F4",
+                          ":hover": { background: "#1B2E8B" },
+                          borderRadius: 5,
+                        }}
+                      >
+                        مشاهده
+                      </Button>
+                      <IconButton color="primary" LinkComponent={"/shuffle"}>
+                        <Shuffle sx={{ fontSize: "25px" }} />
+                      </IconButton>
+                    </Stack>
                   </Card>
                 </Link>
               </Grid>
             </SwiperSlide>
           ))}
         </Swiper>
-        <div className="custom-pagination" style={{ textAlign: "center", marginTop: "0px"  }}></div>
+        <div
+          className="custom-pagination"
+          style={{ textAlign: "center", marginTop: "0px" }}
+        ></div>
       </Box>
     </Box>
   );
