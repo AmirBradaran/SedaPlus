@@ -23,6 +23,7 @@ import {
   Search,
   Menu as MenuIcon,
   Close,
+  Shuffle,
 } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -45,7 +46,7 @@ const Navbar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const cartLength = useSelector((state) => state.cart?.items?.length) || 0;
-  const { token } = useSelector((state) => state.auth);
+  const { token } = useSelector((state) => true);
 
   const navItems = useMemo(
     () => [
@@ -66,14 +67,14 @@ const Navbar = () => {
       mx="auto"
       sx={{
         position: "relative",
-        width: "90%",
+        width: {xs:"100%" , sm:"95%" , md:"90%"},
         height: "100%",
         zIndex: 1200,
         background:
           "linear-gradient(to right , var(--second-color) 65%, #7A4A94)",
         py: 2,
-        borderBottomRightRadius: "80px",
-        borderBottomLeftRadius: "80px",
+        borderBottomRightRadius: {xs:"40px" , sm:"50px" , md:"60px" , lg:"80px"},
+        borderBottomLeftRadius: {xs:"40px" , sm:"50px" , md:"60px" , lg:"80px"},
       }}
     >
       <Stack
@@ -81,11 +82,11 @@ const Navbar = () => {
         alignItems="center"
         direction={"row"}
         sx={{
-          mx: {xs:1 , md:5},
+          mx: { xs: 1, md: 5 },
           px: { xs: 0, md: 4 },
         }}
       >
-        <Stack direction="row" gap={1}>
+        <Stack direction="row" sx={{gap:{xs:0 , sm:1}}}>
           <StyledLink to="/cart">
             <IconButton>
               <Badge badgeContent={cartLength} color="secondary">
@@ -93,23 +94,31 @@ const Navbar = () => {
               </Badge>
             </IconButton>
           </StyledLink>
-          {token ? (
-            <StyledLink to="/favorites">
-              <IconButton>
-                <FavoriteBorder sx={{ fontSize: 32, color: "common.white" }} />
-              </IconButton>
-            </StyledLink>
-          ) : null}
+
+          <StyledLink to="/favorites">
+            <IconButton>
+              <FavoriteBorder sx={{ fontSize: 32, color: "common.white" }} />
+            </IconButton>
+          </StyledLink>
+
           <StyledLink to="/search">
             <IconButton>
               <Search sx={{ fontSize: 32, color: "common.white" }} />
+            </IconButton>
+          </StyledLink>
+          <StyledLink to="/shuffle">
+            <IconButton>
+              <Shuffle sx={{ fontSize: 32, color: "common.white" }} />
             </IconButton>
           </StyledLink>
         </Stack>
 
         <Stack>
           {isMobile ? (
-            <IconButton onClick={() => setDrawerOpen(true)}>
+            <IconButton
+              onClick={() => setDrawerOpen(true)}
+              sx={{ position: "absolute", right: 15, top: 15 }}
+            >
               <MenuIcon fontSize="large" sx={{ color: "var(--third-color)" }} />
             </IconButton>
           ) : (
@@ -155,16 +164,26 @@ const Navbar = () => {
           )}
         </Stack>
 
-        <Stack>
+        <Stack
+          direction="row"
+          alignItems="center"
+          justifyContent={{ xs: "center", md: "flex-start" }}
+          sx={{ width: { xs: "100%", md: "auto" }, position: "relative" }}
+        >
           <StyledLink to="/">
-            <img
+            <Box
+              component="img"
               src="/DigiSeda.png"
               alt="Logo"
-              style={{
+              sx={{
                 borderRadius: "50%",
-                width: "70px",
-                height: "70px",
+                width: 70,
+                height: 70,
                 objectFit: "cover",
+                position: { xs: "absolute", md: "static" },
+                left: { xs: "25%", md: "auto" },
+                transform: { xs: "translate(-50%)", md: "none" },
+                top:-35
               }}
             />
           </StyledLink>
