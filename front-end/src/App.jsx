@@ -16,6 +16,8 @@ import AboutUs from "./Pages/AboutUs";
 import FavoriteCards from "./Pages/FavoriteCards";
 import Magazine from "./Pages/Magazine";
 import MoreInf from "./Pages/Magazine/MoreInf";
+import Shuffle from "./Pages/Shuffle/index";
+
 
 import "./App.css";
 export default function App() {
@@ -49,6 +51,7 @@ export default function App() {
           <Route path="*" element={<NotFound />} />
           <Route path="/magazine" element={<Magazine/>} />
           <Route path="/news/:id" element={<MoreInf/>} />
+          <Route path="/shuffle" element={<Shuffle/>} />
         </Routes>
       </Box>
       <Footer />
