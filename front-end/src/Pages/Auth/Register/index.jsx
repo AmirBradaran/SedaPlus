@@ -130,13 +130,13 @@ export default function Register({ handlePageType }) {
       <Button
         type="submit"
         sx={{
-          background: "var(--second-color)",
+          background: "#15919B",
           color: "white",
           width: "100%",
           fontFamily: "IranYekan",
           textAlign: "right",
           ":hover": {
-            background: "var(--forth-color)",
+            background: "#0C6478",
           },
           fontWeight:"bold"
         }}
