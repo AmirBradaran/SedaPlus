@@ -14,7 +14,7 @@ const NumberedCategories = () => {
   ];
 
   return (
-    <Box sx={{ padding: 0, my: 5 }}>
+    <Box sx={{ padding: 0, my: 2 }}>
       <Typography
         width={"280px"}
         variant="h4"
