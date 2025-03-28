@@ -1,10 +1,18 @@
-import { Card, CardMedia, CardContent, Stack, Typography, Button, useTheme } from "@mui/material";
+import {
+  Card,
+  CardMedia,
+  CardContent,
+  Stack,
+  Typography,
+  Button,
+  useTheme,
+} from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import React from "react";
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import { Navigation } from 'swiper/modules';
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import { Navigation } from "swiper/modules";
 
 export default function MagazineHm() {
   const theme = useTheme();
@@ -60,18 +68,22 @@ export default function MagazineHm() {
   ];
 
   return (
-    <Stack spacing={4} sx={{ mx: { xs: 2, sm: 4, md: 6, lg: 12 }, my: 5, direction: "rtl" }}>
+    <Stack
+      spacing={4}
+      sx={{ mx: { xs: 2, sm: 4, md: 6, lg: 12 }, my: 5, direction: "rtl" }}
+    >
       <Typography
         variant="h4"
         sx={{
           textAlign: "center",
           fontWeight: "bold",
           fontFamily: "IranYekan",
-          color: "var(--first-color)",
-          borderBottom: "3px solid var(--second-color)",
+          color: "var(--second-color)",
+          borderBottom: "5px solid var(--second-color)",
           pb: 1,
-          width: "fit-content",
+          width: "300px",
           mx: "auto",
+          borderRadius:"25%"
         }}
       >
         تازه‌ترین خبرها
@@ -97,9 +109,9 @@ export default function MagazineHm() {
           },
         }}
         style={{
-          padding: '20px 20px 40px',
-          '--swiper-navigation-color': theme.palette.primary.main,
-          '--swiper-navigation-size': '35px',
+          padding: "20px 20px 40px",
+          "--swiper-navigation-color": theme.palette.primary.main,
+          "--swiper-navigation-size": "35px",
         }}
       >
         {newNews.map((news) => (
@@ -116,7 +128,7 @@ export default function MagazineHm() {
                 },
                 flexWrap: "nowrap",
                 borderRadius: 2.5,
-                mx: 'auto',
+                mx: "auto",
                 maxWidth: 500,
               }}
             >
@@ -139,28 +151,31 @@ export default function MagazineHm() {
                   p: { xs: 2, sm: 3 },
                 }}
               >
-                <Typography variant="h6" sx={{ fontWeight: "bold" , fontFamily: "IranYekan" }}>
+                <Typography
+                  variant="h6"
+                  sx={{ fontWeight: "bold", fontFamily: "IranYekan" }}
+                >
                   {news.title}
                 </Typography>
-                  <Typography
-                    variant="body2"
-                    color="text.secondary"
-                    sx={{
-                      lineHeight: 1.6,
-                      display: "-webkit-box",
-                      WebkitLineClamp: { xs: 2, sm: 3 },
-                      WebkitBoxOrient: "vertical",
-                      overflow: "hidden",
-                      fontFamily: "IranYekan",
-                    }}
-                  >
-                    {news.description}
-                  </Typography>
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                  sx={{
+                    lineHeight: 1.6,
+                    display: "-webkit-box",
+                    WebkitLineClamp: { xs: 2, sm: 3 },
+                    WebkitBoxOrient: "vertical",
+                    overflow: "hidden",
+                    fontFamily: "IranYekan",
+                  }}
+                >
+                  {news.description}
+                </Typography>
                 <Button
                   variant="contained"
                   color="primary"
                   onClick={() => navigate(`/news/${news.id}`)}
-                  sx={{fontFamily: "IranYekan"}}
+                  sx={{ fontFamily: "IranYekan" }}
                 >
                   بیشتر
                 </Button>
