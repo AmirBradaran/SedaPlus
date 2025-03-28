@@ -23,7 +23,7 @@ const BrandSlider = () => {
       >
         معروف ترین برند ها
       </Typography>
-      <Box display="flex" justifyContent="center" mt={2} gap={2}>
+      <Box display="flex" justifyContent="center" flexWrap={"wrap"} mt={2} gap={2}>
         {[...Array(7)].map((_, index) => (
           <Avatar
             key={index}
