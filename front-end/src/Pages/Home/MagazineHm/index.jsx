@@ -96,16 +96,16 @@ export default function MagazineHm() {
         navigation
         breakpoints={{
           640: {
-            slidesPerView: 1,
-            spaceBetween: 20,
+            slidesPerView: 1.25,
+            spaceBetween: 10,
           },
           768: {
-            slidesPerView: 2,
-            spaceBetween: 30,
+            slidesPerView: 2.25,
+            spaceBetween: 20,
           },
           1024: {
-            slidesPerView: 3,
-            spaceBetween: 40,
+            slidesPerView: 3.25,
+            spaceBetween: 30,
           },
         }}
         style={{
