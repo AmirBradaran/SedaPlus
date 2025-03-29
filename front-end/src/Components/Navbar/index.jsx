@@ -50,7 +50,6 @@ const Navbar = () => {
 
   const navItems = useMemo(
     () => [
-      { label: "دسته بندی ها", type: "menu" },
       { label: "درباره ما", path: "/about-us" },
       { label: token ? "پروفایل" : "ورود", path: token ? "/profile" : "/auth" },
       { label: "مجله ها", path: "/magazine" },
