@@ -46,7 +46,7 @@ const Navbar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const cartLength = useSelector((state) => state.cart?.items?.length) || 0;
-  const { token } = useSelector((state) => true);
+  const token = useSelector((state) => state.auth?.token);
 
   const navItems = useMemo(
     () => [
@@ -66,14 +66,24 @@ const Navbar = () => {
       mx="auto"
       sx={{
         position: "relative",
-        width: {xs:"100%" , sm:"95%" , md:"90%"},
+        width: { xs: "100%", sm: "95%", md: "90%" },
         height: "100%",
         zIndex: 1200,
         background:
           "linear-gradient(to right , var(--second-color) 65%, #7A4A94)",
         py: 2,
-        borderBottomRightRadius: {xs:"40px" , sm:"50px" , md:"60px" , lg:"80px"},
-        borderBottomLeftRadius: {xs:"40px" , sm:"50px" , md:"60px" , lg:"80px"},
+        borderBottomRightRadius: {
+          xs: "40px",
+          sm: "50px",
+          md: "60px",
+          lg: "80px",
+        },
+        borderBottomLeftRadius: {
+          xs: "40px",
+          sm: "50px",
+          md: "60px",
+          lg: "80px",
+        },
       }}
     >
       <Stack
@@ -85,7 +95,7 @@ const Navbar = () => {
           px: { xs: 0, md: 4 },
         }}
       >
-        <Stack direction="row" sx={{gap:{xs:0 , sm:1}}}>
+        <Stack direction="row" sx={{ gap: { xs: 0, sm: 1 } }}>
           <StyledLink to="/cart">
             <IconButton>
               <Badge badgeContent={cartLength} color="secondary">
@@ -153,10 +163,13 @@ const Navbar = () => {
                         transition: "all 0.35s",
                         ":hover": { color: "#b8b8b8" },
                       }}
+                      
                     >
-                      {item.label === "ورود" && token ? "پروفایل" : item.label}
+                      {item.label}
                     </Typography>
+                    
                   </StyledLink>
+                  
                 )
               )}
             </Stack>
@@ -182,7 +195,7 @@ const Navbar = () => {
                 position: { xs: "absolute", md: "static" },
                 left: { xs: "25%", md: "auto" },
                 transform: { xs: "translate(-50%)", md: "none" },
-                top:-35
+                top: -35,
               }}
             />
           </StyledLink>
