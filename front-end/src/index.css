@@ -1,19 +1,19 @@
-*{
+* {
   margin: 0;
   padding: 0;
   font-family: IranYekan;
 }
 @font-face {
   font-family: IranYekan;
-  src: url(./assets/IRANYekanX-Bold.woff) format("woff"),;
-  src: url(./assets/IRANYekanX-Regular.woff) format("woff"),;
+  src: url(./assets/IRANYekanX-Bold.woff) format("woff");
+  src: url(./assets/IRANYekanX-Regular.woff) format("woff");
 }
-:root{
-  --first-color:#000000;  
-  --second-color:#26172E;
-  --seven-color:#430D4B;
-  --third-color:#FEFEFE;
-  --forth-color:#7020FE;
-  --fifth-color:#00E460;
-  --six-color:#FF5338;
+:root {
+  --first-color: #000000;
+  --second-color: #26172e;
+  --seven-color: #430d4b;
+  --third-color: #fefefe;
+  --forth-color: #7020fe;
+  --fifth-color: #00e460;
+  --six-color: #ff5338;
 }
