@@ -14,7 +14,9 @@ export default function AboutUs() {
     },
     {
       title: "ارائه محصولات اورجینال و باکیفیت",
-      icon: <Headphones sx={{ fontSize: { xs: 30, md: 40 }, color: "white" }} />,
+      icon: (
+        <Headphones sx={{ fontSize: { xs: 30, md: 40 }, color: "white" }} />
+      ),
     },
     {
       title: "پشتیبانی و مشاوره تخصصی برای انتخاب بهترین محصول",
@@ -39,31 +41,33 @@ export default function AboutUs() {
 
       <Stack
         position="relative"
-        border={"1px solid white"}
         mx="auto"
         my={{ xs: 10, md: 20 }}
         width={{ xs: "90%", md: "80%" }}
         p={{ xs: 4, sm: 6, md: 10, lg: 15 }}
         borderRadius={{ xs: "30px", md: "100px" }}
         alignItems="center"
-        sx={{ backdropFilter: "blur(20px)" }}
+        sx={{
+          backdropFilter: "blur(20px)",
+          boxShadow: "0 0 10px 2.5px white",
+          direction: "rtl",
+        }}
       >
         {/* لوگو */}
         <Box
-  component="img"
-  src="/DigiSeda.png"
-  alt=""
-  sx={{
-    width: { xs: 100, sm: 150, md: 200, lg: 250 },
-    height: { xs: 100, sm: 150, md: 200, lg: 250 },
-    position: "absolute",
-    borderRadius: "100%",
-    boxShadow: "0px 5px 20px 2.5px white",
-    transition: "top 0.3s ease-in-out",
-    transform:"translateY(-100%)"
-  }}
-/>
-
+          component="img"
+          src="/DigiSeda.png"
+          alt=""
+          sx={{
+            width: { xs: 100, sm: 150, md: 200, lg: 250 },
+            height: { xs: 100, sm: 150, md: 200, lg: 250 },
+            position: "absolute",
+            borderRadius: "100%",
+            boxShadow: "0px 5px 20px 2.5px white",
+            transition: "top 0.3s ease-in-out",
+            transform: "translateY(-100%)",
+          }}
+        />
 
         {/* درباره ما */}
         <Stack alignItems="center" gap={2.5} my={5} width="100%">
@@ -92,11 +96,11 @@ export default function AboutUs() {
               color="white"
               fontSize={{ xs: "1rem", md: "1.5rem" }}
             >
-              به فروشگاه صدا پلاس خوش آمدید! ما یک فروشگاه اینترنتی نوپا هستیم
-              که با هدف ارائه بهترین و باکیفیت‌ترین محصولات در حوزه هدفون،
-              هدست، هندزفری، لوازم جانبی صوتی و پاوربانک تأسیس شده‌ایم. هدف ما
-              ارائه کالاهای اورجینال، قیمت مناسب و تجربه خریدی آسان و مطمئن
-              برای مشتریان عزیزمان است.
+              به فروشگاه <b>صدا پلاس </b>خوش آمدید! ما یک فروشگاه اینترنتی هستیم
+              که با هدف ارائه <b>بهترین</b> و <b>باکیفیت‌ترین</b> محصولات در
+              حوزه هدفون، هدست، هندزفری، لوازم جانبی صوتی و پاوربانک تأسیس
+              شده‌ایم. هدف ما ارائه کالاهای <b>اورجینال</b> ، <b>قیمت مناسب</b>{" "}
+              و <b>تجربه خریدی آسان</b> و مطمئن برای مشتریان عزیزمان است.
             </Typography>
           </Box>
         </Stack>
@@ -128,11 +132,11 @@ export default function AboutUs() {
               color="white"
               fontSize={{ xs: "1rem", md: "1.5rem" }}
             >
-              در دنیای امروزی که تکنولوژی نقش مهمی در زندگی روزمره ما دارد،
-              انتخاب یک هدفون یا هدست باکیفیت می‌تواند تجربه گوش دادن به موسیقی،
-              تماشای فیلم یا برقراری مکالمات را لذت‌بخش‌تر کند. به همین دلیل، ما
-              تلاش می‌کنیم تا با ارائه محصولات متنوع از برندهای معتبر، نیازهای
-              مختلف کاربران را پوشش دهیم.
+              در دنیای امروزی که تکنولوژی نقش <b>مهمی</b> در زندگی روزمره ما
+              دارد، انتخاب یک هدفون یا هدست <b>باکیفیت</b> می‌تواند تجربه گوش
+              دادن به موسیقی، تماشای فیلم یا برقراری مکالمات را لذت‌بخش‌تر کند.
+              به همین دلیل، ما تلاش می‌کنیم تا با ارائه محصولات <b>متنوع</b> از{" "}
+              <b>برندهای معتبر</b> ، نیازهای مختلف کاربران را پوشش دهیم.
             </Typography>
           </Box>
         </Stack>
@@ -186,6 +190,15 @@ export default function AboutUs() {
             </Stack>
           </Box>
         </Stack>
+
+        <Typography
+          variant="h5"
+          color="white"
+          fontFamily={"IranYekan"}
+          fontWeight={"bold"}
+        >
+          ! با ما همراه باشید و بهترین‌ها را تجربه کنید
+        </Typography>
       </Stack>
     </Box>
   );
