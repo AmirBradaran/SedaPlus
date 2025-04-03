@@ -40,7 +40,7 @@ export default function Home() {
           <SuggestionRightSlider />
         </Box>
       </Box>
-      <FamousBrands/>
+      <FamousBrands />
       <SuggestionCarts />
       <CategoriesHm />
       <NewestSells />
