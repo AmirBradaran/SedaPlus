@@ -21,7 +21,7 @@ import Shuffle from "./Pages/Shuffle/index";
 
 import "./App.css";
 export default function App() {
-  const { token } = useSelector((state) => state.auth);
+  const token = true;
   return (
     <Stack sx={{ backgroundColor: "" }}>
       <CssBaseline />
