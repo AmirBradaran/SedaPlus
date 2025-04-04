@@ -3,108 +3,152 @@ import {
   List,
   ListItem,
   ListItemButton,
-  ListItemText,
-  Divider,
   Typography,
-  ThemeProvider,
-  createTheme,
-  Box,
   Stack,
+  Box,
 } from "@mui/material";
-import { ArrowCircleRight } from "@mui/icons-material";
+import {
+  ArrowCircleRight,
+  Person,
+  LocalOffer,
+  Call,
+  Settings,
+  HighlightOff,
+  Tune,
+} from "@mui/icons-material";
 import { Link } from "react-router-dom";
 
 const ProfileMenu = () => {
-  const menuItems = ["اطلاعات کل", "سفارشات", "پشتیبانی", "تنظیمات", "خروج"];
+  const menu = [
+    {
+      title: "اطلاعات کل",
+      icon: <Person sx={{ fontSize: "2rem" }} />,
+      path: "./Info",
+    },
+    {
+      title: "سفارشات",
+      icon: <LocalOffer sx={{ fontSize: "2rem" }} />,
+      path: "./Orders",
+    },
+    {
+      title: "پشتیبانی",
+      icon: <Call sx={{ fontSize: "2rem" }} />,
+      path: "./Support",
+    },
+    {
+      title: "تنظیمات",
+      icon: <Settings sx={{ fontSize: "2rem" }} />,
+      path: "./Settings",
+    },
+    {
+      title: "خروج",
+      icon: <HighlightOff sx={{ fontSize: "2rem" }} />,
+      path: "./Logout",
+    },
+  ];
 
   return (
     <Stack
-      direction={"row"}
-      justifyContent={"center"}
-      gap={5}
-      alignItems={"center"}
+      direction="row"
+      justifyContent="center"
+      alignItems="center"
+      sx={{ position: "relative", minHeight: "100vh" }}
     >
-      <img
+      {/* بک‌گراند ثابت */}
+      <Box
+        component="img"
         src="/SS.jpg"
-        alt=""
-        style={{
+        alt="background"
+        sx={{
           position: "fixed",
           top: 0,
           left: 0,
           width: "100%",
           height: "100%",
           zIndex: -1,
+          objectFit: "cover",
         }}
       />
+
+      {/* کارت منو */}
       <Stack
-        width={"300px"}
-        borderRadius={10}
+        width={350}
+        borderRadius={5}
+        p={2}
+        mr={6}
+        position={"fixed"}
+        right={"5%"}
+        top={"15%"}
         sx={{
           direction: "rtl",
-          mr: 12,
           backdropFilter: "blur(15px)",
-          background: "#00000090",
+          backgroundColor: "#00000090",
         }}
       >
-        <div dir="rtl" style={{ padding: "16px", maxWidth: "300px" }}>
-          {/* عنوان پروفایل */}
+        {/* عنوان */}
+        <Stack
+          direction="row"
+          alignItems="center"
+          justifyContent="center"
+          borderBottom={"5px solid white"}
+          gap={1}
+        >
+          <Tune sx={{ color: "white", mr: 1, fontSize: "2.5rem" }} />
           <Typography
-            variant="h5"
-            gutterBottom
-            fontFamily={"IranYekan"}
-            textAlign={"center"}
-            fontWeight={"bold"}
+            variant="h4"
+            fontFamily="IranYekan"
+            fontWeight="bold"
             color="white"
-            lineHeight={2}
-            borderBottom={"5px solid white"}
+            pb={1}
           >
             پروفایل
           </Typography>
+        </Stack>
 
-          {/* لیست منو */}
-          <List sx={{ width: "100%" }}>
-            {menuItems.map((text) => (
-              <ListItem key={text} disablePadding>
-                <ListItemButton>
-                  <Typography
-                    color="white"
-                    fontFamily={"IranYekan"}
-                    variant="h6"
-                  >
-                    {text}
-                  </Typography>
-                </ListItemButton>
-              </ListItem>
-            ))}
-          </List>
+        {/* لیست منو */}
+        <List>
+          {menu.map((item, index) => (
+            <ListItem key={index} disablePadding>
+              <ListItemButton
+                component={Link}
+                to={item.path}
+                sx={{
+                  gap: 1,
+                  color: "white",
+                  "&:hover": { background: "#ffffff20" },
+                }}
+              >
+                {item.icon}
+                <Typography variant="h5" fontFamily="IranYekan">
+                  {item.title}
+                </Typography>
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </List>
 
-          {/* لینک بازگشت */}
-          <Link
-            to={"/"}
-            style={{
-              textDecoration: "none",
-              display: "flex",
-              flexDirection: "row",
-              alignItems: "center",
-              gap: 5,
-              cursor: "pointer",
-              "&:hover": { background: "#00000050" }
-            }}
-          >
-            <ArrowCircleRight
-              sx={{ color: "white", fontSize: "1.75rem", fontWeight: "bold" }}
-            />
-            <Typography
-              variant="h6"
-              fontFamily={"IranYekan"}
-              color="white"
-              textAlign={"center"}
-              borderRadius={10}
+        {/* دکمه بازگشت */}
+        <Box mt={3}>
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <Stack
+              direction="row"
+              alignItems="center"
+              justifyContent="center"
+              sx={{
+                gap: 1,
+                p: 1,
+                borderRadius: 2,
+                color: "white",
+                "&:hover": { background: "#ffffff20" },
+              }}
             >
-              بازگشت به خانه
-            </Typography>
+              <ArrowCircleRight sx={{ fontSize: "2rem" }} />
+              <Typography fontFamily="IranYekan" variant="h5">
+                بازگشت به خانه
+              </Typography>
+            </Stack>
           </Link>
-        </div>
+        </Box>
       </Stack>
     </Stack>
   );
