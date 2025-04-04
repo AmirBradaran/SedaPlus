@@ -1,6 +1,6 @@
 import { Box, Stack, Typography } from "@mui/material";
 import React from "react";
-import { Speed, Sell, Headphones, Recommend } from "@mui/icons-material";
+import { Speed, Sell, Headphones, Recommend  } from "@mui/icons-material";
 
 export default function AboutUs() {
   const features = [
