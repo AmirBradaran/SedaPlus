@@ -13,21 +13,69 @@ import {
   Paper,
   Stack,
 } from "@mui/material";
-import { Shuffle, FavoriteBorder, Favorite } from "@mui/icons-material";
+import { Shuffle, Favorite } from "@mui/icons-material";
 import rtlPlugin from "stylis-plugin-rtl";
 import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
 
+{
+  /*RTL Cache setup*/
+}
 const cacheRtl = createCache({ key: "muirtl", stylisPlugins: [rtlPlugin] });
 
+{
+  /*Theme definition*/
+}
 const theme = createTheme({
   direction: "rtl",
-  palette: { primary: { main: "#FF6B6B" }, secondary: { main: "#4ECDC4" } },
-  typography: { fontFamily: "'Vazir', 'Samim', sans-serif" },
+  palette: {
+    primary: { main: "#FF6B6B" },
+    secondary: { main: "#4ECDC4" },
+    info: { main: "#1a73e8" },
+  },
+  typography: {
+    fontFamily: "'Vazir', 'Samim', sans-serif",
+  },
 });
+
+{
+  /*Style shortcuts*/
+}
+const styles = {
+  title: {
+    fontWeight: "bold",
+    textAlign: "center",
+    mb: 4,
+    color: "black",
+    fontFamily: "IranYekan",
+  },
+  toggleBtn: {
+    fontFamily: "IranYekan",
+    fontWeight: "bold",
+  },
+  card: {
+    width: "100%",
+    height: 400,
+    p: 2,
+    borderRadius: 2.5,
+    transition: "all 0.3s",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-around",
+    "&:hover": {
+      transform: "translateY(-5px)",
+    },
+  },
+  image: {
+    width: "100%",
+    height: 150,
+    objectFit: "contain",
+  },
+};
 
 const FavoriteCardsPage = () => {
   const [filter, setFilter] = useState("all");
+
   const [cards, setCards] = useState([
     {
       id: 1,
@@ -67,33 +115,63 @@ const FavoriteCardsPage = () => {
     },
   ]);
 
-  const handleRemoveFavorite = (cardId) => {
-    setCards(cards.filter((card) => card.id !== cardId));
+  const handleRemoveFavorite = (id) => {
+    setCards((prev) => prev.filter((card) => card.id !== id));
   };
 
   const handleFilterChange = (event, newFilter) => {
-    if (newFilter !== null) setFilter(newFilter);
+    if (newFilter) setFilter(newFilter);
   };
 
   const filteredCards =
     filter === "all" ? cards : cards.filter((card) => card.category === filter);
 
+  const renderCard = (card) => (
+    <Grid item key={card.id} xs={12} sm={6} md={4} lg={3}>
+      <Card sx={styles.card}>
+        <Stack>
+          <img src={card.img} alt={card.title} style={styles.image} />
+        </Stack>
+
+        <Stack alignItems="center" gap={2.5}>
+          <Typography variant="h6" fontWeight="bold" fontFamily="IranYekan">
+            {card.title}
+          </Typography>
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            fontFamily="IranYekan"
+          >
+            {card.description}
+          </Typography>
+          <Typography variant="h6" fontWeight="bold" fontFamily="IranYekan">
+            {card.price}
+          </Typography>
+        </Stack>
+
+        <Stack direction="row" spacing={1} justifyContent="center">
+          <IconButton
+            color="error"
+            onClick={() => handleRemoveFavorite(card.id)}
+          >
+            <Favorite />
+          </IconButton>
+          <Button variant="contained" color="info" sx={styles.toggleBtn}>
+            مشاهده
+          </Button>
+          <IconButton color="info">
+            <Shuffle />
+          </IconButton>
+        </Stack>
+      </Card>
+    </Grid>
+  );
+
   return (
     <CacheProvider value={cacheRtl}>
       <ThemeProvider theme={theme}>
         <Container maxWidth="lg" sx={{ py: 4, borderRadius: 5, my: 2.5 }}>
-          <Typography
-            variant="h4"
-            component="h1"
-            gutterBottom
-            fontFamily={"IranYekan"}
-            sx={{
-              fontWeight: "bold",
-              textAlign: "center",
-              mb: 4,
-              color: "black",
-            }}
-          >
+          <Typography variant="h4" sx={styles.title}>
             کارت های مورد علاقه من
           </Typography>
 
@@ -115,91 +193,20 @@ const FavoriteCardsPage = () => {
               onChange={handleFilterChange}
               sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}
             >
-              <ToggleButton value="all" sx={{fontFamily:"IranYekan" , fontWeight:"bold" }}>همه</ToggleButton>
-              <ToggleButton value="headphone" sx={{fontFamily:"IranYekan" , fontWeight:"bold"}}>هدفون</ToggleButton>
-              <ToggleButton value="accessory" sx={{fontFamily:"IranYekan" , fontWeight:"bold"}}>لوازم جانبی</ToggleButton>
+              <ToggleButton value="all" sx={styles.toggleBtn}>
+                همه
+              </ToggleButton>
+              <ToggleButton value="headphone" sx={styles.toggleBtn}>
+                هدفون
+              </ToggleButton>
+              <ToggleButton value="accessory" sx={styles.toggleBtn}>
+                لوازم جانبی
+              </ToggleButton>
             </ToggleButtonGroup>
           </Paper>
 
           <Grid container spacing={3} justifyContent="center">
-            {filteredCards.map((card) => (
-              <Grid item key={card.id} xs={12} sm={6} md={4} lg={3}>
-                <Card
-                  sx={{
-                    width: "100%",
-                    height: 400,
-                    p: 2,
-                    borderRadius: 2.5,
-                    transition: "all 0.3s",
-                    "&:hover": { transform: "translateY(-5px)" },
-                    display:"flex",
-                    flexDirection:"column",
-                    justifyContent:"space-around"
-                  }}
-                >
-                  <Stack>
-                    <img
-                      src={card.img}
-                      alt={card.title}
-                      style={{
-                        width: "100%",
-                        height: 150,
-                        objectFit: "contain",
-                      }}
-                    />
-                  </Stack>
-
-                  <Stack
-                    direction={"column"}
-                    justifyContent={"center"}
-                    alignItems={"center"}
-                    gap={2.5}
-                  >
-                    <Typography
-                      variant="h6"
-                      fontWeight="bold"
-                      fontFamily={"IranYekan"}
-                      textAlign={"center"}
-                    >
-                      {card.title}
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      color="text.secondary"
-                      fontFamily={"IranYekan"}
-                    >
-                      {card.description}
-                    </Typography>
-                    <Typography
-                      variant="h6"
-                      fontWeight="bold"
-                      fontFamily={"IranYekan"}
-                    >
-                      {card.price}
-                    </Typography>
-                  </Stack>
-
-                  <Stack direction="row" spacing={1} justifyContent="center">
-                    <IconButton
-                      color="error"
-                      onClick={() => handleRemoveFavorite(card.id)}
-                    >
-                      <Favorite />
-                    </IconButton>
-                    <Button
-                      variant="contained"
-                      color="info"
-                      sx={{ fontFamily: "IranYekan", fontWeight: "bold" }}
-                    >
-                      مشاهده
-                    </Button>
-                    <IconButton color="info">
-                      <Shuffle />
-                    </IconButton>
-                  </Stack>
-                </Card>
-              </Grid>
-            ))}
+            {filteredCards.map(renderCard)}
           </Grid>
         </Container>
       </ThemeProvider>
