@@ -145,7 +145,7 @@ const NewestSells = () => {
           717: { slidesPerView: 3.5 },
           936: { slidesPerView: 4.5 },
           1060: { slidesPerView: 4.5 },
-          1345: { slidesPerView: 5.5 },
+          1345: { slidesPerView: 6.5 },
         }}
         onSwiper={setSwiperInstance}
       >
