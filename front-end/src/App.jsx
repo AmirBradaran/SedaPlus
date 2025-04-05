@@ -18,7 +18,6 @@ import Magazine from "./Pages/Magazine";
 import MoreInf from "./Pages/Magazine/MoreInf";
 import Shuffle from "./Pages/Shuffle/index";
 
-
 import "./App.css";
 export default function App() {
   const token = true;
@@ -30,10 +29,7 @@ export default function App() {
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/cart" element={<Cart />} />
-          <Route
-            path="/search"
-            element={<ProductsCards />}
-          />
+          <Route path="/search" element={<ProductsCards />} />
           <Route
             path="/product-details/:id/:name"
             element={<ProductDetail />}
@@ -49,9 +45,9 @@ export default function App() {
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/favorites" element={<FavoriteCards />} />
           <Route path="*" element={<NotFound />} />
-          <Route path="/magazine" element={<Magazine/>} />
-          <Route path="/news/:id" element={<MoreInf/>} />
-          <Route path="/shuffle" element={<Shuffle/>} />
+          <Route path="/magazine" element={<Magazine />} />
+          <Route path="/news/:id" element={<MoreInf />} />
+          <Route path="/shuffle" element={<Shuffle />} />
         </Routes>
       </Box>
       <Footer />
