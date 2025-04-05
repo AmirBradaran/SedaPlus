@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   List,
   ListItem,
@@ -17,42 +17,74 @@ import {
   Tune,
 } from "@mui/icons-material";
 import { Link } from "react-router-dom";
+import Info from "./Info";
+import Orders from "./Orders";
+import Setting from "./Settings";
+import Support from "./Support";
 
 const ProfileMenu = () => {
+  const [activeComponent, setActiveComponent] = useState("Info");
+
   const menu = [
     {
       title: "اطلاعات کل",
       icon: <Person sx={{ fontSize: "2rem" }} />,
-      path: "./Info",
+      key: "Info",
     },
     {
       title: "سفارشات",
       icon: <LocalOffer sx={{ fontSize: "2rem" }} />,
-      path: "./Orders",
+      key: "Orders",
     },
     {
       title: "پشتیبانی",
       icon: <Call sx={{ fontSize: "2rem" }} />,
-      path: "./Support",
+      key: "Support",
     },
     {
       title: "تنظیمات",
       icon: <Settings sx={{ fontSize: "2rem" }} />,
-      path: "./Settings",
+      key: "Settings",
     },
     {
       title: "خروج",
       icon: <HighlightOff sx={{ fontSize: "2rem" }} />,
-      path: "./Logout",
+      key: "Logout",
     },
   ];
 
+  const renderComponent = () => {
+    switch (activeComponent) {
+      case "Info":
+        return <Info />;
+      case "Orders":
+        return <Orders />;
+      case "Support":
+        return <Support />;
+      case "Settings":
+        return <Setting />;
+      case "Logout":
+        return (
+          <Typography variant="h6" color="white">
+            شما با موفقیت خارج شدید
+          </Typography>
+        );
+      default:
+        return null;
+    }
+  };
+
   return (
     <Stack
-      direction="row"
+      direction={{ xs: "column", md: "row-reverse" }}
       justifyContent="center"
-      alignItems="center"
-      sx={{ position: "relative", minHeight: "100vh" }}
+      alignItems="flex-start"
+      spacing={4}
+      sx={{
+        position: "relative",
+        minHeight: "100vh",
+        p: { xs: 1, sm: 2, md: 3 },
+      }}
     >
       {/* بک‌گراند ثابت */}
       <Box
@@ -70,15 +102,11 @@ const ProfileMenu = () => {
         }}
       />
 
-      {/* کارت منو */}
+      {/* منو سمت راست یا بالا (در موبایل) */}
       <Stack
-        width={350}
+        width={{ xs: "100%", md: 350 }}
         borderRadius={5}
         p={2}
-        mr={6}
-        position={"fixed"}
-        right={"5%"}
-        top={"15%"}
         sx={{
           direction: "rtl",
           backdropFilter: "blur(15px)",
@@ -93,9 +121,15 @@ const ProfileMenu = () => {
           borderBottom={"5px solid white"}
           gap={1}
         >
-          <Tune sx={{ color: "white", mr: 1, fontSize: "2.5rem" }} />
+          <Tune
+            sx={{
+              color: "white",
+              mr: 1,
+              fontSize: { xs: "1.8rem", sm: "2rem", md: "2.5rem" },
+            }}
+          />
           <Typography
-            variant="h4"
+            variant="h5"
             fontFamily="IranYekan"
             fontWeight="bold"
             color="white"
@@ -110,8 +144,7 @@ const ProfileMenu = () => {
           {menu.map((item, index) => (
             <ListItem key={index} disablePadding>
               <ListItemButton
-                component={Link}
-                to={item.path}
+                onClick={() => setActiveComponent(item.key)}
                 sx={{
                   gap: 1,
                   color: "white",
@@ -119,7 +152,11 @@ const ProfileMenu = () => {
                 }}
               >
                 {item.icon}
-                <Typography variant="h5" fontFamily="IranYekan">
+                <Typography
+                  variant="body1"
+                  fontFamily="IranYekan"
+                  sx={{ fontSize: { xs: "0.95rem", sm: "1.1rem" } }}
+                >
                   {item.title}
                 </Typography>
               </ListItemButton>
@@ -142,14 +179,34 @@ const ProfileMenu = () => {
                 "&:hover": { background: "#ffffff20" },
               }}
             >
-              <ArrowCircleRight sx={{ fontSize: "2rem" }} />
-              <Typography fontFamily="IranYekan" variant="h5">
+              <ArrowCircleRight sx={{ fontSize: "1.8rem" }} />
+              <Typography
+                fontFamily="IranYekan"
+                variant="body1"
+                sx={{ fontSize: { xs: "0.95rem", sm: "1.1rem" } }}
+              >
                 بازگشت به خانه
               </Typography>
             </Stack>
           </Link>
         </Box>
       </Stack>
+
+      {/* محتوای کامپوننت */}
+      <Box
+        flex={1}
+        mt={{ xs: 2, md: 6 }}
+        borderRadius={3}
+        p={2}
+        sx={{
+          backgroundColor: "#00000050",
+          backdropFilter: "blur(15px)",
+          width: { xs: "100%", md: "auto" },
+          minWidth: { xs: "auto", md: 500 },
+        }}
+      >
+        {renderComponent()}
+      </Box>
     </Stack>
   );
 };
