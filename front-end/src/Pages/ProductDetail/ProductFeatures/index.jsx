@@ -1,0 +1,28 @@
+import React from 'react';
+import { Box, Typography } from '@mui/material';
+import PropTypes from 'prop-types';
+
+const ProductFeatures = ({ features }) => {
+  return (
+    <Box sx={{ mb: 4 }}>
+      <Typography variant="h6" gutterBottom sx={{ fontWeight: 600 }}>
+        ویژگی‌های اصلی
+      </Typography>
+      <Box component="ul" sx={{ pr: 3 }}>
+        {features.map((feature, index) => (
+          <li key={index}>
+            <Typography variant="body1" color="text.secondary">
+              {feature}
+            </Typography>
+          </li>
+        ))}
+      </Box>
+    </Box>
+  );
+};
+
+ProductFeatures.propTypes = {
+  features: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
+
+export default ProductFeatures;
