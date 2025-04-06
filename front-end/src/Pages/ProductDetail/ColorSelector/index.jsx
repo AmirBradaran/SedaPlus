@@ -1,6 +1,6 @@
-import React from 'react';
-import { ToggleButtonGroup, ToggleButton } from '@mui/material';
-import PropTypes from 'prop-types';
+import React from "react";
+import { ToggleButtonGroup, ToggleButton } from "@mui/material";
+import PropTypes from "prop-types";
 
 const ColorSelector = ({ sizes, sizeColors, selectedSize, onSizeChange }) => {
   return (
@@ -8,7 +8,7 @@ const ColorSelector = ({ sizes, sizeColors, selectedSize, onSizeChange }) => {
       value={selectedSize}
       exclusive
       onChange={onSizeChange}
-      sx={{ flexWrap: 'wrap', gap: 1 }}
+      sx={{ flexWrap: "wrap", gap: 1, mb: 2.5 }}
     >
       {sizes.map((size) => (
         <ToggleButton
@@ -17,9 +17,10 @@ const ColorSelector = ({ sizes, sizeColors, selectedSize, onSizeChange }) => {
           sx={{
             width: 100,
             height: 48,
-            '&.Mui-selected': {
-              backgroundColor: sizeColors[size] || 'primary.main',
-              color: 'primary.contrastText',
+            "&.Mui-selected": {
+              backgroundColor: sizeColors[size] || "primary.main",
+              color: "primary.contrastText",
+              fontFamily: "IranYekan",
             },
           }}
         >
