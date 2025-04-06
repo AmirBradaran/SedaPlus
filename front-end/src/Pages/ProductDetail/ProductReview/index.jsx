@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   Box,
   Typography,
@@ -9,13 +9,13 @@ import {
   Avatar,
   Chip,
   Grid,
-} from '@mui/material';
-import { Send } from '@mui/icons-material';
-import PropTypes from 'prop-types';
-import { toPersianNumbers } from '../../../Utils/helpers';
+} from "@mui/material";
+import { Send } from "@mui/icons-material";
+import PropTypes from "prop-types";
+import { toPersianNumbers } from "../../../Utils/helpers";
 
 const ReviewSection = ({ productId }) => {
-  const [review, setReview] = useState({ rating: 0, comment: '', name: '' });
+  const [review, setReview] = useState({ rating: 0, comment: "", name: "" });
   const [reviews, setReviews] = useState([]);
 
   const handleSubmit = (e) => {
@@ -23,25 +23,29 @@ const ReviewSection = ({ productId }) => {
     if (review.rating > 0 && review.comment) {
       const newReview = {
         id: Date.now(),
-        user: review.name || 'ناشناس',
+        user: review.name || "ناشناس",
         rating: review.rating,
         comment: review.comment,
-        date: new Date().toLocaleDateString('fa-IR'),
+        date: new Date().toLocaleDateString("fa-IR"),
       };
       setReviews([...reviews, newReview]);
-      setReview({ rating: 0, comment: '', name: '' });
+      setReview({ rating: 0, comment: "", name: "" });
     }
   };
 
   return (
-    <Box sx={{ p: 3, borderRadius: 4, boxShadow: 1, bgcolor: 'background.paper' }}>
-      <Typography variant="h5" gutterBottom sx={{ fontWeight: 700, mb: 4 }}>
+    <Box
+      sx={{ p: 3, borderRadius: 4, boxShadow: 1, bgcolor: "background.paper", fontFamily: "IranYekan" }}
+    >
+      <Box display={"flex"}>
         <Send color="primary" sx={{ ml: 1 }} />
-        نظرات کاربران
-      </Typography>
+        <Typography variant="h5" sx={{ fontFamily: "IranYekan", fontWeight: 700, mb: 4 }} gutterBottom>
+          نظرات کاربران
+        </Typography>
+      </Box>
 
       {/* فرم ثبت نظر */}
-      <Box component="form" onSubmit={handleSubmit} sx={{ mb: 6 }}>
+      <Box component="form" onSubmit={handleSubmit} mb={6}>
         <Grid container spacing={3}>
           <Grid item xs={12} md={4}>
             <TextField
@@ -49,39 +53,52 @@ const ReviewSection = ({ productId }) => {
               label="نام شما"
               value={review.name}
               onChange={(e) => setReview({ ...review, name: e.target.value })}
+              InputLabelProps={{ sx: { fontFamily: "IranYekan" } }}
+              inputProps={{ style: { fontFamily: "IranYekan" } }}
             />
           </Grid>
 
+          {/* Set Star */}
           <Grid item xs={12} md={4}>
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-              <Typography variant="body1">امتیاز:</Typography>
+            <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+              <Typography variant="body1" sx={{ fontFamily: "IranYekan" }}>
+                امتیاز:
+              </Typography>
               <Rating
                 value={review.rating}
-                onChange={(e, newValue) => setReview({ ...review, rating: newValue })}
+                onChange={(e, newValue) =>
+                  setReview({ ...review, rating: newValue })
+                }
                 precision={0.5}
-                sx={{ direction: 'ltr' }}
+                sx={{ direction: "ltr" }}
               />
             </Box>
           </Grid>
 
-          <Grid item xs={12}>
+          {/* TextField */}
+          <Grid item xs={12} >
             <TextField
               fullWidth
               multiline
               rows={4}
               label="متن نظر"
               value={review.comment}
-              onChange={(e) => setReview({ ...review, comment: e.target.value })}
+              onChange={(e) =>
+                setReview({ ...review, comment: e.target.value })
+              }
               required
+              InputLabelProps={{ sx: { fontFamily: "IranYekan"  } }}
+              inputProps={{ style: { fontFamily: "IranYekan" } }}
             />
           </Grid>
 
+          {/* Send Button */}
           <Grid item xs={12}>
             <Button
               type="submit"
               variant="contained"
-              endIcon={<Send />}
-              sx={{ px: 6, fontWeight: 600 }}
+              startIcon={<Send sx={{ ml: 2.5 }} />}
+              sx={{ px: 6, fontWeight: "bold", fontFamily: "IranYekan" }}
             >
               ارسال نظر
             </Button>
@@ -91,13 +108,17 @@ const ReviewSection = ({ productId }) => {
 
       <Divider sx={{ mb: 4 }} />
 
-      {/* لیست نظرات */}
+      {/* List Comments */}
       <Box sx={{ mb: 4 }}>
-        <Typography variant="h5" gutterBottom sx={{ fontWeight: 700 }}>
+        <Typography
+          variant="h5"
+          gutterBottom
+          sx={{ fontWeight: 700, fontFamily: "IranYekan" }}
+        >
           نظرات ثبت شده
           <Chip
             label={toPersianNumbers(reviews.length)}
-            sx={{ ml: 2, bgcolor: 'primary.main', color: 'white' }}
+            sx={{ ml: 2, bgcolor: "primary.main", color: "white", fontFamily: "IranYekan" }}
           />
         </Typography>
 
@@ -110,38 +131,55 @@ const ReviewSection = ({ productId }) => {
                 p: 3,
                 borderRadius: 3,
                 boxShadow: 1,
-                bgcolor: 'background.default',
+                bgcolor: "background.default",
               }}
             >
-              <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-                <Avatar sx={{ bgcolor: 'primary.main', mr: 2 }}>
+              <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
+                <Avatar sx={{ bgcolor: "primary.main", mr: 2 }}>
                   {review.user[0]}
                 </Avatar>
                 <Box>
-                  <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
+                  <Typography
+                    variant="subtitle1"
+                    sx={{ fontWeight: 700, fontFamily: "IranYekan" }}
+                  >
                     {review.user}
                   </Typography>
-                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+
+                  <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
                     <Rating
                       value={review.rating}
                       readOnly
                       precision={0.5}
                       size="small"
-                      sx={{ direction: 'ltr' }}
+                      sx={{ direction: "ltr" }}
                     />
-                    <Typography variant="caption" color="text.secondary">
+                    <Typography
+                      variant="caption"
+                      color="text.secondary"
+                      sx={{ fontFamily: "IranYekan" }}
+                    >
                       {toPersianNumbers(review.date)}
                     </Typography>
                   </Box>
                 </Box>
               </Box>
-              <Typography variant="body1" color="text.secondary">
+              <Typography
+                variant="body1"
+                color="text.secondary"
+                sx={{ fontFamily: "IranYekan" }}
+              >
                 {review.comment}
               </Typography>
             </Box>
           ))
         ) : (
-          <Typography variant="body1" color="text.secondary" align="center">
+          <Typography
+            variant="body1"
+            color="text.secondary"
+            align="center"
+            sx={{ fontFamily: "IranYekan" }}
+          >
             اولین نظر را شما ثبت کنید!
           </Typography>
         )}
