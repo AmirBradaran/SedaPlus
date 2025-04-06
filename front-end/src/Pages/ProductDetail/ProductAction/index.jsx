@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, IconButton, Box } from '@mui/material';
-import { AddShoppingCart, FavoriteBorder, Share } from '@mui/icons-material';
+import { AddShoppingCart, FavoriteBorder, Share, Shuffle } from '@mui/icons-material';
 
 const ProductActions = () => {
   return (
@@ -8,8 +8,8 @@ const ProductActions = () => {
       <Button
         variant="contained"
         size="large"
-        startIcon={<AddShoppingCart />}
-        sx={{ flexGrow: 1, py: 1.5, fontWeight: 600 }}
+        startIcon={<AddShoppingCart sx={{ml:2 }} />}
+        sx={{ flexGrow: 1, py: 1.5, fontWeight: 'bold' , fontFamily:"IranYekan" }}
       >
         افزودن به سبد خرید
       </Button>
@@ -19,7 +19,7 @@ const ProductActions = () => {
           <FavoriteBorder />
         </IconButton>
         <IconButton color="primary" sx={{ border: '1px solid' }}>
-          <Share />
+          <Shuffle />
         </IconButton>
       </Box>
     </Box>
