@@ -5,10 +5,11 @@ import { toPersianNumbers } from "../../../Utils/helpers";
 
 const ProductInfo = ({ product }) => {
   return (
-    <Box sx={{ position: "sticky", top: 80, pb: 4 }}>
+    <Box sx={{ position: "relative", top: 0, pb: 4 }}>
       <Typography
         variant="h4"
         component="h1"
+        fontFamily={"IranYekan"}
         gutterBottom
         sx={{ fontWeight: 700 }}
       >
@@ -22,13 +23,14 @@ const ProductInfo = ({ product }) => {
           readOnly
           sx={{ "& .MuiRating-icon": { color: "warning.main" } }}
         />
-        <Typography variant="body2" sx={{ mr: 1 }}>
+        <Typography fontFamily={"IranYekan"} variant="body2" sx={{ mr: 1 }}>
           ({toPersianNumbers(product.rating.toFixed(1))})
         </Typography>
       </Box>
 
       <Typography
         variant="h5"
+        fontFamily={"IranYekan"}
         sx={{ mb: 3, color: "primary.main", fontWeight: 600 }}
       >
         {toPersianNumbers(
@@ -39,7 +41,7 @@ const ProductInfo = ({ product }) => {
 
       <Divider sx={{ my: 3 }} />
 
-      <Typography variant="body1" paragraph sx={{ mb: 3, lineHeight: 1.8 }}>
+      <Typography variant="body1" fontFamily={"IranYekan"} paragraph sx={{ mb: 3, lineHeight: 1.8 }}>
         {product.description}
       </Typography>
     </Box>
