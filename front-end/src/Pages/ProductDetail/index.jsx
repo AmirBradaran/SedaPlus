@@ -1,11 +1,6 @@
 import React, { useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
-import {
-  Container,
-  Grid,
-  Fade,
-  Typography // اضافه شد
-} from "@mui/material";
+import { Container, Grid, Fade, Typography } from "@mui/material";
 import ProductGallery from "./ProductImgs";
 import ProductInfo from "./ProductInfo";
 import ProductFeatures from "./ProductFeatures";
@@ -16,7 +11,7 @@ import ReviewSection from "./ProductReview";
 const ProductDetail = () => {
   const { id } = useParams();
   const location = useLocation();
-  
+
   // لیست محصولات
   const products = [
     {
@@ -53,9 +48,8 @@ const ProductDetail = () => {
   ];
 
   // پیدا کردن محصول
-  const product = 
-    location.state?.product || 
-    products.find((p) => p.id === parseInt(id, 10));
+  const product =
+    location.state?.product || products.find((p) => p.id === parseInt(id, 10));
 
   const [selectedSize, setSelectedSize] = useState("");
 
@@ -68,9 +62,9 @@ const ProductDetail = () => {
   }
 
   return (
-    <Container maxWidth="lg" sx={{ py: 4 }}>
+    <Container maxWidth="lg" sx={{ py: 4, direction: "rtl" }}>
       <Fade in timeout={500}>
-        <Grid container spacing={4}>
+        <Grid container spacing={2.5}>
           <Grid item xs={12} md={6}>
             <ProductGallery images={product.images} />
           </Grid>
@@ -79,7 +73,12 @@ const ProductDetail = () => {
             <ProductInfo product={product} />
             <ProductFeatures features={product.features} />
 
-            <Typography variant="h6" gutterBottom sx={{ fontWeight: 600 }}>
+            <Typography
+              variant="h6"
+              fontFamily={"IranYekan"}
+              gutterBottom
+              fontWeight= {'bold'}
+            >
               انتخاب رنگ
             </Typography>
             <ColorSelector
