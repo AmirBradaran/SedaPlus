@@ -5,11 +5,13 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import OrderCard from "./OrderCard";
+import OrderCardResume from "./OrderCardResume";
+import OrderCardHistory from "./OrderCardHistory";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
 import rtlPlugin from "stylis-plugin-rtl";
+import { useState } from "react";
 
 const theme = createTheme({
   direction: "rtl",
@@ -51,6 +53,8 @@ const OrdersPage = () => {
   const muiTheme = useTheme();
   const isMobile = useMediaQuery(muiTheme.breakpoints.down("sm"));
 
+  const [activeTab, setActiveTab] = useState("sending"); // یا "history"
+
   return (
     <CacheProvider value={cacheRtl}>
       <ThemeProvider theme={theme}>
@@ -79,28 +83,48 @@ const OrdersPage = () => {
               <Typography
                 variant="h6"
                 fontWeight={"bold"}
-                color="white"
+                color={activeTab === "history" ? "#fff" : "#ccc"}
                 textAlign={{ xs: "center", sm: "right" }}
+                onClick={() => setActiveTab("history")}
+                sx={{
+                  cursor: "pointer",
+                  borderBottom:
+                    activeTab === "history" ? "5px solid white" : "none",
+                  borderRadius: "0 0 10px 10px",
+                  px: 2,
+                }}
               >
                 تاریخچه سفارشات
               </Typography>
+
               <Typography
                 variant="h6"
-                color="white"
                 fontWeight={"bold"}
-                borderBottom={"5px solid white"}
+                color={activeTab === "sending" ? "#fff" : "#ccc"}
                 textAlign="center"
+                onClick={() => setActiveTab("sending")}
                 sx={{
+                  cursor: "pointer",
+                  borderBottom:
+                    activeTab === "sending" ? "5px solid white" : "none",
                   borderRadius: "0 0 10px 10px",
-                  width: { xs: "100%", sm: "50%" },
+                  px: 2,
                 }}
               >
                 سفارشات در حال ارسال
               </Typography>
             </Box>
-            {orders.map((order, index) => (
-              <OrderCard key={index} {...order} />
-            ))}
+
+            {/* نمایش محتوای بر اساس تب فعال */}
+            {activeTab === "sending" ? (
+              orders.map((order, index) => (
+                <OrderCardResume key={index} {...order} />
+              ))
+            ) : (
+              orders.map((order, index) => (
+                <OrderCardHistory key={index} {...order} />
+              ))
+            )}
           </Container>
         </Box>
       </ThemeProvider>
