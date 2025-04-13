@@ -196,6 +196,7 @@ const ProductListWithFilters = () => {
           </Grid>
         </Grid>
       </Grid>
+      
     </Container>
   );
 };
